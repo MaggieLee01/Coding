@@ -1,16 +1,34 @@
-#include<iostream>
+ï»¿Skip to content
+Search or jump toâ€¦
 
-int count(int numbers[], int length,int start, int end)
+Pull requests
+Issues
+Marketplace
+Explore
+
+@MaggieLee01
+1
+00MaggieLee01 / Coding
+Code Issues 0 Pull requests 0 Actions Projects 0 Wiki Security Insights Settings
+Coding / 03_02_BinaryCount / BinaryCount.cpp
+@MaggieLee01 MaggieLee01 binary no success
+169da08 2 hours ago
+131 lines(115 sloc)  2.95 KB
+
+#include<iostream>
+//è‡ªå·±ç¼–å†™éš¾ç‚¹ï¼šæ­¤å¤„ç»Ÿè®¡æ—¶ç«¯ç‚¹å¤„æ˜¯å¦å¸¦ç­‰å·ï¼Œä¸å¥½å¤„ç†ï¼›å¦‚2,1,3,1,4,å’Œæ•°ç»„2,1,3,3ï¼Œç­‰å·çš„æƒ…å†µä¸ä¸€æ ·
+int count(int numbers[], int length, int start, int end)
 {
 	int m = 0;
 	for (int i = 0; i < length; i++)
 	{
-		if (numbers[i] > start && numbers[i] < end)
+		if (numbers[i] >= start && numbers[i] <= end)
 			m++;
 	}
 	return m;
 }
-bool duplicate(int numbers[], int length,int start,int end, int* duplication)
+//å†™æˆé€’å½’å¼äºŒåˆ†æ³•çš„é”™è¯¯ï¼šæœ€å†…å±‚é€’å½’æ­£ç¡®è¿”å›ä¹‹åï¼Œè¿›å…¥äº†å€’æ•°ç¬¬äºŒå±‚çš„å‡½æ•°å…¶ä»–éƒ¨åˆ†
+bool duplicate(int numbers[], int length, int start, int end, int* duplication)
 {
 	if (numbers == nullptr || length <= 0)
 	{
@@ -23,17 +41,20 @@ bool duplicate(int numbers[], int length,int start,int end, int* duplication)
 		*duplication = start;
 		return true;
 	}
-	int mid = (start + end) >> 1;
-	
+	int mid = (end - start) >> 1;
+	mid += start;
+
 	int no = count(numbers, length, start, mid);
-	if (no > mid)
+	if (no > mid - start)
 		duplicate(numbers, length, start, mid, duplication);
 	else
 		duplicate(numbers, length, mid, end, duplication);
-	
+
+	return false;
+
 }
 
-//²âÊÔÑùÀı£º¿ÕÊı×é£»ÎŞ£»È«ÊÇ
+//æµ‹è¯•æ ·ä¾‹ï¼šç©ºæ•°ç»„ï¼›æ— ï¼›å…¨æ˜¯
 bool contains(int array[], int length, int number)
 {
 	for (int i = 0; i < length; ++i)
@@ -50,7 +71,7 @@ void test(const char* testName, int numbers[], int lengthNumbers, int expected[]
 	printf("%s begins: ", testName);
 
 	int duplication;
-	bool validInput = duplicate(numbers, lengthNumbers,1,lengthNumbers, &duplication);
+	bool validInput = duplicate(numbers, lengthNumbers, 1, lengthNumbers, &duplication);
 
 	if (validArgument == validInput)
 	{
@@ -68,7 +89,7 @@ void test(const char* testName, int numbers[], int lengthNumbers, int expected[]
 		printf("FAILED.\n");
 }
 
-// ÖØ¸´µÄÊı×ÖÊÇÊı×éÖĞ×îĞ¡µÄÊı×Ö
+// é‡å¤çš„æ•°å­—æ˜¯æ•°ç»„ä¸­æœ€å°çš„æ•°å­—
 void test1()
 {
 	int numbers[] = { 2, 1, 3, 1, 4 };
@@ -76,7 +97,7 @@ void test1()
 	test("Test1", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), true);
 }
 
-// ÖØ¸´µÄÊı×ÖÊÇÊı×éÖĞ×î´óµÄÊı×Ö
+// é‡å¤çš„æ•°å­—æ˜¯æ•°ç»„ä¸­æœ€å¤§çš„æ•°å­—
 void test2()
 {
 	int numbers[] = { 2, 4, 3, 1, 4 };
@@ -84,7 +105,7 @@ void test2()
 	test("Test2", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), true);
 }
 
-// Êı×éÖĞ´æÔÚ¶à¸öÖØ¸´µÄÊı×Ö
+// æ•°ç»„ä¸­å­˜åœ¨å¤šä¸ªé‡å¤çš„æ•°å­—
 void test3()
 {
 	int numbers[] = { 2, 4, 2, 1, 4 };
@@ -92,7 +113,7 @@ void test3()
 	test("Test3", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), true);
 }
 
-// Ã»ÓĞÖØ¸´µÄÊı×Ö
+// æ²¡æœ‰é‡å¤çš„æ•°å­—
 void test4()
 {
 	int numbers[] = { 2, 1, 3, 0, 4 };
@@ -100,7 +121,7 @@ void test4()
 	test("Test4", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), false);
 }
 
-// Ã»ÓĞÖØ¸´µÄÊı×Ö
+// æ²¡æœ‰é‡å¤çš„æ•°å­—
 void test5()
 {
 	int numbers[] = { 2, 1, 3, 5, 4 };
@@ -108,7 +129,7 @@ void test5()
 	test("Test5", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), false);
 }
 
-// ÎŞĞ§µÄÊäÈë
+// æ— æ•ˆçš„è¾“å…¥
 void test6()
 {
 	int* numbers = nullptr;
@@ -125,3 +146,15 @@ void main()
 	test5();
 	test6();
 }
+Â© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
