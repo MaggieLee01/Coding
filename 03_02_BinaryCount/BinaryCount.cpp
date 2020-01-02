@@ -1,9 +1,5 @@
-﻿Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-#include<iostream>
+﻿#include<iostream>
+#include<cstdio>
 //自己编写难点：此处统计时端点处是否带等号，不好处理；如2,1,3,1,4,和数组2,1,3,3，等号的情况不一样
 int count(int numbers[], int length, int start, int end)
 {
