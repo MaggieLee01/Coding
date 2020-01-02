@@ -1,132 +1,62 @@
-ï»¿#include<iostream>
+// ÕÒ³öÊı×éÖĞÖØ¸´µÄÊı×Ö
+// ÌâÄ¿£ºÔÚÒ»¸ö³¤¶ÈÎªnµÄÊı×éÀïµÄËùÓĞÊı×Ö¶¼ÔÚ1µ½n-1µÄ·¶Î§ÄÚ¡£Êı×éÖĞÄ³Ğ©Êı×ÖÊÇÖØ¸´µÄ£¬µ«²»ÖªµÀÓĞ¼¸¸öÊı×ÖÖØ¸´ÁË£¬
+// Ò²²»ÖªµÀÃ¿¸öÊı×ÖÖØ¸´ÁË¼¸´Î¡£ÇëÕÒ³öÊı×éÖĞÈÎÒâÒ»¸öÖØ¸´µÄÊı×Ö¡£ÀıÈç£¬Èç¹ûÊäÈë³¤¶ÈÎª7µÄÊı×é{2, 3, 1, 0, 2, 5, 3}£¬
+// ÄÇÃ´¶ÔÓ¦µÄÊä³öÊÇÖØ¸´µÄÊı×Ö2»òÕß3¡£
+
+
+// ²ÎÊı:
+//        numbers:     Ò»¸öÕûÊıÊı×é
+//        length:      Êı×éµÄ³¤¶È
+//        duplication: (Êä³ö) Êı×éÖĞµÄÒ»¸öÖØ¸´µÄÊı×Ö
+// ·µ»ØÖµ:             
+//        true  - ÊäÈëÓĞĞ§£¬²¢ÇÒÊı×éÖĞ´æÔÚÖØ¸´µÄÊı×Ö
+//        false - ÊäÈëÎŞĞ§£¬»òÕßÊı×éÖĞÃ»ÓĞÖØ¸´µÄÊı×Ö
+#include<iostream>
 #include<cstdio>
-//è‡ªå·±ç¼–å†™éš¾ç‚¹ï¼šæ­¤å¤„ç»Ÿè®¡æ—¶ç«¯ç‚¹å¤„æ˜¯å¦å¸¦ç­‰å·ï¼Œä¸å¥½å¤„ç†ï¼›å¦‚2,1,3,1,4,å’Œæ•°ç»„2,1,3,3ï¼Œç­‰å·çš„æƒ…å†µä¸ä¸€æ ·
-int count(int numbers[], int length, int start, int end)
+#include<vector>
+
+int count(std::vector<int>num, int start, int end)
 {
 	int m = 0;
-	for (int i = 0; i < length; i++)
-	{
-		if (numbers[i] >= start && numbers[i] <= end)
+	for (auto i:num)
+		if (i >= start && i <= end)
 			m++;
-	}
 	return m;
 }
-//å†™æˆé€’å½’å¼äºŒåˆ†æ³•çš„é”™è¯¯ï¼šæœ€å†…å±‚é€’å½’æ­£ç¡®è¿”å›ä¹‹åï¼Œè¿›å…¥äº†å€’æ•°ç¬¬äºŒå±‚çš„å‡½æ•°å…¶ä»–éƒ¨åˆ†
-bool duplicate(int numbers[], int length, int start, int end, int* duplication)
+
+//¶ş·Ö·¨Ä£°å£¬ÊÇwhileÑ­»·£¬²»ÊÇµİ¹é
+int duplicate(std::vector<int>num, int length)
 {
-	if (numbers == nullptr || length <= 0)
+	int left = 1;
+	int right = num.size();
+	if (right > length)
+		return -1;
+	
+	while (left < right)
 	{
-		duplication = nullptr;
-		return false;
+		int mid = (right - left) >> 1;//·ÖÇå³ş×óÒÆ¡¢ÓÒÒÆ
+		right = left + mid;
+		mid = right;
+		int m = count(num, left, right);
+		if (m > mid)
+			right = mid;
+		else if (m < mid)
+			left = mid;
 	}
-
-	if (start >= end)
-	{
-		*duplication = start;
-		return true;
-	}
-	int mid = (end - start) >> 1;
-	mid += start;
-
-	int no = count(numbers, length, start, mid);
-	if (no > mid - start)
-		duplicate(numbers, length, start, mid, duplication);
-	else
-		duplicate(numbers, length, mid, end, duplication);
-
-	return false;
-
+	if (left = right)
+		return left;
+	return -1;
 }
-
-//æµ‹è¯•æ ·ä¾‹ï¼šç©ºæ•°ç»„ï¼›æ— ï¼›å…¨æ˜¯
-bool contains(int array[], int length, int number)
+int main(void)
 {
-	for (int i = 0; i < length; ++i)
-	{
-		if (array[i] == number)
-			return true;
-	}
+	std::vector<int> num1= { 2, 1, 3, 1, 4 };
+	duplicate(num1, 5);
 
-	return false;
-}
+	std::vector<int> num2 = { 2, 4, 3, 1, 4 };
+	duplicate(num2, 5);
 
-void test(const char* testName, int numbers[], int lengthNumbers, int expected[], int expectedExpected, bool validArgument)
-{
-	printf("%s begins: ", testName);
+	std::vector<int> num3 = { 2, 4, 2, 1, 4 };
+	duplicate(num3, 5);
 
-	int duplication;
-	bool validInput = duplicate(numbers, lengthNumbers, 1, lengthNumbers, &duplication);
-
-	if (validArgument == validInput)
-	{
-		if (validArgument)
-		{
-			if (contains(expected, expectedExpected, duplication))
-				printf("Passed.\n");
-			else
-				printf("FAILED.\n");
-		}
-		else
-			printf("Passed.\n");
-	}
-	else
-		printf("FAILED.\n");
-}
-
-// é‡å¤çš„æ•°å­—æ˜¯æ•°ç»„ä¸­æœ€å°çš„æ•°å­—
-void test1()
-{
-	int numbers[] = { 2, 1, 3, 1, 4 };
-	int duplications[] = { 1 };
-	test("Test1", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), true);
-}
-
-// é‡å¤çš„æ•°å­—æ˜¯æ•°ç»„ä¸­æœ€å¤§çš„æ•°å­—
-void test2()
-{
-	int numbers[] = { 2, 4, 3, 1, 4 };
-	int duplications[] = { 4 };
-	test("Test2", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), true);
-}
-
-// æ•°ç»„ä¸­å­˜åœ¨å¤šä¸ªé‡å¤çš„æ•°å­—
-void test3()
-{
-	int numbers[] = { 2, 4, 2, 1, 4 };
-	int duplications[] = { 2, 4 };
-	test("Test3", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), true);
-}
-
-// æ²¡æœ‰é‡å¤çš„æ•°å­—
-void test4()
-{
-	int numbers[] = { 2, 1, 3, 0, 4 };
-	int duplications[] = { -1 }; // not in use in the test function
-	test("Test4", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), false);
-}
-
-// æ²¡æœ‰é‡å¤çš„æ•°å­—
-void test5()
-{
-	int numbers[] = { 2, 1, 3, 5, 4 };
-	int duplications[] = { -1 }; // not in use in the test function
-	test("Test5", numbers, sizeof(numbers) / sizeof(int), duplications, sizeof(duplications) / sizeof(int), false);
-}
-
-// æ— æ•ˆçš„è¾“å…¥
-void test6()
-{
-	int* numbers = nullptr;
-	int duplications[] = { -1 }; // not in use in the test function
-	test("Test6", numbers, 0, duplications, sizeof(duplications) / sizeof(int), false);
-}
-
-void main()
-{
-	test1();
-	test2();
-	test3();
-	test4();
-	test5();
-	test6();
+	return 0;
 }
