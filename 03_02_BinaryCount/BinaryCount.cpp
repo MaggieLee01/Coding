@@ -14,17 +14,51 @@
 #include<iostream>
 #include<cstdio>
 #include<vector>
-
-int count(std::vector<int>num, int start, int end)
+//尝试一
+//自己编写难点：此处统计时端点处是否带等号，不好处理；如2,1,3,1,4,和数组2,1,3,3,4等号的情况不一样
+//写成递归式二分法的错误：最内层递归正确返回之后，进入了倒数第二层的函数后面部分
+/*
+int count1(int numbers[], int length, int start, int end)
 {
 	int m = 0;
-	for (auto i:num)
-		if (i >= start && i <= end)
+	for (int i = 0; i < length; i++)
+	{
+		if (numbers[i] >= start && numbers[i] <= end)
 			m++;
+	}
 	return m;
 }
 
+bool duplicate_wrong(int numbers[], int length, int start, int end, int* duplication)
+{
+	if (numbers == nullptr || length <= 0)
+	{
+		duplication = nullptr;
+		return false;
+	}
+
+	if (start >= end)
+	{
+		*duplication = start;
+		return true;
+	}
+	int mid = (end - start) >> 1;
+	mid += start;
+
+	int no = count1(numbers, length, start, mid);
+	if (no > mid - start)
+		duplicate_wrong(numbers, length, start, mid, duplication);
+	else
+		duplicate_wrong(numbers, length, mid, end, duplication);
+
+	return false;
+}
+*/
+
+//尝试二：
 //二分法模板，是while循环，不是递归
+//不知道如何处理mid=m的情况，如{ 2, 4, 3, 1, 4, 5}；
+/*
 int duplicate(std::vector<int>num, int length)
 {
 	int left = 1;
@@ -38,6 +72,7 @@ int duplicate(std::vector<int>num, int length)
 		right = left + mid;
 		mid = right;
 		int m = count(num, left, right);
+		
 		if (m > mid)
 			right = mid;
 		else if (m < mid)
@@ -47,13 +82,48 @@ int duplicate(std::vector<int>num, int length)
 		return left;
 	return -1;
 }
+*/
+int count(std::vector<int>num, int start, int end)
+{
+	int m = 0;
+	for (auto i : num)
+		if (i >= start && i <= end)
+			m++;
+	return m;
+}
+//此处直接比较个数，将m和判断区间的数字个数进行比较，而不是mid, 容易有中间一个的误差
+//此方法只统计大小在前一段的个数
+int duplicate(std::vector<int>num, int length) 
+{
+	int left = 1;
+	int right = num.size-1;
+	
+	while (left <= right)
+	{
+		int mid = (right - left) >> 1;
+		mid = mid + left;
+		int m = count(num, left, mid);
+		if (right == left)
+		{
+			if (m > 1)
+				return left;
+			else
+				break;
+		}
+		if (m > mid - left + 1)
+			right = mid;
+		else
+			left = mid + 1;
+	}
+	return -1;
+}
 int main(void)
 {
 	std::vector<int> num1= { 2, 1, 3, 1, 4 };
 	duplicate(num1, 5);
 
-	std::vector<int> num2 = { 2, 4, 3, 1, 4 };
-	duplicate(num2, 5);
+	std::vector<int> num2 = { 2, 4, 3, 1, 4, 5};
+	duplicate(num2, 6);
 
 	std::vector<int> num3 = { 2, 4, 2, 1, 4 };
 	duplicate(num3, 5);
