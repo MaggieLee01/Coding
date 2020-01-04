@@ -57,7 +57,7 @@ bool duplicate_wrong(int numbers[], int length, int start, int end, int* duplica
 
 //尝试二：
 //二分法模板，是while循环，不是递归
-//不知道如何处理mid=m的情况，如{ 2, 4, 3, 1, 4, 5}；
+//不知道如何处理 mid=m 的情况，如{ 2, 4, 3, 1, 4, 5}；
 /*
 int duplicate(std::vector<int>num, int length)
 {
@@ -83,6 +83,10 @@ int duplicate(std::vector<int>num, int length)
 	return -1;
 }
 */
+
+//此处直接比较个数，将m和判断区间的数字个数进行比较，而不是mid, 容易有中间一个的误差
+
+//看着答案改完的，不是自己写出来的
 int count(std::vector<int>num, int start, int end)
 {
 	int m = 0;
@@ -91,12 +95,11 @@ int count(std::vector<int>num, int start, int end)
 			m++;
 	return m;
 }
-//此处直接比较个数，将m和判断区间的数字个数进行比较，而不是mid, 容易有中间一个的误差
 //此方法只统计大小在前一段的个数
 int duplicate(std::vector<int>num, int length) 
 {
 	int left = 1;
-	int right = num.size-1;
+	int right = num.size() - 1;
 	
 	while (left <= right)
 	{
