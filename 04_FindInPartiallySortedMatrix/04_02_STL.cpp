@@ -3,7 +3,9 @@
 using namespace std;
 //熟悉vector的各个函数，还没涉及到内存这些复杂的东西
 //vector为空时，empty()返回 1
-//牛客网的格式，已通过
+//牛客网的格式，已通过；貌似边界测试不够
+
+//while内写比较条件的时候如果先比较不等，再比较相等，效率会有提升
 bool Find1(int target, vector<vector<int> > array) {
 
 	int row = 0;
