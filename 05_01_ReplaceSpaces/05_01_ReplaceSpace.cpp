@@ -19,11 +19,11 @@ char* ReplaceSpaces(const char* string)
 		return nullptr;
 
 	//定义长度不定的字符串空间【栈空间也行】并赋初值，怎么操作，使用new?
-	//使用new后，调试时不能从replace处直接查看字符串，必须跳到内存处，解决方法：new时加()赋初值能看到
+	//使用new后，调试时不能从replace处直接查看字符串，必须跳到内存处，解决方法：new时加()赋初值0能看到
 
 	int length = strlen(string);
 
-	char* newstring = new char[length + length + length + 1]();//加()赋初值会好很多
+	char* newstring = new char[length + length + length + 1]();//加()赋初值0会好很多
 	char* replace = newstring;
 
 	while (*string != '\0')//字符串结束的标志基础忘记了
