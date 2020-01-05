@@ -20,9 +20,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{48E2030A-E952-451D-A185-C4823B8EC8DE}</ProjectGuid>
-    <RootNamespace>My04FindInPartiallySortedMatrix</RootNamespace>
+    <ProjectGuid>{A91A60B9-9849-44B0-85D6-4F273332DDC3}</ProjectGuid>
+    <RootNamespace>My0501ReplaceSpaces</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <ProjectName>05_01_ReplaceSpaces_Own</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -115,9 +116,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="04_01_FindInPartiallySortedMatrix.cpp" />
-    <ClCompile Include="04_02_STL.cpp" />
-    <ClCompile Include="04_03_BinarySearch.cpp" />
+    <ClCompile Include="05_01_ReplaceSpace.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

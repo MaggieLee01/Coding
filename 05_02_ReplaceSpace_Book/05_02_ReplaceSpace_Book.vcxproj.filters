@@ -15,13 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="04_02_STL.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="04_01_FindInPartiallySortedMatrix.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="04_03_BinarySearch.cpp">
+    <ClCompile Include="ReplaceSpace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
