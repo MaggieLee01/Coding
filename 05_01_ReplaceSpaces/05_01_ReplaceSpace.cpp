@@ -49,6 +49,8 @@ char* ReplaceSpaces(const char* string)
 	//此处返回的应该是字符串的首位，不是移动到最后的指针，此处犯错很多次！！！！！
 	return newstring;
 }
+
+// ====================测试代码【自己写】====================
 void Test(const char* testname,const char* string, const char* expected)
 {
 	std::cout << testname << "	begins:	";
