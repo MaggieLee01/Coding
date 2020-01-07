@@ -24,6 +24,6 @@ void DestroyList(ListNode* pHead);
 void AddTail(ListNode* pHead, int value);
 
 //ÒÆ³ý½Úµã
-void RemoveListNode(ListNode* pHead, int value);
+ListNode* RemoveListNode(ListNode* pHead, int value);
 
 

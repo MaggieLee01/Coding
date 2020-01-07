@@ -22,7 +22,8 @@ void ConnectListNode(ListNode* pCurrent, ListNode* pNext)
 {
 	if (pCurrent == nullptr)
 		return;
-	pCurrent->m_pNext = pNext;//说明可以将指向为空的指针指向其他内存
+	//说明可以将指向为空的指针指向其他内存，//此处理解有误，是因为指针m_pNext是pCurrent指向的内容
+	pCurrent->m_pNext = pNext;
 }
 
 //打印链表节点
@@ -46,6 +47,7 @@ void PrintList(ListNode* pHead)
 		//++ pNode;//链表，不是数组，不能指针++呀
 		pNode = pNode->m_pNext;
 	}
+	std::cout << std::endl;
 	std::cout << "PrintList end:" << std::endl;
 }
 
@@ -57,21 +59,59 @@ void DestroyList(ListNode* pHead)
 	while (pHead != nullptr)
 	{
 		ListNode* pNode = pHead->m_pNext;
-		delete pNode;
-		pHead = pHead->m_pNext;
+		delete pHead;
+		pHead = nullptr;
+		pHead = pNode;
 	}
 }
 
 //链表后面增加节点
 void AddTail(ListNode* pHead, int value)
 {
+	ListNode* pNode = new ListNode();
+	if (pNode == nullptr || pHead == nullptr)
+		return;
+	pNode->m_nValue = value;
+	pNode->m_pNext = nullptr;
 
+	ListNode* p = pHead;
+	while (p->m_pNext != nullptr)
+		p = p->m_pNext;
+	//p = pNode;	//不应该改变指针的指向，应该改变指针的内容
+	p->m_pNext = pNode;
 }
 
 //移除节点
-void RemoveListNode(ListNode* pHead, int value)
+ListNode* RemoveListNode(ListNode* pHead, int value)
 {
-
+	if (pHead == nullptr)
+		return nullptr;
+	ListNode* pNode = pHead;
+	//判断是否为第一个节点
+	if (pHead->m_nValue == value)
+	{
+		pHead = pHead->m_pNext;//此处改变了指针的指向，所以形参二级或者返回指针
+		delete pNode;
+		pNode = nullptr;
+	}
+	//从第二个开始遍历
+	while ( pNode->m_pNext != nullptr && pNode->m_pNext->m_nValue != value )
+		pNode = pNode->m_pNext;
+	//下一个节点为要删除的节点
+	if (pNode->m_pNext != nullptr && pNode->m_pNext->m_nValue == value)
+	{
+		ListNode* ToBedelete = pNode->m_pNext;
+		pNode->m_pNext = pNode->m_pNext->m_pNext;
+		delete ToBedelete;
+		ToBedelete = nullptr;
+	}
+	//遍历到最后没找到	
+	else 
+	{
+		std::cout << "No point:	" << value << std::endl;
+		return nullptr;
+	}
+	return pHead;
 }
 
 int main(void)
@@ -82,5 +122,16 @@ int main(void)
 	PrintListNode(p2);
 	ConnectListNode(p1, p2);
 	PrintList(p1);
+	AddTail(p1, 3);
+	PrintList(p1);
+	AddTail(p1, 4);
+	PrintList(p1);
+	AddTail(p1, 5);
+	PrintList(p1);
+	AddTail(p1, 6);
+	PrintList(p1);
+	p1 = RemoveListNode(p1, 3);
+	PrintList(p1);
+	DestroyList(p1);
 	return 0;
 }
