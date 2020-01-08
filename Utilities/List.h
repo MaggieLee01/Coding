@@ -18,10 +18,10 @@ void PrintListNode(ListNode* pNode);
 void PrintList(ListNode* pHead);
 
 //销毁链表
-void DestroyList(ListNode* pHead);
+void DestroyList(ListNode** pHead);
 
 //链表后面增加节点
-void AddTail(ListNode* pHead, int value);
+ListNode* AddTail(ListNode* pHead, int value);
 
 //移除节点
 ListNode* RemoveListNode(ListNode* pHead, int value);

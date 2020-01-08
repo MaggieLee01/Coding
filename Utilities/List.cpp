@@ -52,33 +52,45 @@ void PrintList(ListNode* pHead)
 }
 
 //销毁链表
-void DestroyList(ListNode* pHead)
+//此处修改了指针的指向，所以需要二级指针
+//如果仅仅形参为一级指针，函数修改了指向内存的内容，却不能改变指针的指向，执行完函数后；因此p1仍然指向此前的内存，但由于函数内delete了内存，使用p1成为了野指针
+void DestroyList(ListNode** pHead)
 {
-	if (pHead == nullptr)
+	if (pHead == nullptr || *pHead == nullptr)
 		return;
-	while (pHead != nullptr)
+	while (*pHead != nullptr)
 	{
-		ListNode* pNode = pHead->m_pNext;
-		delete pHead;
-		pHead = nullptr;
-		pHead = pNode;
+		ListNode* pNode = (*pHead)->m_pNext;
+		delete *pHead;
+		*pHead = nullptr;
+		*pHead = pNode;
 	}
 }
 
 //链表后面增加节点
-void AddTail(ListNode* pHead, int value)
+ListNode* AddTail(ListNode* pHead, int value)
 {
 	ListNode* pNode = new ListNode();
-	if (pNode == nullptr || pHead == nullptr)
-		return;
-	pNode->m_nValue = value;
-	pNode->m_pNext = nullptr;
+	if (pNode == nullptr)
+		return nullptr;
+	else
+	{
+		pNode->m_nValue = value;
+		pNode->m_pNext = nullptr;
+	}
 
-	ListNode* p = pHead;
-	while (p->m_pNext != nullptr)
-		p = p->m_pNext;
-	//p = pNode;	//不应该改变指针的指向，应该改变指针的内容
-	p->m_pNext = pNode;
+	//考虑没有头结点的话，增加的节点即为头节点
+	if (pHead == nullptr)
+		pHead = pNode;
+	else
+	{
+		ListNode* p = pHead;
+		while (p->m_pNext != nullptr)
+			p = p->m_pNext;
+		//p = pNode;	//不应该改变指针的指向，应该改变指针的内容
+		p->m_pNext = pNode;
+	}
+	return pHead;	
 }
 
 //移除节点
@@ -93,6 +105,8 @@ ListNode* RemoveListNode(ListNode* pHead, int value)
 		pHead = pHead->m_pNext;//此处改变了指针的指向，所以形参二级或者返回指针
 		delete pNode;
 		pNode = nullptr;
+		//找到并删除之后应该立即返回，不然还会继续往下执行，浪费时间，且pNode指向空指针后，后面的判断逻辑有误
+		return pHead;
 	}
 	//从第二个开始遍历
 	while ( pNode->m_pNext != nullptr && pNode->m_pNext->m_nValue != value )
@@ -128,10 +142,20 @@ int main(void)
 	PrintList(p1);
 	AddTail(p1, 5);
 	PrintList(p1);
-	AddTail(p1, 6);
+	p1 = AddTail(p1, 6);
 	PrintList(p1);
 	p1 = RemoveListNode(p1, 3);
 	PrintList(p1);
-	DestroyList(p1);
+	DestroyList(&p1);
+
+	p1 = AddTail(p1, 8);
+	PrintList(p1);
+	p1 = AddTail(p1, 9);
+	PrintList(p1);
+	p1 = AddTail(p1, 10);
+	PrintList(p1);
+	p1 = RemoveListNode(p1, 8);
+	PrintList(p1);
+
 	return 0;
 }
