@@ -115,7 +115,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Utilities\List.cpp" />
     <ClCompile Include="PrintListInReversedOrder.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Utilities\List.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
