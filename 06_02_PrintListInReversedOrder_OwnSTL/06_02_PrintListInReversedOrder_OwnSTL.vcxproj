@@ -23,7 +23,7 @@
     <ProjectGuid>{E260D546-2B5A-42D7-A306-70D58B48D598}</ProjectGuid>
     <RootNamespace>My0602PrintListInReversedOrderOwnSTL</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
-    <ProjectName>06_02_PrintListInReversedOrder_Newcoder_STL</ProjectName>
+    <ProjectName>06_02_PrintListReversed_Stack_STL_Newcoder</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

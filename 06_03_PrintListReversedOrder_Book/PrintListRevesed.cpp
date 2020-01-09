@@ -11,6 +11,7 @@
 //看完答案，思考，关于输出打印的弊端，貌似只能在函数外执行了，函数内无法解决
 //最好在测试程序之后delete内存
 //自己写的应该没什么问题，和book上基本差不多，通过了三种情况测试，无法通过牛客网，函数结构不同；
+
 //可能book上的写法更便于理解
 void printListFromTailToHead_Recursively(ListNode* pHead) 
 {

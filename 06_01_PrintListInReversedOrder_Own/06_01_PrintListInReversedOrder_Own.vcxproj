@@ -23,6 +23,7 @@
     <ProjectGuid>{BB9EF27C-B90D-4383-B8BA-67CED98CD352}</ProjectGuid>
     <RootNamespace>My0601PrintListInReversedOrderOwn</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <ProjectName>06_01_PrintListReversed_ReversedList_Own</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
