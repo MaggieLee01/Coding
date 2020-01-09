@@ -20,10 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{E260D546-2B5A-42D7-A306-70D58B48D598}</ProjectGuid>
-    <RootNamespace>My0602PrintListInReversedOrderOwnSTL</RootNamespace>
+    <ProjectGuid>{5B60DEE5-D9F0-49E1-8EB1-441761C7A531}</ProjectGuid>
+    <RootNamespace>My0603PrintListReversedOrderBook</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
-    <ProjectName>06_02_PrintListInReversedOrder_Newcoder_STL</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -117,7 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Utilities\List.cpp" />
-    <ClCompile Include="06_02_ReversedList_Own.cpp" />
+    <ClCompile Include="PrintListRevesed.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Utilities\List.h" />

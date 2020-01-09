@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="06_02_ReversedList_Own.cpp">
+    <ClCompile Include="PrintListRevesed.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Utilities\List.cpp">

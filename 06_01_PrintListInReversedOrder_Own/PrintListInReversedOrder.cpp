@@ -3,6 +3,10 @@
 #include<iostream>
 #include"List.h"
 
+//该思路无法在牛客网测试，函数结构不一样，自己的测试样例已全部通过。
+//返回值处理需要完善
+
+//此方法相当于完成了链表反转
 ListNode* ReverseList(ListNode* pHead)
 {
    	ListNode* pNewList = pHead;
