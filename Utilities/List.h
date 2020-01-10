@@ -1,4 +1,4 @@
-//#pragma once
+#pragma once
 struct ListNode
 {
 	int			m_nValue;//注意命名规则

@@ -18,18 +18,10 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="BinaryTree.cpp" />
-    <ClCompile Include="List.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BinaryTree.h" />
-    <ClInclude Include="List.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{03FE7EB4-BB90-4068-AA5B-0C8EA3B18B8D}</ProjectGuid>
-    <RootNamespace>Utilities</RootNamespace>
+    <ProjectGuid>{10BAA7A9-F40F-42AF-AF73-DFAE64691770}</ProjectGuid>
+    <RootNamespace>My0701ConstructBinaryTreeOwn</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -122,6 +114,9 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ConstructBinaryTree.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
