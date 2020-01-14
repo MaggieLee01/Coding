@@ -47,7 +47,7 @@ void PrintTreeNode(const BinaryTreeNode* pRoot)
 	std::cout << std::endl;
 }
 
-/*void printbinarytree(binarytreenode* proot)
+/*void PrintTree(binarytreenode* proot)
 {
 	/*binarytreenode* pleft = proot;
 	binarytreenode* pright = proot;
@@ -64,8 +64,8 @@ void PrintTreeNode(const BinaryTreeNode* pRoot)
 		std::cout << proot->m_nvalue;
 		std::cout << proot->m_pleft << " ";
 		std::cout << proot->m_pright << " ";		
-		printbinarytree(proot->m_pleft);		
-		printbinarytree(proot->m_pright);
+		PrintTree(proot->m_pleft);		
+		PrintTree(proot->m_pright);
 	}	
 }*/
 
@@ -87,6 +87,19 @@ void PrintTree(const BinaryTreeNode* pRoot)
 	}
 }
 //销毁二叉树
+//依然同链表销毁一样的情况，销毁时个人认为应该是二级指针，一级指针参数的话，pRoot出了函数就变成了野指针
+void DestroyTree(BinaryTreeNode** pRoot)
+{
+	if (pRoot != nullptr && *pRoot != nullptr)
+	{
+		BinaryTreeNode* pRight = (*pRoot)->m_pRight;
+		BinaryTreeNode* pLeft = (*pRoot)->m_pLeft;
+		delete *pRoot;
+		*pRoot = nullptr;
+		DestroyTree( &pRight );
+		DestroyTree( &pLeft );
+	}
+}
 
 int main(void)
 {
@@ -99,6 +112,8 @@ int main(void)
 	BinaryTreeNode*p5 = CreateBinaryTreeNode(5);
 	ConnectBinaryTreeNode(p2, p4, p);
 	ConnectBinaryTreeNode(p3, p, p5);
+	PrintTree(p1);
+	DestroyTree(&p1);
 	PrintTree(p1);
 	return 0;
 }

@@ -7,3 +7,11 @@ struct BinaryTreeNode
 };
 //创建二叉树节点
 BinaryTreeNode* CreateBinaryTreeNode(int value);
+
+//连接二叉树节点
+void ConnectBinaryTreeNode(BinaryTreeNode* pRoot, BinaryTreeNode* pLeft, BinaryTreeNode* pRight);
+
+void PrintTreeNode(const BinaryTreeNode* pRoot);
+void PrintTree(const BinaryTreeNode* pRoot);
+
+void DestroyTree(BinaryTreeNode** pRoot);
