@@ -1,3 +1,4 @@
+//遍历的7种方法根据网上代码思路编写，还写经过很严格的特殊测试
 #include<iostream>
 #include <cstdio>
 #include"BinaryTree.h"
@@ -103,6 +104,8 @@ void DestroyTree(BinaryTreeNode** pRoot)
 }
 //二叉树遍历
 //深度（前中后、递归非递归）、广度遍历
+//递归遍历时，如需将节点值存储起来，形参时传入vector应用
+//void TraversalTree_Preorder_recursively(BinaryTreeNode* pRoot，vector<int> &path),将value压入vector
 void TraversalTree_Preorder_recursively(BinaryTreeNode* pRoot)
 {
 	if (pRoot != nullptr)
@@ -130,7 +133,7 @@ void TraversalTree_Postorder_recursively(BinaryTreeNode* pRoot)
 		std::cout << pRoot->m_nValue << ' ';
 	}
 }
-//非递归遍历不会写，广度遍历不会写，看答案
+//非递归遍历不会写，广度遍历不会写，看完答案思路，自己coding
 //执行完程序，思路，由于前序遍历，先把根节点压入堆栈，逐个遍历左节点，当左节点为空的时候，才弹出堆栈中的回退节点（可能是父节点，也可能是父节点的父节点），遍历回退节点的右节点，
 void TraversalTree_Preorder(BinaryTreeNode* pRoot)
 {
@@ -160,7 +163,6 @@ void TraversalTree_Preorder(BinaryTreeNode* pRoot)
 void TraversalTree_Inorder(BinaryTreeNode* pRoot)
 {
 	std::stack<BinaryTreeNode*> tree;
-	//tree.push(pRoot);
 	while (pRoot != nullptr || !tree.empty())
 	{
 		if (pRoot != nullptr)
@@ -177,10 +179,50 @@ void TraversalTree_Inorder(BinaryTreeNode* pRoot)
 		}
 	}
 }
+//看完答案思路，自己coding
+//新建了一个结构体，引入bool变量，记录该是否是否被访问过，压入栈时标记为false，
+//当遍历完左节点访问根节点时，第一次访问标记为true，当遍历完右节点再次访问到栈顶元素时，才正式处理该根节点，并弹出栈顶元素
 void TraversalTree_Postorder(BinaryTreeNode* pRoot)
 {
-
+	struct TempNode
+	{
+		BinaryTreeNode* m_pNode;
+		bool m_bVisited;
+	};
+	std::stack<TempNode*> StackTree;	
+	BinaryTreeNode* pTreeNode = pRoot;
+	while (pTreeNode != nullptr || StackTree.empty() != 1)
+	{
+		//一直遍历左节点到为空为止
+		while (pTreeNode != nullptr)
+		{
+			TempNode* ptemp = new TempNode();//因为后面要用stack里面的结构体判断，所以此处应该用new分配内存
+			ptemp->m_pNode = pTreeNode;
+			ptemp->m_bVisited = false;
+			StackTree.push(ptemp);
+			pTreeNode = pTreeNode->m_pLeft;
+		}
+		//答案中在top后弹出，在判断m_bVisited的if中又压入，思考是否有必要，我的写法是否会有问题呢？
+		if (StackTree.empty() != 1)
+		{
+			TempNode* ptemp = StackTree.top();
+			
+			if (ptemp->m_bVisited == false)
+			{
+				pTreeNode = ptemp->m_pNode->m_pRight;
+				ptemp->m_bVisited = true;
+			}
+			else
+			{
+				std::cout << ptemp->m_pNode->m_nValue << ' ';
+				StackTree.pop();
+				delete ptemp;//此后temp节点不需要了，释放内存
+				ptemp = nullptr;
+			}
+		}
+	}
 }
+//看完答案思路，自己coding
 //广度优先遍历
 //因为为一级形参，所以函数结束之后不影响指针的指向，最后重新定义一个新指针不用形参指针
 void TraversalTree_BreadthFirst(BinaryTreeNode* pRoot)
@@ -210,8 +252,8 @@ int main(void)
 	BinaryTreeNode*p7 = CreateBinaryTreeNode(7);
 
 	ConnectBinaryTreeNode(p1, p2, p3);
-	ConnectBinaryTreeNode(p2, p4, p5);
-	ConnectBinaryTreeNode(p3, p6, p7);
+	ConnectBinaryTreeNode(p2, p4, p);
+	ConnectBinaryTreeNode(p3, p, p7);
 
 	PrintTree(p1);
 
@@ -228,6 +270,9 @@ int main(void)
 	std::cout << std::endl;
 
 	TraversalTree_Inorder(p1);
+	std::cout << std::endl;
+
+	TraversalTree_Postorder(p1);
 	std::cout << std::endl;
 
 	TraversalTree_BreadthFirst(p1);
