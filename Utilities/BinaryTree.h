@@ -15,3 +15,11 @@ void PrintTreeNode(const BinaryTreeNode* pRoot);
 void PrintTree(const BinaryTreeNode* pRoot);
 
 void DestroyTree(BinaryTreeNode** pRoot);
+
+void TraversalTree_Preorder_recursively(BinaryTreeNode* pRoot);
+void TraversalTree_Inorder_recursively(BinaryTreeNode* pRoot);
+void TraversalTree_Postorder_recursively(BinaryTreeNode* pRoot);
+void TraversalTree_Preorder(BinaryTreeNode* pRoot);
+void TraversalTree_Inorder(BinaryTreeNode* pRoot);
+void TraversalTree_Postorder(BinaryTreeNode* pRoot);
+void TraversalTree_BreadthFirst(BinaryTreeNode* pRoot);

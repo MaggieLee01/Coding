@@ -20,10 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{E260D546-2B5A-42D7-A306-70D58B48D598}</ProjectGuid>
-    <RootNamespace>My0602PrintListInReversedOrderOwnSTL</RootNamespace>
+    <ProjectGuid>{9D9DE0EE-8076-4896-8573-BDC7805451D9}</ProjectGuid>
+    <RootNamespace>My0702reConstructBinaryTreeSTLNowcoder</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
-    <ProjectName>06_02_PrintListReversed_Stack_STL_Nowcoder</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -116,11 +115,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Utilities\List.cpp" />
-    <ClCompile Include="06_02_ReversedList_Own.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\Utilities\List.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

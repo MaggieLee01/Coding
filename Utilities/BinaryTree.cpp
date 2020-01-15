@@ -1,4 +1,5 @@
-//遍历的7种方法根据网上代码思路编写，还写经过很严格的特殊测试
+//创建 连接 打印  销毁 参考book思路
+//遍历的7种方法根据网上代码思路编写【印象笔记链接】，未经过很严格的特殊测试
 #include<iostream>
 #include <cstdio>
 #include"BinaryTree.h"
@@ -179,7 +180,7 @@ void TraversalTree_Inorder(BinaryTreeNode* pRoot)
 		}
 	}
 }
-//看完答案思路，自己coding
+//看完博客思路，自己coding
 //新建了一个结构体，引入bool变量，记录该是否是否被访问过，压入栈时标记为false，
 //当遍历完左节点访问根节点时，第一次访问标记为true，当遍历完右节点再次访问到栈顶元素时，才正式处理该根节点，并弹出栈顶元素
 void TraversalTree_Postorder(BinaryTreeNode* pRoot)
@@ -222,7 +223,7 @@ void TraversalTree_Postorder(BinaryTreeNode* pRoot)
 		}
 	}
 }
-//看完答案思路，自己coding
+//看完思路，自己coding
 //广度优先遍历
 //因为为一级形参，所以函数结束之后不影响指针的指向，最后重新定义一个新指针不用形参指针
 void TraversalTree_BreadthFirst(BinaryTreeNode* pRoot)
@@ -240,7 +241,7 @@ void TraversalTree_BreadthFirst(BinaryTreeNode* pRoot)
 			tree.push(pRoot->m_pRight);		
 	}
 }
-int main(void)
+int test(void)
 {
 	BinaryTreeNode*p = nullptr;
 	BinaryTreeNode*p1 = CreateBinaryTreeNode(1);

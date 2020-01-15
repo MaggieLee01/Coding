@@ -28,7 +28,7 @@ std::vector<int> printListFromTailToHead(ListNode* pHead)
 		pHead = pHead->m_pNext;
 	}
 
-	//看完牛客网其他代码，此处可以用 while(!StackOfList.empty() )来循环，不用for循环
+	//看完牛客网评论其他代码，此处可以用 while(!StackOfList.empty() )来循环，不用for循环
 	int size = StackOfList.size();
 	int item = 0;
 	for (int i = 0; i < size; i++)
