@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{9D9DE0EE-8076-4896-8573-BDC7805451D9}</ProjectGuid>
-    <RootNamespace>My0702reConstructBinaryTreeSTLNowcoder</RootNamespace>
+    <ProjectGuid>{29C14BFF-D86B-44FE-A899-D3500D7B62D3}</ProjectGuid>
+    <RootNamespace>My0801NextNodeInBinaryTreesOwn</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -115,11 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Utilities\BinaryTree.cpp" />
-    <ClCompile Include="reConstructBinaryTree_STL_nowcoder.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\Utilities\BinaryTree.h" />
+    <ClCompile Include="NextNodeInBinaryTree.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

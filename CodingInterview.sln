@@ -33,6 +33,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07_01_reConstructBinaryTree
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07_02_reConstructBinaryTree_STL_Nowcoder", "07_02_reConstructBinaryTree_STL_Nowcoder\07_02_reConstructBinaryTree_STL_Nowcoder.vcxproj", "{9D9DE0EE-8076-4896-8573-BDC7805451D9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "08_01_NextNodeInBinaryTrees_Own", "08_01_NextNodeInBinaryTrees_Own\08_01_NextNodeInBinaryTrees_Own.vcxproj", "{29C14BFF-D86B-44FE-A899-D3500D7B62D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -161,6 +163,14 @@ Global
 		{9D9DE0EE-8076-4896-8573-BDC7805451D9}.Release|x64.Build.0 = Release|x64
 		{9D9DE0EE-8076-4896-8573-BDC7805451D9}.Release|x86.ActiveCfg = Release|Win32
 		{9D9DE0EE-8076-4896-8573-BDC7805451D9}.Release|x86.Build.0 = Release|Win32
+		{29C14BFF-D86B-44FE-A899-D3500D7B62D3}.Debug|x64.ActiveCfg = Debug|x64
+		{29C14BFF-D86B-44FE-A899-D3500D7B62D3}.Debug|x64.Build.0 = Debug|x64
+		{29C14BFF-D86B-44FE-A899-D3500D7B62D3}.Debug|x86.ActiveCfg = Debug|Win32
+		{29C14BFF-D86B-44FE-A899-D3500D7B62D3}.Debug|x86.Build.0 = Debug|Win32
+		{29C14BFF-D86B-44FE-A899-D3500D7B62D3}.Release|x64.ActiveCfg = Release|x64
+		{29C14BFF-D86B-44FE-A899-D3500D7B62D3}.Release|x64.Build.0 = Release|x64
+		{29C14BFF-D86B-44FE-A899-D3500D7B62D3}.Release|x86.ActiveCfg = Release|Win32
+		{29C14BFF-D86B-44FE-A899-D3500D7B62D3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

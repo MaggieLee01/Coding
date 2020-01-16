@@ -13,7 +13,8 @@
 #include<iostream>
 #include<vector>
 #include"../Utilities/BinaryTree.h"
-BinaryTreeNode* reConstructBianryTree(std::vector<int>pre, int preStart, int preEnd, std::vector<int> vin, int vinStart, int vinEnd)
+
+BinaryTreeNode* reConstructBinaryTree(std::vector<int>pre, int preStart, int preEnd, std::vector<int> vin, int vinStart, int vinEnd)
 {
 	//此时若不进if判断的话，会输出一堆0，所以if外应该为nullptr，在if内分配内存
 	//BinaryTreeNode* pRoot = new BinaryTreeNode();
@@ -22,27 +23,37 @@ BinaryTreeNode* reConstructBianryTree(std::vector<int>pre, int preStart, int pre
 	{
 		int nRootValue = pre[preStart];
 		pRoot = new BinaryTreeNode();
-		pRoot->m_nValue = nRootValue;//不能在pRoot为空的情况下，给m_nValue赋值；可以在pRoot为空的情况下指针指向其他内存；基础问题，
+		pRoot->m_nValue = nRootValue;
+		//不能在pRoot为空的情况下，给m_nValue赋值；可以在pRoot为空的情况下指针指向其他内存；基础问题，
 		int i = 0;
 		for (i = vinStart; i <= vinEnd; i++)
 		{
 			if (nRootValue == vin[i])
 				break;//在中序遍历中找到了根节点
 		}
-		pRoot->m_pLeft = reConstructBianryTree(pre, preStart + 1, i - vinStart + preStart, vin, vinStart, i - 1);
-		pRoot->m_pRight = reConstructBianryTree(pre, i - vinStart + preStart + 1, preEnd, vin, i + 1, preEnd);
+		pRoot->m_pLeft = reConstructBinaryTree(pre, preStart + 1, i - vinStart + preStart, vin, vinStart, i - 1);
+		pRoot->m_pRight = reConstructBinaryTree(pre, i - vinStart + preStart + 1, preEnd, vin, i + 1, preEnd);
 	}
 	return pRoot;
 }
 
-BinaryTreeNode* reConstructBianryTree(std::vector<int>pre, std::vector<int> vin)
+BinaryTreeNode* reConstructBinaryTree(std::vector<int>pre, std::vector<int> vin)
 {
-	BinaryTreeNode* pRoot = new BinaryTreeNode();
+	BinaryTreeNode* pRoot = nullptr;
 	int preLength = pre.size();
 	int vinLength = vin.size();
-	if (preLength == 0 || vinLength == 0 || preLength != vinLength)
-		return pRoot;
-	pRoot = reConstructBianryTree(pre, 0, preLength - 1, vin, 0, vinLength - 1);
+	if (preLength != 0 && vinLength != 0 && preLength == vinLength)
+	{
+		//BinaryTreeNode* pRoot = new BinaryTreeNode();
+		//此处不能直接写在函数最前面，应该在长度条件符合的情况下才动态分配新节点，应该和上一个函数的情况一样
+		/*
+		if (preLength == 0 || vinLength == 0 || preLength != vinLength)
+			return pRoot;
+		*/
+		pRoot = new BinaryTreeNode();
+		pRoot = reConstructBinaryTree(pre, 0, preLength - 1, vin, 0, vinLength - 1);
+	}
+	
 	return pRoot;
 }
 
@@ -52,7 +63,7 @@ int main(void)
 	BinaryTreeNode* pRoot = nullptr;
 	std::vector<int> pre = { 1, 2, 4, 7, 3, 5, 6, 8 };
 	std::vector<int> vin = { 4, 7, 2, 1, 5, 3, 8, 6 };
-	pRoot = reConstructBianryTree(pre, vin);
+	pRoot = reConstructBinaryTree(pre, vin);
 	TraversalTree_Preorder(pRoot);
 	std::cout << std::endl;
 	TraversalTree_Inorder(pRoot);
@@ -61,7 +72,7 @@ int main(void)
 	BinaryTreeNode* pRoot1 = nullptr;
 	std::vector<int> pre1 = { 1, 2, 4, 5, 3, 6, 7 };
 	std::vector<int> vin1 = { 4, 2, 5, 1, 6, 3, 7 };
-	pRoot1 = reConstructBianryTree(pre1, vin1);
+	pRoot1 = reConstructBinaryTree(pre1, vin1);
 	TraversalTree_Preorder(pRoot1);
 	std::cout << std::endl;
 	TraversalTree_Inorder(pRoot1);
@@ -70,7 +81,7 @@ int main(void)
 	BinaryTreeNode* pRoot2 = nullptr;
 	std::vector<int> pre2 = { 1, 2, 4 };
 	std::vector<int> vin2 = { 4, 2, 1, 3 };
-	pRoot2 = reConstructBianryTree(pre2, vin2);
+	pRoot2 = reConstructBinaryTree(pre2, vin2);
 	TraversalTree_Preorder(pRoot2);
 	std::cout << std::endl;
 	TraversalTree_Inorder(pRoot2);
