@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{9D9DE0EE-8076-4896-8573-BDC7805451D9}</ProjectGuid>
     <RootNamespace>My0702reConstructBinaryTreeSTLNowcoder</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -69,7 +69,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>D:\Windows Kits\10\Include\10.0.17763.0\winrt;D:\Windows Kits\10\Include\10.0.17763.0\um;D:\Windows Kits\10\Include\10.0.17763.0\ucrt;D:\Windows Kits\10\Include\10.0.17763.0\shared;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Windows Kits\10\Lib\10.0.17763.0\um\x64;D:\Windows Kits\10\Lib\10.0.17763.0\ucrt\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
