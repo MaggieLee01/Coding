@@ -9,7 +9,6 @@
 
 //矩阵方法还没顾得上，继续研究dp算法
 //书本答案，思路基本吻合
-//可以赋值 1 2 的值，而不是0 1 的值
 
 #include<iostream>
 #include<vector>
@@ -53,8 +52,7 @@ int Fibonacci_O1(int n)
 		array[0] = 0;
 		array[1] = 1;
 		array[2] = 1;
-		//此方法较快，循环次数少；
-		//书本答案是两个额外空间prev、curr，轮流为其赋值，返回值为sum=prev+curr，需要n个循环
+		//此方法较快，循环次数少；书本答案是两个额外空间，轮流赋值，需要n个循环
 		for (int i = 1; i <= n/3; i++) 
 		{
 			array[0] = array[1] + array[2];
