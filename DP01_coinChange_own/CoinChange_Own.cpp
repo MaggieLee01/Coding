@@ -1,8 +1,11 @@
 //给你k种面值的硬币，面值分别为c1, c2 ... ck，
 //每种硬币的数量无限，再给一个总金额amount，
 //问你最少需要几枚硬币凑出这个金额，如果不可能凑出，算法返回 -1 。
+//https://mp.weixin.qq.com/s/1V3aHVonWBEXlNUvK3S28w 2019-05-14
+//https://mp.weixin.qq.com/s/Cw39C9MY9Wr2JlcvBQZMcA 2019-11-30
 
 //思路：dp文章下的题目，dp的简单易用，尝试独立coding
+//没有在牛客或者LeetCode测试，应该没问题
 
 //#include<iostream>
 //#include<vector>
