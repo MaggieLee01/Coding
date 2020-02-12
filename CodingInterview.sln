@@ -59,6 +59,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DP05_LongestPalindrome", "D
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DP06_LongestPalindromeSubseq", "DP06_LongestPalindromeSubseq\DP06_LongestPalindromeSubseq.vcxproj", "{EA6D66C9-07B2-4D53-BD14-36EC9DD8D946}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DP07_EditDistance", "DP07_EditDistance\DP07_EditDistance.vcxproj", "{DEA56CAC-1C18-4FC4-AD46-6DE120FC247C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -291,6 +293,14 @@ Global
 		{EA6D66C9-07B2-4D53-BD14-36EC9DD8D946}.Release|x64.Build.0 = Release|x64
 		{EA6D66C9-07B2-4D53-BD14-36EC9DD8D946}.Release|x86.ActiveCfg = Release|Win32
 		{EA6D66C9-07B2-4D53-BD14-36EC9DD8D946}.Release|x86.Build.0 = Release|Win32
+		{DEA56CAC-1C18-4FC4-AD46-6DE120FC247C}.Debug|x64.ActiveCfg = Debug|x64
+		{DEA56CAC-1C18-4FC4-AD46-6DE120FC247C}.Debug|x64.Build.0 = Debug|x64
+		{DEA56CAC-1C18-4FC4-AD46-6DE120FC247C}.Debug|x86.ActiveCfg = Debug|Win32
+		{DEA56CAC-1C18-4FC4-AD46-6DE120FC247C}.Debug|x86.Build.0 = Debug|Win32
+		{DEA56CAC-1C18-4FC4-AD46-6DE120FC247C}.Release|x64.ActiveCfg = Release|x64
+		{DEA56CAC-1C18-4FC4-AD46-6DE120FC247C}.Release|x64.Build.0 = Release|x64
+		{DEA56CAC-1C18-4FC4-AD46-6DE120FC247C}.Release|x86.ActiveCfg = Release|Win32
+		{DEA56CAC-1C18-4FC4-AD46-6DE120FC247C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
