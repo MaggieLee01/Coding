@@ -1,7 +1,8 @@
 //求最长回文子串。回文串就是正着读和反着读都一样的字符串
 //子串一定是连续的，而子序列不一定是连续的
 //2019-10-03
-//未在系统上测试，测试代码没问题，基本按照文章思路
+//https://mp.weixin.qq.com/s/ux6VSWAPwgOS32xlScr2kQ
+//基本按照文章思路，已通过LeetCode测试
 
 #include<iostream>
 #include<string>

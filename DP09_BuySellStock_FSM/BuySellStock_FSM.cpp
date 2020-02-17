@@ -1,4 +1,5 @@
 //2019-06-07 状态机方法
+//https://mp.weixin.qq.com/s/lQEj_K1lUY83QtIzqTikGA
 //递归其实是符合我们思考的逻辑的，一步步推进，遇到无法解决的就丢给递归，一不小心就做出来了，可读性还很好。
 //缺点就是一旦出错，你也不容易找到错误出现的原因。还有计算冗余，但确实不容易找到。
 //状态机文章中，dp[][][]表示此时手中的钱，并不是上一个project里面一支股票交易完成后的收益
@@ -16,6 +17,7 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
+
 using std::vector;
 using std::max;
 using std::min;

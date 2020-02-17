@@ -1,7 +1,8 @@
 //求最长的递增子序列（Longest Increasing Subsequence，简写 LIS）
 //子串一定是连续的，而子序列不一定是连续的
 //2019-07-15
-//未在系统上测试，测试代码没问题 
+//https://mp.weixin.qq.com/s/02o_OPgePjaz3dXnw9TA1w
+//均已通过LeetCode测试
 
 #include<vector>
 #include<iostream>

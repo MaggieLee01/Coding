@@ -1,6 +1,8 @@
 //求编辑距离:仅能三种操作：插入、删除、替换
 //2019-09-01
-//未在系统上测试，测试代码没问题，基本按照文章思路
+//https://mp.weixin.qq.com/s/uWzSvWWI-bWAV3UANBtyOw
+//https://mp.weixin.qq.com/s/4CrUawZtiD9ZQohKBgAx4Q
+//dp方法已通过LeetCode测试，其他方法未在系统上测试，测试代码没问题，基本按照文章思路
 
 //本代码整体思路相当于 不断从结束处推导求出开头处的结果
 //很多参考答案为不断从开头处推导出结尾处的结果，更好处理一些
