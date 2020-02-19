@@ -171,8 +171,8 @@ int BinaryInsertLeftBorder01(std::vector<int> nums, int target)
 	}
 	return left;
 }
-
-int BinaryInsertLeftBorder02(std::vector<int> nums, int target)
+//答案上 比较标准的寻找左边界的模板
+int BinaryInsertLeftBorder02_answer(std::vector<int> nums, int target)
 {
 	if (nums.size() < 1)return -2;
 	int left = 0;
@@ -207,8 +207,8 @@ int BinaryInsertRightBorder01(std::vector<int> nums, int target)
 	}
 	return right;
 }
-
-int BinaryInsertRightBorder02(std::vector<int> nums, int target)
+//答案上寻找右边界的模板
+int BinaryInsertRightBorder02_answer(std::vector<int> nums, int target)
 {
 	if (nums.size() < 1)return -2;
 	int left = 0;
