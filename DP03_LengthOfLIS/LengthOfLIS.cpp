@@ -4,9 +4,13 @@
 //https://mp.weixin.qq.com/s/02o_OPgePjaz3dXnw9TA1w
 //均已通过LeetCode测试
 
+//https://blog.csdn.net/weixin_43557810/article/details/88768360 标准库里面有二分法的函数
+//https://blog.csdn.net/qq_37774171/article/details/81203890
 #include<vector>
 #include<iostream>
 #include<algorithm>
+using std::vector;
+using std::lower_bound;
 
 //********************************未看答案的思路**********************************
 //逐个遍历前面的字符，当比该字符小的时候在该字符的数字上加一，时间复杂度：n*n，空间复杂度：n
@@ -171,10 +175,55 @@ int LengthOfLIS_Binary03(std::vector<int> num)
 	}
 	return piles;	
 }
+/******************************************************************************************/
+//20200314LeetCode每日一题网页版完成，运用标准库函数 和 手写二分法 两种方法，比之前熟悉一些了
+int LengthOfLIS_Binary0314_STL(std::vector<int> num)
+{
+	int Length = num.size();
+	if (Length == 0) return 0;
+	int ans = 1;
+	vector<int> dict(Length, 0);
+	dict[0] = num[0];
+	for (int i = 0; i < Length; i++)
+	{
+		auto low = lower_bound(dict.begin(), dict.begin() + ans, num[i]); //注意标准库函数的使用，返回值为迭代器
+		int index = low - dict.begin(); //小小处理才能得到索引值
+		dict[index] = num[i];
+		if (index >= ans)ans++;
+	}
+	return ans;
+}
+int lower_bound(vector<int>& num, int begin, int end, int target);
+int LengthOfLIS_Binary0314_self(std::vector<int> num)
+{
+	int Length = num.size();
+	if (Length == 0) return 0;
+	int ans = 1;
+	vector<int> dict(Length, 0);
+	dict[0] = num[0];
+	for (int i = 0; i < Length; i++)
+	{
+		int index = lower_bound(dict, 0, ans, num[i]); // 注意此处为dict的查找，曾犯错误写成num数组
+		dict[index] = num[i];
+		if (index >= ans)ans++;
+	}
+	return ans;	
+}
+int lower_bound(vector<int>& num, int begin, int end, int target) //二分法应该熟练了吧
+{
+	int left = begin;
+	int right = end;
+	while (left < right)
+	{
+		int mid = ((right - left) >> 1) + left;
+		if (num[mid] == target) right = mid;
+		else if (num[mid] > target) right = mid;
+		else if (num[mid] < target) left = mid + 1;
+	}
+	return left;
+}
 
-
-
-//测试代码
+/**************************************测试代码********************************************/
 void Testdp(const char* Testname, std::vector<int>num, int except)
 {
 	if (Testname != nullptr)

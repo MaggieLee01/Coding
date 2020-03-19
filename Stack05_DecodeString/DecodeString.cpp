@@ -120,6 +120,45 @@ string decodeString(string s)
 	}
 	return ans;
 }
+//递归也是边看题解边写的，即使调试了一遍还是不太熟悉，没有栈好理解
+string decodeString_recursively(string s)
+{
+	int repeat = 0;
+	int sLength = s.size();
+	string ans;
+	for (int i = 0; i < sLength; i++)
+	{
+		if ('a' <= s[i] && s[i] <= 'z' || 'A' <= s[i] && s[i] <= 'Z')
+			ans.push_back(s[i]);
+		else if ('0' <= s[i] && s[i] <= '9')
+			repeat = repeat * 10 + s[i] - '0';
+		else if (s[i] == '[')
+		{
+			int cnt = 0;
+			i++;
+			string substr;
+			while (s[i] != ']' || cnt != 0)
+			{
+				if (s[i] == '[') cnt++;
+				else if (s[i] == ']') cnt--;
+				substr.push_back(s[i]);
+				i++;
+			}
+			string subsub = decodeString_recursively(substr);
+			/*for (int j = 0; j < repeat; j++)
+				ans += subsub;*/		//同时得让repeat清零呀
+
+			/*while (repeat-- > 0)*/ //这样子写也不行呀，判断一次就减了1
+			while (repeat > 0)
+			{
+				ans += subsub;
+				repeat--;
+			}
+			
+		}		
+	}
+	return ans;
+}
 //处理不好]的情况，在题解提示下写完了，能明白但是自己很难独立写出来
 int main(void)
 {
@@ -143,6 +182,6 @@ int main(void)
 	//ans = decodeString(s);
 
 	string s = "3[z]2[2[y]pq4[2[jk]e1[f]]]ef";//处理]]之间的字符
-	string ans = decodeString(s);
+	string ans = decodeString_recursively(s);
 	
 }

@@ -14,7 +14,7 @@ BinaryTreeNode* CreateBinaryTreeNode(int value)
 		pRoot->m_nValue = value;
 		pRoot->m_pLeft = nullptr;
 		pRoot->m_pRight = nullptr;
-	}
+	}   
 	return pRoot;
 }
 
@@ -241,6 +241,9 @@ void TraversalTree_BreadthFirst(BinaryTreeNode* pRoot)
 			tree.push(pRoot->m_pRight);		
 	}
 }
+
+//思路来源：LeetCode题解
+
 int test(void)
 {
 	BinaryTreeNode*p = nullptr;
