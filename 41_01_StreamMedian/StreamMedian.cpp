@@ -8,7 +8,7 @@
 
 	https://leetcode-cn.com/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof */
 
-//困难等级的题目，简单暴力的排序不行，想到了堆相关的操作，但是不了解二叉堆，不太会用标准库里面的函数，因此看了labuladong的文章，之前欠了文章
+//困难等级的题目，简单暴力的排序不行，想到了堆相关的操作，但是不了解二叉堆，不太会用标准库里面的函数，因此看了labuladong的文章，之前欠的文章
 //https://mp.weixin.qq.com/s/o7tdyLiYm668dpUWd-x7Lg 2019-07-30 图文详解二叉堆，实现优先级队列 
 
 
@@ -60,7 +60,7 @@ public:
 	MedianFinder01() {}
 	void addNum(int num) 
 	{
-		if (((max.size() + min.size()) & 01) == 0)//第奇数个元素插在右边min堆，==高于 &，优先级有出错
+		if (((max.size() + min.size()) & 01) == 0)//第奇数个元素插在右边min堆，==高于 &，优先级又出错
 		{
 			if (max.size() && max[0] > num)//该元素太小，应该放在左边的max堆，所以需要交换数据
 			{

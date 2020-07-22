@@ -196,7 +196,6 @@ void PrintPostOrder_zuo(TreeNode* root)
 void PrintInOrder_zuo(TreeNode* root)
 {
 	if (root == nullptr)  return;
-	TreeNode* lastVisited = root;
 	stack<TreeNode *> s;
 	s.push(root);
 	while (s.size() || root != nullptr)
@@ -207,7 +206,7 @@ void PrintInOrder_zuo(TreeNode* root)
 			root = root->left;
 		}
 		else
-		{
+		{ 
 			root = s.top();
 			s.pop();
 			std::cout << root->val << ' ';
@@ -240,8 +239,8 @@ int main(void)
 	p3->left = p6;
 	p3->right = p7;
 	
-	PrintPreOrder(p1);
-	PrintPreOrder_zuo(p1);
+	PrintInOrder(p1);
+	PrintInOrder_zuo(p1);
 
 	PrintPostOrder(p1);
 	PrintPostOrder_zuo(p1);

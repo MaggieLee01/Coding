@@ -62,6 +62,20 @@ ListNode* DetectCycle(ListNode* head)
 }
 
 //寻找链表的中点，快指针到终点，慢指针为中点；用于链表的二分法
+//https://leetcode-cn.com/problems/middle-of-the-linked-list/
+ListNode* middleNode(ListNode* head)
+{
+	ListNode pDummy = ListNode(1);
+	pDummy.next = head;
+	ListNode *pFast = &pDummy;
+	ListNode *pLow = &pDummy;
+	while (pFast->next != nullptr && pFast->next->next != nullptr)//此处的判断 和 返回值 多在草稿纸上写一写
+	{
+		pFast = pFast->next->next;
+		pLow = pLow->next;
+	}
+	return pLow->next;}
+
 
 //寻找链表的倒数第 k 个元素
 //输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。

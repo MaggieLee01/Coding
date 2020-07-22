@@ -40,6 +40,8 @@ ListNode *ReverceList_Re01(ListNode *head)
 	ReverceList_ReCore(head);
 	return Tail;
 }
+
+
 //答案上的递归方法
 ListNode *ReverceList_Re02(ListNode *head)
 {
@@ -60,6 +62,6 @@ int main(void)
 	p2->next = p3;
 	p3->next = p4;
 	p4->next = p5;
-	ReverceList(p1);
+	ReverceList_Re02(p1);
 	return 0;
 }

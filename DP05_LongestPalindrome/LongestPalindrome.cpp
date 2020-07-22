@@ -7,8 +7,9 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<queue>
 #include<algorithm>
-
+using namespace std;
 //dict[i]表示以i结束的回文子串的长度
 //char* LongestPalindrome(const char* str)
 //{
@@ -102,16 +103,53 @@ string LongestPalindrome(string str)
 	return max;
 }
 
+//int main(void)
+//{
+//	const char* str = "abcdcbeabccba";
+//	std::cout << LongestPalindrome(str) << std::endl;//加头文件<string>才能打印
+//	const char* str1 = "aaaaaaaa";
+//	std::cout << LongestPalindrome(str1) << std::endl;
+//	const char* str2 = "abcbccbcba";
+//	std::cout << LongestPalindrome(str2) << std::endl;
+//	const char* str3 = "baaaaaaaa";
+//	std::cout << LongestPalindrome(str3) << std::endl;
+//	const char* str4 = "aadeccbccedddddddddd";
+//	std::cout << LongestPalindrome(str4) << std::endl;	
+//}
+
 int main(void)
 {
-	const char* str = "abcdcbeabccba";
-	std::cout << LongestPalindrome(str) << std::endl;//加头文件<string>才能打印
-	const char* str1 = "aaaaaaaa";
-	std::cout << LongestPalindrome(str1) << std::endl;
-	const char* str2 = "abcbccbcba";
-	std::cout << LongestPalindrome(str2) << std::endl;
-	const char* str3 = "baaaaaaaa";
-	std::cout << LongestPalindrome(str3) << std::endl;
-	const char* str4 = "aadeccbccedddddddddd";
-	std::cout << LongestPalindrome(str4) << std::endl;	
+	string str;
+	cin >> str;
+	queue<string> ans;
+	string max;
+	for (int i = 0; i < str.size(); i++)
+	{
+		string str1 = Palindrome(str, i, i);
+		string str2 = Palindrome(str, i, i + 1);
+		if (str1.size() > str2.size() && (ans.empty() || str1.size() >= ans.front().size()))
+		{
+			while (ans.size() && str1.size() > ans.front().size()) ans.pop();
+			ans.push(str1);
+		}			
+		else if( str2.size() > str1.size() && (ans.empty() || str2.size() >= ans.front().size() ))
+		{
+			while (ans.size() && str2.size() > ans.front().size()) ans.pop();
+			ans.push(str2);
+		}
+		else if (str2.size() == str1.size() && str1.size()>1 && (ans.empty() || str2.size() >= ans.front().size()))
+		{
+			while (ans.size() && str2.size() > ans.front().size()) ans.pop();
+			ans.push(str2);
+			ans.push(str1);			
+		}		
+	}
+	if (ans.size() == 0)
+		cout << "null" << endl;
+	while (ans.size())
+	{
+		cout << ans.front() << endl;
+		ans.pop();
+	}
+	return 0;
 }

@@ -13,8 +13,9 @@
 
 #include<vector>
 #include<iostream>
+#include<string>
 #include<algorithm>
-using std::min;
+using namespace std;
 
 //min函数只能同时比较两个数字的大小
 
@@ -191,10 +192,44 @@ int EditDistance_Dimension(const char* str1, const char* str2)
 	}
 	return Dict[str2Length];
 }
+//20200406每日一题出现，再次练习
+int minDistance(string word1, string word2)
+{
+	int str1Len = word1.size();
+	int str2Len = word2.size();
 
+	//word1 --> word2
+	vector<vector<int>> dp(str1Len + 1, vector<int>(str2Len + 1, INT_MAX));
+	//不要忘记赋初值
+	for (int m = 0; m < str1Len + 1; m++)
+		dp[m][0] = m;
+	for (int n = 0; n < str2Len + 1; n++)
+		dp[0][n] = n;
+
+	//for (; i < str1Len && j < str2Len; i++, j++)不能同时，这样子很多遍历不到
+	for (int i = 0; i < str1Len; i++)
+	{
+		for (int j = 0; j < str2Len; j++)
+		{
+			//if (word1[i] == word2[j]) dp[i + 1][j + 1] = min(min(dp[i + 1][j], dp[i][j + 1]), dp[i][j]);
+			//相等时的赋值错啦，不然无法解决zoo zo这种问题呀，相等时不改动，不相等时才思考如何变化
+			if (word1[i] == word2[j]) dp[i + 1][j + 1] =  dp[i][j];
+			else dp[i + 1][j + 1] = min(min(dp[i + 1][j], dp[i][j + 1]), dp[i][j]) + 1;
+		}		
+	}
+	/*for (; i < str1Len; i++)
+		dp[i + 1][j] = dp[i][j] + 1;
+	for (; j < str2Len; j++)
+		dp[i][j + 1] = dp[i][j] + 1;*/ //改为两层遍历，这样子就不需要额外的
+	return dp[str1Len][str2Len];
+}
 //测试程序
 int main(void)
 {
+	string s1 = "zoo";
+	string s2 = "zo";
+	int ans = minDistance(s1, s2);
+
 	const char *str1 = "apple", *str2 = "rad";//神奇，所以，*应该在字符串名字前面喽，*指针表示不能共用
 	std::cout << EditDistance_recursively(str1, str2) << std::endl;
 	std::cout << EditDistance_Dict(str1, str2) << std::endl;

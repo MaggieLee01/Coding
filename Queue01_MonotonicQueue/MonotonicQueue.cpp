@@ -66,7 +66,7 @@ vector<int> maxSlidingWindow_deque(vector<int>& nums, int k)
 {
 	int Length = nums.size();
 	vector<int> ans;
-	deque<int> monotonic;
+	deque<int> monotonic;				//头部到尾部，单调递减
 	for (int i = 0; i < Length; i++)
 	{
 		while (monotonic.size() && nums[monotonic.back()] < nums[i])

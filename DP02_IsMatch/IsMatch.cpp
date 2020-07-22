@@ -7,6 +7,7 @@
 #include <cstdio>
 #include<iostream>
 #include<vector>
+using namespace std;
 
 // 注意 \0 的写法
 bool IsMatch_recursively(const char* text, const char* pattern)
@@ -102,6 +103,81 @@ bool isMatch_Dict(const char* str, const char* pattern)
 		return false;
 }
 
+
+
+// ====================20200620第二次刷题尝试====================
+
+//递归的方法，超时，不确定正确性
+bool isMatch0620_recursive(string s, string p, int i, int j)
+{
+	if (j == p.size()) return i == s.size();
+	bool before = ( s[i] == p[j] || i < s.size() && p[j] == '.' );
+
+	if (j < p.size() && p[j + 1] == '*')
+	{
+		if (i < s.size())
+			//匹配0次 匹配多次；匹配0次的时候无需考虑before是否相等，
+			return isMatch0620_recursive(s, p, i, j + 2) || before && isMatch0620_recursive(s, p, i + 1, j);
+		else
+			return isMatch0620_recursive(s, p, i, j + 2) || before;
+	}
+	else
+		return before && isMatch0620_recursive(s, p, i + 1, j + 1);
+}
+//递归的方法，从后往前存储结果，这个AC
+//参考题解：https://leetcode-cn.com/problems/regular-expression-matching/solution/zheng-ze-biao-da-shi-pi-pei-dong-tai-gui-hua-by-jy/
+bool isMatch0620_dict(string s, string p, int i, int j, vector<vector<int>> & dp)
+{
+	if (j >= p.size()) return i >= s.size();
+	if (dp[i][j] != 2) return dp[i][j];
+
+	bool before = (s[i] == p[j] || i < s.size() && p[j] == '.');
+	dp[i][j] = 0;
+	if (j < p.size() && p[j + 1] == '*')
+	{
+		if (i < s.size())
+			//匹配0次，匹配多次；匹配0次无需考虑是否defore，匹配多次时需要基于before的值
+			dp[i][j] = isMatch0620_dict(s, p, i, j + 2, dp) || before && isMatch0620_dict(s, p, i + 1, j, dp);
+		else
+			dp[i][j] = isMatch0620_dict(s, p, i, j + 2, dp) || before;
+	}
+	else
+		dp[i][j] = before && isMatch0620_dict(s, p, i + 1, j + 1, dp);
+	return dp[i][j];
+}
+bool isMatch0620(string s, string p)
+{
+	int sLen = s.length();
+	int pLen = p.length();
+	//初始化元素的内容为2
+	vector<vector<int>> dp(sLen + 1, vector<int>(pLen + 1, 2));   
+	int i = 0, j = 0;
+	//return isMatch0620_recursive(s, p, i, j);	
+	return isMatch0620_dict(s, p, i, j, dp);	
+}
+
+//看题解，动态规划的方法
+bool isMatch0620_01(string s, string p)
+{
+	int sLen = s.length();
+	int pLen = p.length();
+	vector<vector<int>> dp(sLen + 1, vector<int>(pLen + 1, 0));
+
+	dp[0][0] = 1;
+	for (int j = 2; j <= pLen; j++)
+		dp[0][j] = dp[0][j - 2] && p[j - 1] == '*';
+	//第0行已经初始化，i为1时即为第0个字符
+	for (int i = 1; i <= sLen; i++)
+		for (int j = 1; j <= pLen; j++)
+		{
+			if (p[j - 1] == '*')
+				//第j-1个字符是*，所以为dp[i-1]
+				dp[i][j] = dp[i][j - 2] || dp[i - 1][j] && (s[i - 1] == p[j - 2] || p[j - 2] == '.');
+			else if (s[i - 1] == p[j - 1] || p[j - 1] == '.')
+				dp[i][j] = dp[i - 1][j - 1];
+		}
+	return dp[sLen][pLen];
+}
 // ====================测试代码====================
 void Test(const char* testName, const char* string, const char* pattern, bool expected)
 {
@@ -116,7 +192,8 @@ void Test(const char* testName, const char* string, const char* pattern, bool ex
 
 int main(int argc, char* argv[])
 {
-	Test("Test01", "", "", true);
+	isMatch0620_01("aa", "a*");
+	/*Test("Test01", "", "", true);
 	Test("Test02", "", ".*", true);
 	Test("Test03", "", ".", false);
 	Test("Test04", "", "c*", true);
@@ -145,7 +222,7 @@ int main(int argc, char* argv[])
 	Test("Test27", "aaca", "ab*a*c*a", true);
 	Test("Test28", "aaba", "ab*a*c*a", false);
 	Test("Test29", "bbbba", ".*a*a", true);
-	Test("Test30", "bcbbabab", ".*a*a", false);
+	Test("Test30", "bcbbabab", ".*a*a", false);*/
 
 	return 0;
 }

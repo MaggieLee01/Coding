@@ -75,7 +75,7 @@ int trap_Stack(vector<int>& height)
 {
 	stack<int> s;//存放索引
 	int ans = 0;
-	for (int i = height.size() - 1; i >= 0; i--)
+	for (int i = height.size() - 1; i >= 0; i--)//从0开始遍历一样
 	{
 		/*while (s.size() && height[s.top()] < height[i])
 		{			 

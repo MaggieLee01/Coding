@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sum.cpp">
+    <ClCompile Include="uniqueptr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
