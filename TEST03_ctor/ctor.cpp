@@ -56,16 +56,35 @@ public:
 		cout << "C:print" << endl;
 	}
 };
+
+class AA 
+{
+public:
+	void test1()
+	{
+		cout << "AAA : Test1" << endl;
+		test2();
+	}
+	virtual void test2(){ cout << "AAA : Test2" << endl; }
+};
+class BB : public AA
+{
+public:
+	virtual void test2(){ cout << "BBB : Test2" << endl; }
+};
 int main(void)
 {
-	C c;
-	c.print();
-	c.testA();
-	c.testB();//此处不属于动态编译，属于继承，继承了父类的数据成员和函数调用权。如果重写了虚函数，则调用自身的，如果没有重写，则调用父类的
+	BB *p = new BB;
+	p->test1();		//调用的AA类里面的test2
 
-	A *a = new B;//注意动态编译：指针调用，向上转型，虚函数
-	a->print();
-	//a->testB();//不通过；也只能调用从A中继承下来的函数。毕竟指针还是属于A类型，A类型中没有testB函数；
-	a->testA();
+	//C c;
+	//c.print();
+	//c.testA();
+	//c.testB();//此处不属于动态编译，属于继承，继承了父类的数据成员和函数调用权。如果重写了虚函数，则调用自身的，如果没有重写，则调用父类的
+
+	//A *a = new B;//注意动态编译：指针调用，向上转型，虚函数
+	//a->print();
+	////a->testB();//不通过；也只能调用从A中继承下来的函数。毕竟指针还是属于A类型，A类型中没有testB函数；
+	//a->testA();
 	return 0;
 }

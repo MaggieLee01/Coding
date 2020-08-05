@@ -197,7 +197,6 @@ void PrintInOrder_zuo(TreeNode* root)
 {
 	if (root == nullptr)  return;
 	stack<TreeNode *> s;
-	s.push(root);
 	while (s.size() || root != nullptr)
 	{
 		if (root != nullptr)
