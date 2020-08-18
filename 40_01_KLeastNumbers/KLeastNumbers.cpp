@@ -133,12 +133,12 @@ void QuickSort(vector<int> &input, int k, int begin, int end)
 	}
 	input[i] = temp;
 
-	if (i  == k)
+	if (i == k)
 		return;
-	else if (i  > k)
+	else if (i > k)
 		QuickSort(input, k, begin, i - 1);
 	else
-		QuickSort(input, k , i + 1, end);    //左边数不足k个，需从右边再找k-i-1个
+		QuickSort(input, k, i + 1, end);    //左边数不足k个，需从右边再找k-i-1个
 }
 
 
@@ -155,8 +155,8 @@ vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
 }
 int main()
 {
-	vector<int> arr{5,5,5,5,5,5,5,5,5};
-	
+	vector<int> arr{ 5,5,5,5,5,5,5,5,5 };
+
 
 	vector<int> result = GetLeastNumbers_Solution(arr, 5);
 

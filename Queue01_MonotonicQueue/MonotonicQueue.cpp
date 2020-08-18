@@ -43,7 +43,7 @@ public:
 		return data.front();
 	}
 };
-vector<int> maxSlidingWindow(vector<int>& nums, int k) 
+vector<int> maxSlidingWindow(vector<int>& nums, int k)
 {
 	Monotonicqueue window;
 	int Length = nums.size();
@@ -54,7 +54,7 @@ vector<int> maxSlidingWindow(vector<int>& nums, int k)
 		window.push(nums[i]);
 	ans.push_back(window.max());//这句应该放在有元素的情况下，数组无元素时此处乱值；或者提前加判断
 	for (int i = k; i < Length; i++)
-	{		
+	{
 		window.pop(nums[i - k]);
 		window.push(nums[i]);
 		ans.push_back(window.max());
@@ -71,7 +71,7 @@ vector<int> maxSlidingWindow_deque(vector<int>& nums, int k)
 	{
 		while (monotonic.size() && nums[monotonic.back()] < nums[i])
 			monotonic.pop_back();
-		monotonic.push_back(i);		
+		monotonic.push_back(i);
 		if (monotonic.front() <= i - k)//在窗口之外应该pop
 			monotonic.pop_front();
 		if (i + 1 >= k)
@@ -105,7 +105,7 @@ vector<int> maxSlidingWindow_dp(vector<int>& nums, int k)
 	//right[i] 是左侧块内的最大元素， left[j] 是右侧块内的最大元素。因此滑动窗口中的最大元素为 max(right[i], left[j])。
 	//对于横跨在两个块的窗口，分别找左边块的最大值 和右边块的最大值，均是从块的边界往两边扩散
 	for (int i = 0; i < Length - k + 1; i++)
-		ans.push_back( max(right[i], left[i + k - 1]) );//vector不可以通过[]增加新元素
+		ans.push_back(max(right[i], left[i + k - 1]));//vector不可以通过[]增加新元素
 	return ans;
 }
 int main(void)

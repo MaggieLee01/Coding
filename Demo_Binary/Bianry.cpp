@@ -17,7 +17,7 @@ int BinarySearch01(std::vector<int> nums, int target)
 	int left = 0;
 	int right = nums.size() - 1;
 	while (left <= right)
-	{ 
+	{
 		int mid = ((right - left) >> 1) + left;//此处不加（），调试时计算的结果不对，不明白为什么
 		if (nums[mid] == target)return mid;
 		else if (nums[mid] < target)
@@ -73,7 +73,7 @@ int BinarySearchLeftBorder01(std::vector<int> nums, int target)
 			right = mid - 1;
 	}
 	//target比所有值都大
-	if ( left == nums.size() )return -1;
+	if (left == nums.size())return -1;
 	return nums[left] == target ? left : -1;
 }
 
@@ -142,7 +142,7 @@ int BinarySearchRightBorder02(std::vector<int> nums, int target)
 	//right处为开区间，没机会得到nums[right]处的值，所以返回 right - 1；
 	//或者理解为：left的更新为left = mid + 1， while循环结束，nums[left]一定不等于target了，而 nums[left - 1] 可能是target。
 	//			且循环结束时 right==left, 所以返回left- 1 也可以
-	
+
 	//if (right == -1)return -1;
 	if (right == 0)return -1;//当目标值比所有者都大
 	return nums[right - 1] == target ? (right - 1) : -1;
@@ -244,7 +244,7 @@ int BinaryInsert03(std::vector<int> nums, int target)
 			left = mid + 1;
 		else if (nums[mid] > target)
 			right = mid - 1;
-	}	
+	}
 	if (right == -1)//比所有者都小
 		return -1;
 	if (left == nums.size() - 1)//比所有者都大
@@ -254,7 +254,7 @@ int BinaryInsert03(std::vector<int> nums, int target)
 //*************************测试代码*****************************
 int main(void)
 {
-	
+
 	std::vector<int> v = { 1,3,5,7,10,13,17,18,20,27,33,46 };
 	int l = BinaryInsert03(v, 3);
 	std::cout << l << std::endl;//1
@@ -286,7 +286,7 @@ int main(void)
 	//第一个10的索引值为8，最后一个10索引值为11
 	std::vector<int> nums = { 1,3,3,3,3,3,5,7,10,10,10,10,13,17,18,20,27,33,46 };
 	int m = BinarySearchLeftBorder01(nums, 10);
-	int n = BinarySearchLeftBorder02(nums, 10);	
+	int n = BinarySearchLeftBorder02(nums, 10);
 	std::cout << ' ' << m << ' ' << n << std::endl;
 	m = BinarySearchRightBorder01(nums, 10);
 	n = BinarySearchRightBorder02(nums, 10);

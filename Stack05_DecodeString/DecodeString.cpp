@@ -5,17 +5,17 @@
 /*  s = "3[a]2[bc]", 返回 "aaabcbc".
 	s = "3[a2[c]]", 返回 "accaccacc".
 	s = "2[abc]3[cd]ef", 返回 "abcabccdcdcdef".
-	https://leetcode-cn.com/problems/decode-string  */	 
+	https://leetcode-cn.com/problems/decode-string  */
 
 
-/*
-此题的核心思路是: 要先思考：栈应存储什么元素，何时进栈、出栈
-	以下用a2[b]举例子：
-	1 当遇到'['，把'['和与之匹配的']'之间的字母需要重复的次数和'['之前的字符进栈，本例中进栈{2,a}
-	2 当遇到']'，代码中的字符串res即：b,就是要重复的字母，此时出栈之前进栈的{2,a}，res变成a+2*b = abb
-	3 部分注意事项看注释即可
- https://leetcode-cn.com/problems/decode-string/solution/zhi-xing-yong-shi-0-ms-zai-suo-you-c-ti-jiao-zh-47/
-*/
+	/*
+	此题的核心思路是: 要先思考：栈应存储什么元素，何时进栈、出栈
+		以下用a2[b]举例子：
+		1 当遇到'['，把'['和与之匹配的']'之间的字母需要重复的次数和'['之前的字符进栈，本例中进栈{2,a}
+		2 当遇到']'，代码中的字符串res即：b,就是要重复的字母，此时出栈之前进栈的{2,a}，res变成a+2*b = abb
+		3 部分注意事项看注释即可
+	 https://leetcode-cn.com/problems/decode-string/solution/zhi-xing-yong-shi-0-ms-zai-suo-you-c-ti-jiao-zh-47/
+	*/
 #include<string>
 #include<stack>
 #include<cmath>
@@ -91,13 +91,13 @@ using std::string;
 //数字栈存储重复的数字，字符串栈存放每一块处理好 可以拼接的数据
 string decodeString(string s)
 {
-	int sLength = s.size();	
+	int sLength = s.size();
 	stack<int> repeatStack;
 	stack<string> subStack;
 	string ans;
 	int repeat = 0;
 	for (int i = 0; i < sLength; i++)
-	{		
+	{
 		if ('0' <= s[i] && s[i] <= '9')
 			repeat = repeat * 10 + s[i] - '0';
 		else if (s[i] == '[')
@@ -106,7 +106,7 @@ string decodeString(string s)
 			subStack.push(ans);
 			repeat = 0;
 			ans = "";
-		}			
+		}
 		else if ('a' <= s[i] && s[i] <= 'z' || 'A' <= s[i] && s[i] <= 'Z')
 			ans.push_back(s[i]);//注意string容器用法
 		else if (s[i] == ']')
@@ -116,7 +116,7 @@ string decodeString(string s)
 			repeatStack.pop();
 			ans = subStack.top();
 			subStack.pop();
-		}			
+		}
 	}
 	return ans;
 }
@@ -148,14 +148,14 @@ string decodeString_recursively(string s)
 			/*for (int j = 0; j < repeat; j++)
 				ans += subsub;*/		//同时得让repeat清零呀
 
-			/*while (repeat-- > 0)*/ //这样子写也不行呀，判断一次就减了1
+				/*while (repeat-- > 0)*/ //这样子写也不行呀，判断一次就减了1
 			while (repeat > 0)
 			{
 				ans += subsub;
 				repeat--;
 			}
-			
-		}		
+
+		}
 	}
 	return ans;
 }
@@ -183,5 +183,5 @@ int main(void)
 
 	string s = "3[z]2[2[y]pq4[2[jk]e1[f]]]ef";//处理]]之间的字符
 	string ans = decodeString_recursively(s);
-	
+
 }

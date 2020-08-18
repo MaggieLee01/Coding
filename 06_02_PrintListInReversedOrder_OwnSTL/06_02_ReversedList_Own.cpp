@@ -12,7 +12,7 @@
 //可以将反转后的链表压入vector
 //链表值存入vector后，利用vector自带的反转函数
 
-std::vector<int> printListFromTailToHead(ListNode* pHead) 
+std::vector<int> printListFromTailToHead(ListNode* pHead)
 {
 	std::vector<int> ReservedList;//不知道如何初始化vector
 	/*
@@ -36,7 +36,7 @@ std::vector<int> printListFromTailToHead(ListNode* pHead)
 		item = StackOfList.top();
 		StackOfList.pop();
 		ReservedList.push_back(item);
-	}	
+	}
 	return ReservedList;
 }
 int main(void)
@@ -54,7 +54,7 @@ int main(void)
 
 	//空指针测试
 	ListNode* p2 = nullptr;
-	ReservedList = printListFromTailToHead(p2);	
+	ReservedList = printListFromTailToHead(p2);
 
 	return 0;
 }

@@ -149,9 +149,9 @@ int main(void)
 			{
 				char cc = mp[b] + '0';
 				string ss;
-				ss+=cc;
+				ss += cc;
 				vec.push_back(ss);
-			}				
+			}
 			else vec.push_back("none");
 		}
 	}

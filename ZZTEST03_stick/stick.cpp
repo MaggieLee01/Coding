@@ -31,18 +31,18 @@ bool comp(pair<int, int>dict1, pair<int, int> dict2)
 int main(void)
 {
 	int n = 0;
-	cin >> n;	
+	cin >> n;
 	vector<int> ans;
 
 	while (n > 0)
 	{
 		int num = 0;
 		cin >> num;
-	
+
 		vector<int> length;
 		vector<int> weight;
 
-		int temp = 0;	
+		int temp = 0;
 		while (cin >> temp)
 		{
 			length.push_back(temp);
@@ -68,8 +68,8 @@ int main(void)
 		{
 
 			/*if (dict[i].second > dict[i+1].second)
-				a++;	*/	
-			//此处思路不对，长度排好顺序后，寻找重量的最少上升序列个数，即最长上升子序列
+				a++;	*/
+				//此处思路不对，长度排好顺序后，寻找重量的最少上升序列个数，即最长上升子序列
 
 		}
 

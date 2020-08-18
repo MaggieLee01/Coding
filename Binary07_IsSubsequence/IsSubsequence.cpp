@@ -30,7 +30,7 @@ bool isSub(string s, string t)
 			{
 				prePosition = j + 1;//保证找到字符的有序
 				break;
-			}				
+			}
 		}
 		if (j == tLength) return false;
 	}
@@ -43,14 +43,14 @@ bool isSub01(string s, string t)
 	int sLength = s.size();
 	int tLength = t.size();
 	int i = 0, j = 0, prePosition = 0;
-	
+
 	for (j = prePosition; j < tLength; j++)
 	{
 		if (s[i] == t[j])
 		{
 			i++;
 			if (i >= sLength) return true;//放在if里面 减少比较次数
-		}		
+		}
 	}
 	return false;
 }
@@ -63,7 +63,7 @@ bool isSub_answer(string s, string t)
 	while (i < sLength && j < tLength)
 	{
 		if (s[i] == t[j]) i++;
-		j ++;
+		j++;
 	}
 	return (i == sLength);
 }
@@ -108,8 +108,8 @@ bool isSub_mass(string s, string t)
 {
 	int sLength = s.size();
 	int tLength = t.size();
-	if (sLength == 0 ) return true;
-	if (tLength == 0 ) return false;
+	if (sLength == 0) return true;
+	if (tLength == 0) return false;
 	//先存储26个小写字母出现的位置
 	vector<vector<int> > Dict(26);
 	for (int i = 0; i < tLength; i++)
@@ -119,7 +119,7 @@ bool isSub_mass(string s, string t)
 	//int target = Dict[t[0] - 'a'][0] + 1;//遍历到t的位置 //这样子需要确保第一个字符一定在了呀
 	int target = 0;
 	int i = 0;
-  	for (i = 0; i < sLength; i++)
+	for (i = 0; i < sLength; i++)
 	{
 		vector<int> iCharInedx = Dict[s[i] - 'a'];//s[i]字母在t出现的位置信息
 		int iLength = iCharInedx.size();

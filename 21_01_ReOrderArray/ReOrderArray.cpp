@@ -34,7 +34,7 @@ vector<int> exchange(vector<int>& nums)
 }
 //看了书本答案，涉及到函数指针 解耦函数
 //题解其他方法：除了左右指针之外还有快慢指针，找双指针的练习做
-// https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/solution/ti-jie-shou-wei-shuang-zhi-zhen-kuai-man-shuang-zh/
+// https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/solution/ti-jie-shou-wei-shuang-zhi-zhen-Nuai-man-shuang-zh/
 //尝试快慢指针，都是一个指向奇数 一个指向偶数
 vector<int> exchange_FastPointer(vector<int>& nums)
 {

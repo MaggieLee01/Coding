@@ -53,7 +53,7 @@ BinaryTreeNode* reConstructBinaryTree(std::vector<int>pre, std::vector<int> vin)
 		pRoot = new BinaryTreeNode();
 		pRoot = reConstructBinaryTree(pre, 0, preLength - 1, vin, 0, vinLength - 1);
 	}
-	
+
 	return pRoot;
 }
 

@@ -23,7 +23,7 @@ using std::unordered_map;
 using std::vector;
 using std::string;
 
-vector<int> findAnagrams(string s, string p) 
+vector<int> findAnagrams(string s, string p)
 {
 	vector<int> ans;
 	unordered_map<char, int> needs;
@@ -60,7 +60,7 @@ vector<int> findAnagrams(string s, string p)
 				if (windows[s[left]] < needs[s[left]])
 					match--;
 			}
-			left ++;
+			left++;
 		}
 	}
 	return ans;

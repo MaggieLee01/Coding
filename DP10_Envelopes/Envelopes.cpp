@@ -6,7 +6,7 @@
 /*	输入: envelopes = [[5, 4], [6, 4], [6, 7], [2, 3]]
 	输出 : 3
 	解释 : 最多信封的个数为 3, 组合为 : [2, 3] = > [5, 4] = > [6, 7]。*/
-//已通过LeetCode测试
+	//已通过LeetCode测试
 
 #include<vector>
 #include<algorithm>
@@ -31,7 +31,7 @@ static bool WidthSort(vector<int> envelope1, vector<int> envelope2)
 //}
 
 //扑克牌二分法
-int maxEnvelopes(vector<vector<int>>& envelopes) 
+int maxEnvelopes(vector<vector<int>>& envelopes)
 {
 	int Length = envelopes.size();
 	if (Length <= 1) return Length;
@@ -40,14 +40,14 @@ int maxEnvelopes(vector<vector<int>>& envelopes)
 
 	//初始化先保证有一个元素
 	poke[0] = envelopes[0][1];
-	int ans = 1;	
-	
+	int ans = 1;
+
 	for (auto envelop : envelopes)
 	{
 		int target = envelop[1];
 		int left = 0;
 		int right = ans - 1;//只有前面的有序，后面的都是0
-		
+
 		while (left <= right)
 		{
 			int mid = ((right - left) >> 1) + left;//左移一位时不加（）,计算不正确
@@ -80,4 +80,3 @@ int main(void)
 	envelopes = { {5,4},{6,4},{6,7},{2,3} };
 	ans = maxEnvelopes(envelopes);
 }
-	

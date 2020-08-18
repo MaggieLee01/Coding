@@ -7,7 +7,7 @@
 	如果死细胞周围正好有三个活细胞，则该位置死细胞复活；
 根据当前状态，写一个函数来计算面板上所有细胞的下一个（一次更新后的）状态。
 下一个状态是通过将上述规则同时应用于当前状态下的每个细胞所形成的，其中细胞的出生和死亡是同时发生的。
-输入： 
+输入：
 [
   [0,1,0],
   [0,0,1],
@@ -28,11 +28,11 @@
 
 	https://leetcode-cn.com/problems/game-of-life */
 
-/*
-	解法一：额外空间，遍历； 
-	解法二：原地使用奇偶性来保存状态；临近有活细胞，则+2，不改变奇偶性，通过奇偶性判断死活；最后遍历可以得到结果
-	解法三：原地使用位运算来保存状态；利用位运算存储数据的写法不太熟练
-*/
+	/*
+		解法一：额外空间，遍历；
+		解法二：原地使用奇偶性来保存状态；临近有活细胞，则+2，不改变奇偶性，通过奇偶性判断死活；最后遍历可以得到结果
+		解法三：原地使用位运算来保存状态；利用位运算存储数据的写法不太熟练
+	*/
 #include<vector>
 #include<cmath>
 using namespace std;
@@ -56,7 +56,7 @@ void gameOfLife(vector<vector<int>>& board)
 			{
 				int x = i + dx[k], y = j + dy[k];
 				if (0 <= x && x < row && 0 <= y && y < column)
-					if (board[x][y] == 1) living++;					
+					if (board[x][y] == 1) living++;
 			}
 			if ((board[i][j] == 1 && 2 == living) || living == 3) ans[i][j] = 1;
 			else ans[i][j] = 0;
@@ -88,7 +88,7 @@ void gameOfLife01(vector<vector<int>>& board)
 					if (abs(board[x][y]) == 1) living++;
 			}
 			if (board[i][j] == 1 && (living < 2 || living>3)) board[i][j] = -1;//活细胞变成了死细胞
-			if (board[i][j] == 0 && living == 3) board[i][j] = 2;			
+			if (board[i][j] == 0 && living == 3) board[i][j] = 2;
 		}
 	}
 	for (int i = 0; i < row; i++)
@@ -134,15 +134,15 @@ void gameOfLife02(vector<vector<int>>& board)
 		{
 			int cnt = board[i][j] >> 1;
 			if (board[i][j] & 1 == 1)
-			{				
+			{
 				if (cnt < 2 || cnt > 3) board[i][j] = 0;
 				else board[i][j] = 1;
 			}
 			else
 			{
-				if(cnt == 3) board[i][j] = 1;
+				if (cnt == 3) board[i][j] = 1;
 				else board[i][j] = 0;
-			}			
+			}
 		}
 	}
 }

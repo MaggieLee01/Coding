@@ -23,10 +23,10 @@ int Rob_dp_Hoop(vector<int> nums)
 
 	//不要忽略一个的情况，此时没有进入for循环，ans为初始化的值
 	if (Length == 1) return nums[0];
-	int ans = max(Rob_dp(nums, 0, Length - 2), Rob_dp(nums, 1, Length - 1) );
+	int ans = max(Rob_dp(nums, 0, Length - 2), Rob_dp(nums, 1, Length - 1));
 	return ans;
 }
-int Rob_dp(vector<int> nums,int start,int end)
+int Rob_dp(vector<int> nums, int start, int end)
 {
 	int dp_1 = 0, dp_2 = 0;
 	int ans = 0;

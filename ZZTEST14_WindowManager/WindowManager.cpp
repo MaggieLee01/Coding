@@ -6,19 +6,19 @@
 #include<unordered_map>
 using namespace std;
 
-class Window 
+class Window
 {
 public:
 	//1未加载 2显示 3隐藏 4对象池
 	int status;						//四种状态
 	bool top;
-	Window():status(1),top(false){}
+	Window() :status(1), top(false) {}
 
 	stack<Window*> sshow;//显示的栈
 	stack<Window*> shint;
 	virtual bool show() = 0;
 	virtual void close() {}
- 
+
 
 };
 class NormalWindow :public Window
@@ -31,7 +31,7 @@ public:
 		return true;
 	}
 };
-class FullWindow :public Window 
+class FullWindow :public Window
 {
 	bool show()
 	{
@@ -41,7 +41,7 @@ class FullWindow :public Window
 			Window* temp = sshow.top();
 			temp->status = 3;
 			shint.push(temp);
-		}	
+		}
 		return true;
 	}
 	void close()
@@ -59,7 +59,7 @@ class FullWindow :public Window
 class PopWindow :public Window
 {
 public:
-	PopWindow(){}
+	PopWindow() {}
 	bool show()
 	{
 		if (top == true) return false;
@@ -100,13 +100,13 @@ int main(void)
 	{
 		cin >> windowId;
 		cin >> windowType;
-		if (windowType == "NormalWindow")		
+		if (windowType == "NormalWindow")
 			wm.addWindow({ windowId, new NormalWindow() });
-		
-		else if (windowType == "FullWindow")		
+
+		else if (windowType == "FullWindow")
 			wm.addWindow({ windowId, new FullWindow() });
-		
-		else if (windowType == "PopmalWindow")		
+
+		else if (windowType == "PopmalWindow")
 			wm.addWindow({ windowId, new PopWindow() });
 	}
 
@@ -124,8 +124,8 @@ int main(void)
 		}
 		else if (winOperator == "check")
 		{
-			if(wm.check(windowId))	cout << windowId << endl;
+			if (wm.check(windowId))	cout << windowId << endl;
 			else cout << "FALSE" << endl;
 		}
-	}	
+	}
 }

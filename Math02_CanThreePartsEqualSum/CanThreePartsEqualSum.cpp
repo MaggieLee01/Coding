@@ -26,7 +26,7 @@ bool canThreePartsEqualSum(vector<int>& A)
 	if (sum % 3 != 0) return false;
 
 	int average = sum / 3, times = 0;
-	for (int i:A)
+	for (int i : A)
 	{
 		average -= i;
 		if (average == 0)
@@ -34,7 +34,7 @@ bool canThreePartsEqualSum(vector<int>& A)
 			average = sum / 3;
 			times++;
 		}
-		if (times == 3) break;	
+		if (times == 3) break;
 		//average -= i; 应该先减呀，不然会出现最后一次无法判断的情况
 	}
 	return (times == 3);

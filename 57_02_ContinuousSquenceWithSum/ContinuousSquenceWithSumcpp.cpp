@@ -84,8 +84,8 @@ vector<vector<int> > findContinuousSequence_answer01(int target)
 			ans.push_back(res);
 			left++;
 		}
-		if (result < target)		
-			right++;		
+		if (result < target)
+			right++;
 		else if (result > target)
 			left++;
 	}
@@ -119,7 +119,7 @@ vector<vector<int> > findContinuousSequence(int target)
 		//if ((i & 1) == 0 && ((target + (i >> 1)) % i == 0) )
 		//乘除取模 加减 左右移 大于小于 == 位与 位异或 位或 逻辑与 逻辑或
 		//注意此处用到很多（）,位与 优先级竟然在==的后面，位与在优先级方面易出错，位运算在==后，在逻辑与前
-		if (i % 2 == 0 && (target + i /2 ) % i == 0 )//注意此处用到很多（）,位与 优先级竟然在==的后面
+		if (i % 2 == 0 && (target + i / 2) % i == 0)//注意此处用到很多（）,位与 优先级竟然在==的后面
 			start = target / i - (i >> 1) + 1;
 		if (start > 0)
 		{

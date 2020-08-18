@@ -41,8 +41,8 @@ int dp(vector<vector<int>>& dict, int egg, int floor)
 	int res = INT_MAX;
 	for (int i = 1; i <= floor; i++)//floor=1时不会进入循环，所以需要提前返回
 	{
-		res = min(res, max(	dp(dict, egg, floor - i), 
-							dp(dict, egg - 1, i - 1) ) + 1);
+		res = min(res, max(dp(dict, egg, floor - i),
+			dp(dict, egg - 1, i - 1)) + 1);
 	}
 	dict[egg - 1][floor - 1] = res;
 	return res;
@@ -57,7 +57,7 @@ int superEggDrop(int K, int N)
 }
 
 //看着答案，改成动态规划版本
-int superEggDrop02(int K, int N) 
+int superEggDrop02(int K, int N)
 {
 	vector<vector<int>> dict(K + 1, vector<int>(N + 1, 0));
 	for (int i = 1; i <= N; i++) dict[1][i] = i;
@@ -71,11 +71,11 @@ int superEggDrop02(int K, int N)
 			int temp = INT_MAX;
 			for (int ll = 1; ll <= j; ll++)//ll是第0层到第j层楼层的遍历呀，对于j层楼，选择合适的点，所以需要一点点遍历
 			{
-				temp = min(temp, max(	dict[i - 1][ll - 1],
-										dict[i][j - ll]) + 1 ) ;
+				temp = min(temp, max(dict[i - 1][ll - 1],
+					dict[i][j - ll]) + 1);
 			}
 			dict[i][j] = temp;
-		}		
+		}
 	}
 	return dict[K][N];
 }

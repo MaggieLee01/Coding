@@ -1,5 +1,5 @@
 /*	给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。
-	求在该柱状图中，能够勾勒出来的矩形的最大面积。	
+	求在该柱状图中，能够勾勒出来的矩形的最大面积。
 	输入: [2,1,5,6,2,3]
 	输出: 10
 	https://leetcode-cn.com/problems/largest-rectangle-in-histogram
@@ -15,20 +15,20 @@
 using namespace std;
 
 int largestRectangleArea(vector<int>& heights)
-{	
+{
 	int Len = heights.size();
 	if (Len == 0) return 0;
 	if (Len == 1) return heights[0];
-	
+
 	//或者直接stk push(0),然后height push 0,减少copy
-	vector<int> newHeights(Len+2, 0);//增加哨兵，使得栈中所有的元素都被pop()，能计算得到
+	vector<int> newHeights(Len + 2, 0);//增加哨兵，使得栈中所有的元素都被pop()，能计算得到
 	copy(heights.begin(), heights.end(), newHeights.begin() + 1);//STL标准库的copy算法，参数为迭代器
 
 	stack<int> stk;
 	stk.push(0);//存放的索引
 	int ans = 0;
 
-	for (int i = 1; i < Len+2; i++)
+	for (int i = 1; i < Len + 2; i++)
 	{
 		while (stk.size() && newHeights[stk.top()] > newHeights[i])
 		{

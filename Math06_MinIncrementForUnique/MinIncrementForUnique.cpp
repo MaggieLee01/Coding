@@ -61,7 +61,7 @@ int minIncrementForUnique01(vector<int>& A)
 			taken++;
 			ans -= A[i];//减去重复的元素值，并增加重复元素的计数值
 		}
-		else 
+		else
 		{
 			int give = min(taken, A[i] - 1 - A[i - 1]);//最多在在此处增加的元素个数
 			ans += give * A[i - 1] + give * (give + 1) / 2;
@@ -91,7 +91,7 @@ int minIncrementForUnique0102(vector<int>& A)
 }
 //计数的方法，和排序的优化思路一样，不是一点一点地增加；评论里也有计数的逐步增加的方法；还可以记录最大值进一步优化
 //数据范围40000
-int minIncrementForUnique02(vector<int>& A) 
+int minIncrementForUnique02(vector<int>& A)
 {
 	if (A.empty()) return 0;
 	int cnt[80000] = { 0 };
@@ -135,14 +135,14 @@ int minIncrementForUnique02(vector<int>& A)
 int findPos(int a, vector<int>& pos)
 {
 	int b = pos[a];
-	if (b == -1) 
+	if (b == -1)
 	{
 		pos[a] = a;
 		return a;
 	}
 	// 否则向后寻址
 	// 因为pos[a]中标记了上次寻址得到的空位，因此从pos[a]+1开始寻址就行了（不需要从a+1开始）。
-	b = findPos(b+1,pos);
+	b = findPos(b + 1, pos);
 	pos[a] = b; // 寻址后的新空位要重新赋值给pos[a]哦，路径压缩就是体现在这里。
 	return b;
 }
@@ -176,9 +176,9 @@ struct A
 };
 int main(void)
 {
-	A a1;    
+	A a1;
 	A a2(a1);// error: ill-formed binding of temporary to reference
-			 
+
 	//把A的构造参数改为引用，然后将int行变量初始化a2可以。
 
 	std::cout << a1.v << std::endl;

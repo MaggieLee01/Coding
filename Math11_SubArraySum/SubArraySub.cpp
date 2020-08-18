@@ -6,7 +6,7 @@
 	数组的长度为 [1, 20,000]。
 	数组中元素的范围是 [-1000, 1000] ，且整数 k 的范围是 [-1e7, 1e7]。
 	https://leetcode-cn.com/problems/subarray-sum-equals-k
- */ 
+ */
 
 #include<vector>
 #include<unordered_map>
@@ -52,7 +52,7 @@ int subarraySum(vector<int>& nums, int target)
 	{
 		pre += nums[i];
 		//很关键的一步，寻找以i为结束是否有和为target的子数组，因为mp存储的全是从第0个开始的和
-		if (mp.find(pre - target) != mp.end()) 
+		if (mp.find(pre - target) != mp.end())
 			count += mp[pre - target];
 		mp[pre]++;
 	}

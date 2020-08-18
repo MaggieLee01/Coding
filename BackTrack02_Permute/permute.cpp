@@ -28,11 +28,11 @@ vector<vector<int>> ans;
 void backTrack(vector<int> num, int index, vector<int>& track)
 {
 	if (track.size() == num.size())
-	{   
+	{
 		ans.push_back(vector<int>(track));
 		return;
 	}
-	
+
 	for (int i = index; i < num.size(); i++)
 	{
 		track.push_back(num[i]);
@@ -42,7 +42,7 @@ void backTrack(vector<int> num, int index, vector<int>& track)
 		track.pop_back();
 	}
 }
-vector<vector<int>> permute(vector<int>& nums) 
+vector<vector<int>> permute(vector<int>& nums)
 {
 	vector<int> track;
 	backTrack(nums, 0, track);

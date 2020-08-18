@@ -14,7 +14,7 @@ static bool EndTimeCmp(vector<int> interval1, vector<int> interval2)
 
 /***********************************************************************************************************************/
 //自己写，较费时
-vector<vector<int>> merge(vector<vector<int>>& intervals) 
+vector<vector<int>> merge(vector<vector<int>>& intervals)
 {
 	int Length = intervals.size();
 	if (Length <= 1) return intervals;

@@ -11,7 +11,7 @@ using std::vector;
 
 // 因为旋转后基本有序，遍历一次，时间On
 // LeetCode中形参为引用类型，不能直接返回数组元素，VS中可以
-int minArray01(vector<int> & numbers) 
+int minArray01(vector<int> & numbers)
 {
 	int Length = numbers.size();
 	if (Length == 0) return 0;
@@ -21,7 +21,7 @@ int minArray01(vector<int> & numbers)
 		if (numbers[i] < numbers[i - 1])
 			return numbers[i];
 	}
-	if (i == Length) return numbers[0];	
+	if (i == Length) return numbers[0];
 }
 
 // 思考缩短时间，二分法变形，通过和两端数值的比较确定缩小哪一半的范围
@@ -73,9 +73,9 @@ int minArray02(vector<int> & numbers)
 	while (left < right)
 	{
 		int mid = ((right - left) >> 1) + left;
-		if (numbers[mid] == numbers[right])	
+		if (numbers[mid] == numbers[right])
 			right--;
-		else if (numbers[mid] < numbers[right])	
+		else if (numbers[mid] < numbers[right])
 			right = mid;
 		else if (numbers[mid] > numbers[right])
 			left = mid + 1;

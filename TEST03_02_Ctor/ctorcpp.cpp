@@ -1,22 +1,22 @@
 #include<vector>
 using namespace std;
 
-vector<int> find(vector<int> nums,int target)
+vector<int> find(vector<int> nums, int target)
 {
 	int left = 0;
-	int right = nums.size()-1;
+	int right = nums.size() - 1;
 	vector<int> ans;
 	while (left < right)
 	{
 		int mid = (right - left) / 2 + left;
 		if (nums[mid] < target)
 			left = mid + 1;
-		else 
+		else
 			right = mid;
 	}
-	if (nums[left] == target) 
+	if (nums[left] == target)
 		ans.push_back(left);
-	else 
+	else
 		return ans;
 
 	while (nums[left++] != target);

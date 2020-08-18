@@ -58,40 +58,47 @@ int main(void)
 #include <string.h>(5856)
 #include <queue>
 using namespace std;
-int main(){    
-	string cmd;    
-	int t,q;    
-	int val;   
-	cin>>t;    
-	while(t--)
-	{        
-		queue<int> que;        
-		cin>>q;        
-		while(q--)
-		{            
-			cin>>cmd;            
-			if(cmd == "PUSH"){                
-				cin>>val;                
-				que.push(val);            
-			}else if(cmd=="POP"){                
-				if(que.empty()){                    
-					cout<<-1<<endl;                
-				}else{                    
-					que.pop();                
-				}            
-			}else if(cmd=="TOP"){                
-				if(que.empty()){                    
-					cout<<-1<<endl;                
-				}else{                    
-					cout<<que.front()<<endl;                
-				}            
-			}else if(cmd=="SIZE"){                
-				cout<<que.size()<<endl;            
-			}else if(cmd=="CLEAR"){                
-				while(!que.empty()){                    
-					que.pop();                
-				}            
-			}        
-		}    
-	}    
-	return 0;}
+int main() {
+	string cmd;
+	int t, q;
+	int val;
+	cin >> t;
+	while (t--)
+	{
+		queue<int> que;
+		cin >> q;
+		while (q--)
+		{
+			cin >> cmd;
+			if (cmd == "PUSH") {
+				cin >> val;
+				que.push(val);
+			}
+			else if (cmd == "POP") {
+				if (que.empty()) {
+					cout << -1 << endl;
+				}
+				else {
+					que.pop();
+				}
+			}
+			else if (cmd == "TOP") {
+				if (que.empty()) {
+					cout << -1 << endl;
+				}
+				else {
+					cout << que.front() << endl;
+				}
+			}
+			else if (cmd == "SIZE") {
+				cout << que.size() << endl;
+			}
+			else if (cmd == "CLEAR") {
+				while (!que.empty()) {
+					que.pop();
+				}
+			}
+		}
+	}
+	return 0;
+}

@@ -4,8 +4,8 @@
 	装满任意一个水壶
 	清空任意一个水壶
 	从一个水壶向另外一个水壶倒水，直到装满或者倒空
-	
-	输入: x = 3, y = 5, z = 4；输出: True	
+
+	输入: x = 3, y = 5, z = 4；输出: True
 	输入: x = 2, y = 6, z = 5；输出: False
 */
 
@@ -27,7 +27,7 @@ using std::pair;
 //题解里有状态转换
 
 using PII = pair<int, int>;
-bool canMeasureWater(int x, int y, int z) 
+bool canMeasureWater(int x, int y, int z)
 {
 	stack<PII> stk;
 	stk.emplace(0, 0);
@@ -61,10 +61,10 @@ bool canMeasureWater(int x, int y, int z)
 		stk.emplace(remain.first, y);		//把y壶灌满
 		stk.emplace(0, remain.second);		//把x壶倒空
 		stk.emplace(remain.first, 0);		//把y壶倒空
-		stk.emplace(remain.first - min(remain.first, y - remain.second), 
-					remain.second + min(remain.first, y - remain.second));		// 把 X 壶的水灌进 Y 壶，直至灌满或倒空。
-		stk.emplace(remain.first + min(x - remain.first, remain.second), 
-					remain.second - min(x - remain.first, remain.second));		// 把 Y 壶的水灌进 X 壶，直至灌满或倒空。
+		stk.emplace(remain.first - min(remain.first, y - remain.second),
+			remain.second + min(remain.first, y - remain.second));		// 把 X 壶的水灌进 Y 壶，直至灌满或倒空。
+		stk.emplace(remain.first + min(x - remain.first, remain.second),
+			remain.second - min(x - remain.first, remain.second));		// 把 Y 壶的水灌进 X 壶，直至灌满或倒空。
 	}
 	return false;
 }

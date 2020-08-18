@@ -2,7 +2,7 @@
 #include"List.h"
 
 //生成链表节点
-ListNode* CreateListNode(int value) 
+ListNode* CreateListNode(int value)
 {
 	ListNode* pNode = new ListNode();//此处最好加()初始化一下，已通过内存查看
 	if (pNode == nullptr)
@@ -96,7 +96,7 @@ ListNode* AddTail(ListNode* pHead, int value)
 		//p = pNode;	//不应该改变指针的指向，应该改变指针的内容
 		p->m_pNext = pNode;
 	}
-	return pHead;	
+	return pHead;
 }
 
 //移除节点
@@ -116,7 +116,7 @@ ListNode* RemoveListNode(ListNode* pHead, int value)
 		return pHead;
 	}
 	//从第二个开始遍历
-	while ( pNode->m_pNext != nullptr && pNode->m_pNext->m_nValue != value )
+	while (pNode->m_pNext != nullptr && pNode->m_pNext->m_nValue != value)
 		pNode = pNode->m_pNext;
 	//下一个节点为要删除的节点
 	if (pNode->m_pNext != nullptr && pNode->m_pNext->m_nValue == value)
@@ -127,7 +127,7 @@ ListNode* RemoveListNode(ListNode* pHead, int value)
 		ToBedelete = nullptr;
 	}
 	//遍历到最后没找到	
-	else 
+	else
 	{
 		std::cout << "No point:	" << value << std::endl;
 		//return nullptr; 此处即使没找到也不应该返回nullptr

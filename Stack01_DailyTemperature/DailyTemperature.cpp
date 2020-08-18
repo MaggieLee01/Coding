@@ -13,7 +13,7 @@ using std::max;
 using std::stack;
 
 //处理的难点：数组中有重复元素：重复元素有间隔、重复元素为最大值
-vector<int> dailyTemperatures(vector<int>& T) 
+vector<int> dailyTemperatures(vector<int>& T)
 {
 	int Length = T.size();
 	vector<int> ans(Length, 0);
@@ -30,12 +30,12 @@ vector<int> dailyTemperatures(vector<int>& T)
 			{
 				ans[i] = 0;
 				continue;
-			}				
+			}
 			else
 			{
 				MaxTemp.pop();
 				NextMax = MaxTemp.top();
-			}			
+			}
 		}*/
 		while (T[NextMax] <= T[i])//开始把< =情况分开了，写不顺溜
 		{
@@ -45,12 +45,12 @@ vector<int> dailyTemperatures(vector<int>& T)
 				MaxTemp.push(i);
 				NextMax = MaxTemp.top();
 				break;
-			}							
+			}
 			NextMax = MaxTemp.top();
 		}
 		ans[i] = NextMax - i;//top为下一个最大元素的索引值，-i为等待的天数
 		if (T[NextMax] > T[i])
-			MaxTemp.push(i);		
+			MaxTemp.push(i);
 	}
 	return ans;
 }
@@ -67,7 +67,7 @@ vector<int> dailyTemperatures_answer(vector<int>& T)
 		if (NextMax.empty())  //ans数组已经初始化为-1，只需在栈不为空的情况下赋值即可
 			ans[i] = 0;
 		else
-			ans[i] = NextMax.top() - i; 
+			ans[i] = NextMax.top() - i;
 		NextMax.push(i);
 	}
 	return ans;
@@ -85,5 +85,5 @@ int main(void)
 
 	num = { 34,80,80,34,34,80,80,80,80,34 };
 	num = dailyTemperatures(num);
-   	return 0;
+	return 0;
 }

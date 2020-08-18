@@ -4,17 +4,17 @@
 #include<vector>
 #include<queue>
 using namespace std;
-struct ListNode 
+struct ListNode
 {
 	int val;
 	ListNode *next;
-	ListNode(int x) : val(x), next(nullptr) {}	
+	ListNode(int x) : val(x), next(nullptr) {}
 };
 //小根堆的方法
 ListNode* mergeKLists(vector<ListNode*>& lists)
 {
 	auto cmp = [](const ListNode* l1, const ListNode*l2) {return l1->val > l2->val; };
-	priority_queue<ListNode*,vector<ListNode*>,decltype(cmp)>pq(cmp);
+	priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)>pq(cmp);
 	for (auto list : lists)
 	{
 		if (list != nullptr)
@@ -47,7 +47,7 @@ ListNode* mergeList(ListNode* left, ListNode* right)
 			pTemp->next = left;
 			left = left->next;
 		}
-		else 
+		else
 		{
 			pTemp->next = right;
 			right = right->next;
@@ -61,7 +61,7 @@ ListNode* mergeList(ListNode* left, ListNode* right)
 ListNode* merge(vector<ListNode*>& lists, int start, int end)
 {
 	if (start == end)  return lists[end];
-	int mid = ((end - start ) >> 1) + start;
+	int mid = ((end - start) >> 1) + start;
 	ListNode* left = merge(lists, start, mid);
 	ListNode* right = merge(lists, mid + 1, end);
 	return mergeList(left, right);
@@ -87,6 +87,6 @@ int main(void)
 	top2->next = new ListNode(6);
 
 	vector<ListNode*> lists{ top, top1, top2 };
-	ListNode* ans=mergeKLists02(lists);
+	ListNode* ans = mergeKLists02(lists);
 	return 0;
 }

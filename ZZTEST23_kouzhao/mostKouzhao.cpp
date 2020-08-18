@@ -58,19 +58,19 @@ int main(void)
 {
 	string line;
 	getline(cin, line);
-	istringstream iss(line);	
-	
+	istringstream iss(line);
+
 	vector<int> nums;
 	string str;
 	while (getline(iss, str, ','))
 	{
-		nums.push_back(stoi(str));		
+		nums.push_back(stoi(str));
 	}
-		
+
 	//scanf是可以识别逗号分割的，上面的方法最佳
 	/*vector<int> nums(9);
 	scanf_s("%d,%d,%d,%d,%d,%d,%d,%d,%d", &nums[0], &nums[1], &nums[2], &nums[3], &nums[4], &nums[5], &nums[6], &nums[7], &nums[8]);*/
-	
+
 	//下面的方法不行，cin>> 只识别空格
 	//for (int i = 0; i < 9; i++)
 	//{

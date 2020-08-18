@@ -6,7 +6,7 @@
 //原因：342 + 465 = 807
 // https://leetcode-cn.com/problems/add-two-numbers
 
-struct ListNode 
+struct ListNode
 {
 	int val;
 	ListNode *next;
@@ -85,7 +85,7 @@ struct ListNode
 ListNode* addTwoNumbers_answer1(ListNode* l1, ListNode* l2)
 {
 	ListNode *ans = new ListNode(0);
-	ListNode *temp1 = new ListNode(0);	
+	ListNode *temp1 = new ListNode(0);
 	ListNode *temp2 = new ListNode(0); // 看了题解，因为后面已经考虑到l1 为空的情况，此处无需加头节点
 	ListNode *temp3 = ans;
 	temp1->next = l1;
@@ -93,8 +93,8 @@ ListNode* addTwoNumbers_answer1(ListNode* l1, ListNode* l2)
 	int count = 0;
 	while (temp1 != nullptr || temp2 != nullptr)
 	{
-		int val1 = (temp1 == nullptr) ? 0: temp1->val;
-		int val2 = (temp2 == nullptr) ? 0: temp2->val;
+		int val1 = (temp1 == nullptr) ? 0 : temp1->val;
+		int val2 = (temp2 == nullptr) ? 0 : temp2->val;
 		int sum = val1 + val2 + count;
 		if (sum >= 10)
 		{
@@ -108,7 +108,7 @@ ListNode* addTwoNumbers_answer1(ListNode* l1, ListNode* l2)
 		}
 		if (temp1 != nullptr) temp1 = temp1->next;
 		if (temp2 != nullptr) temp2 = temp2->next;
-		temp3 = temp3->next;			
+		temp3 = temp3->next;
 	}
 	if (count == 1)
 		temp3->next = new ListNode(1);
@@ -132,10 +132,10 @@ ListNode* addTwoNumbers_answer2(ListNode* l1, ListNode* l2)
 		int sum = val1 + val2 + count;
 		count = sum / 10;
 		temp3->next = new ListNode(sum % 10);
-		temp3 = temp3->next;		
+		temp3 = temp3->next;
 		if (temp1 != nullptr) temp1 = temp1->next;
 		if (temp2 != nullptr) temp2 = temp2->next;
-		
+
 	}
 	if (count == 1)
 		temp3->next = new ListNode(1);

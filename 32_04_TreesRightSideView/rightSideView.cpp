@@ -17,7 +17,7 @@ https://leetcode-cn.com/problems/binary-tree-right-side-view */
 #include<vector>
 using namespace std;
 
-struct TreeNode 
+struct TreeNode
 {
 	int val;
 	TreeNode *left;

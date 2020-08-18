@@ -17,10 +17,10 @@ using std::endl;
 
 //不加static时，vs能通过顺利执行，但是LeetCode编译不通过，需要加static，不明白
 static bool EndTimeCmp(vector<int> interval1, vector<int> interval2)
-{	
-	return (interval1[1] < interval2[1]);	
+{
+	return (interval1[1] < interval2[1]);
 }
-int eraseOverlapIntervals01(vector<vector<int> > & intervals) 
+int eraseOverlapIntervals01(vector<vector<int> > & intervals)
 {
 	if (intervals.size() == 0) return 0;
 	//不能再函数里面定义函数呀
@@ -43,7 +43,7 @@ int eraseOverlapIntervals01(vector<vector<int> > & intervals)
 				//移除的话，后面的补上，所以此时不能j++递增，漏掉补上的第一位，此时先j--一下，然后for循环的++才能不变
 				//这个易被忽略
 			}
-							
+
 		}
 	}
 	return intervals.size();
@@ -56,13 +56,13 @@ int eraseOverlapIntervals02(vector<vector<int> >  intervals)
 {
 	if (intervals.size() == 0) return 0;
 	std::sort(intervals.begin(), intervals.end(), EndTimeCmp);
-	for (int i = 0; i < intervals.size()-1; i++)
-	{		
-		if (intervals[i+1][0] < intervals[i][1])
+	for (int i = 0; i < intervals.size() - 1; i++)
+	{
+		if (intervals[i + 1][0] < intervals[i][1])
 		{
 			intervals.erase(intervals.begin() + i + 1);
 			i--;
-		}		
+		}
 	}
 	return intervals.size();
 }
@@ -73,7 +73,7 @@ int eraseOverlapIntervals_answer(vector<vector<int> >  intervals)
 	int Length = intervals.size();
 	if (Length == 0) return 0;
 	std::sort(intervals.begin(), intervals.end(), EndTimeCmp);
-	int endTime = intervals[0][1];					
+	int endTime = intervals[0][1];
 	int ans = 1;
 	for (int i = 1; i < Length; i++)
 	{

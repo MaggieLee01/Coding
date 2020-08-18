@@ -37,7 +37,7 @@ bool isStraight(vector<int>& nums)
 {
 	sort(nums.begin(), nums.end());
 	int cnt = 0;//王的个数
-	
+
 	for (int i = 0; i < 4; i++)						//只遍历了前4个，第五个数直接在返回处比较
 	{
 		if (nums[i] == 0)
@@ -45,7 +45,7 @@ bool isStraight(vector<int>& nums)
 			cnt++;									//统计0的个数
 			continue;
 		}
-		else if (nums[i]==nums[i+1]) 
+		else if (nums[i] == nums[i + 1])
 			return false;							//如果重复，提前返回
 	}
 	return nums[4] - nums[cnt] < 5;					//max 与 min相差5以内，则可以构成顺子

@@ -34,8 +34,8 @@ void maxHeapify(vector<int>& nums, int index, int right)
 }
 void buildMaxHeap(vector<int>& nums, int right)
 {
-	for (int i = right >> 1; i >= 0; i--)	
-		maxHeapify(nums, i, right);	
+	for (int i = right >> 1; i >= 0; i--)
+		maxHeapify(nums, i, right);
 }
 void heapSort(vector<int>& nums)
 {

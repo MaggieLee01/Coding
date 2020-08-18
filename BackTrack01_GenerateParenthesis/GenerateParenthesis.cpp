@@ -2,12 +2,12 @@
 https://leetcode-cn.com/problems/generate-parentheses
 输入：n = 3
 输出：[
-       "((()))",
-       "(()())",
-       "(())()",
-       "()(())",
-       "()()()"
-     ]	 */
+	   "((()))",
+	   "(()())",
+	   "(())()",
+	   "()(())",
+	   "()()()"
+	 ]	 */
 
 #include<vector>
 #include<memory>
@@ -45,7 +45,7 @@ vector<string> generateParenthesis(int n)
 		}
 		if (left < n)
 		{
-			dict.push_back(front + '(');			
+			dict.push_back(front + '(');
 			//left++;
 		}
 	}
@@ -67,7 +67,7 @@ void backTrack(int n, vector<string>& ans, const string& s, int left, int right)
 		ans.push_back(s);
 		return;
 	}
-	if (right < left)	
+	if (right < left)
 		backTrack(n, ans, s + ")", left, right + 1);  //因为此处属于临时变量，不是左值，属于不能将临时变量初始化给引用变量，只能赋值为const引用	
 	if (left < n)
 		backTrack(n, ans, s + '(', left + 1, right);
@@ -99,15 +99,15 @@ shared_ptr<vector<string>> generate(int n)
 					result->push_back("(" + left + ")" + right);
 		}
 		cache[n] = result;
-	}	
+	}
 	return cache[n];
 }
-vector<string> generateParenthesis02(int n) 
+vector<string> generateParenthesis02(int n)
 {
 	return *generate(n);
 }
 
-vector<string> generateParenthesis03(int n) 
+vector<string> generateParenthesis03(int n)
 {
 	vector<vector<string>> v(n + 1);
 	v[0].push_back("");
@@ -115,7 +115,7 @@ vector<string> generateParenthesis03(int n)
 	{
 		for (int j = 0; j < i; j++) //决定了左侧字符串括号的个数，i-j-1即为另一侧括号的个数
 		{
-			for (string &str1 : v[j]) 
+			for (string &str1 : v[j])
 			{
 				for (string &str2 : v[i - j - 1])
 					v[i].push_back("(" + str2 + ")" + str1);

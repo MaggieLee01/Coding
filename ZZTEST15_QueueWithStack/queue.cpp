@@ -46,7 +46,7 @@ int main(void)
 {
 	MyQueue q;
 	vector<int> ans;
-	
+
 	int opCnt = 0;
 	cin >> opCnt;
 	for (int j = 0; j < opCnt; j++)
@@ -68,7 +68,7 @@ int main(void)
 			q.pop();
 		}
 	}
-	
+
 	for (int i : ans)
 	{
 		cout << i << endl;

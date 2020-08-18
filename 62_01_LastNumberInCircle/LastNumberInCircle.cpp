@@ -21,10 +21,10 @@ int lastRemaining(int n, int m)
 	vector<int> num(n, 0);
 	for (int i = 0; i < n; i++)
 		num[i] = i;
-	
-	int index = (m-1) % n;
+
+	int index = (m - 1) % n;
 	while (num.size() != 1)
-	{	
+	{
 		auto it = num.begin();
 		it = it + index;
 		num.erase(it);//erase参数只能为迭代器
@@ -55,9 +55,9 @@ int lastRemaining01(int n, int m)
 					num[i % n] = -1;
 					break;
 				}
-			}				
+			}
 			i++;
-		}		
+		}
 		size--;
 	}
 	while (num[i%n] == -1)
@@ -66,7 +66,7 @@ int lastRemaining01(int n, int m)
 	return ans;
 }
 //约瑟夫环，可以从少到多递推最后一个数字的索引
-int lastRemaining03(int n, int m) 
+int lastRemaining03(int n, int m)
 {
 	int f = 0;
 	for (int i = 2; i != n + 1; ++i)

@@ -33,7 +33,7 @@ int main(void)
 	for (int i = n - 1; i >= 0; i--)
 	{
 		int cnt = 0;
-		while (j>=0 && worker[j] >= task[i])
+		while (j >= 0 && worker[j] >= task[i])
 		{
 			cnt++;
 			j--;
@@ -68,13 +68,13 @@ int main01(void)
 	vector<int> worker(n, 0);
 	for (int i = 0; i < n; i++)
 	{
-	/*	int a = 0;*/
+		/*	int a = 0;*/
 		cin >> worker[i]; //无需中间的变量
 		/*worker[i] = a;*/
 	}
 	vector<int> task(n, 0);
 	for (int i = 0; i < n; i++)
-	{		
+	{
 		cin >> task[i];
 	}
 	int NUM = 0;

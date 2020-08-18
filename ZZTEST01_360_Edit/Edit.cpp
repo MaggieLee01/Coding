@@ -16,7 +16,7 @@ int main()
 	int strLength = Length >> 1;
 	for (int i = 0; i < strLength; i++)
 		str1.push_back(input[i]);
-	
+
 	str2 = input.substr(strLength, strLength);
 
 	int up = 0;
@@ -45,7 +45,7 @@ int main()
 			up = down;
 		}
 	}
-	int l= Dict[strLength];
+	int l = Dict[strLength];
 
 
 	/*vector< vector<int> > Dict(strLength + 1, vector<int>(strLength + 1, 0));

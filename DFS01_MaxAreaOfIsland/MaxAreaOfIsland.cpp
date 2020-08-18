@@ -69,14 +69,14 @@ int maxAreaOfIsland(vector<vector<int>>& grid)
 
 	int ans = 0, area = 0;
 	for (int i = 0; i < row; i++)
-		for (int j = 0; j < column; j++)		
+		for (int j = 0; j < column; j++)
 			if (grid[i][j] == 1)
 			{
 				area = 0;
 				BFS02(grid, row, column, i, j, area);
 				ans = max(ans, area);
 			}
-		
+
 	for (int i = 0; i < row; i++)
 		for (int j = 0; j < column; j++)
 			if (grid[i][j] == 2) grid[i][j] = 1;

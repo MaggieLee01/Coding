@@ -27,6 +27,6 @@ int main(void)
 		ans = ans + i.first;
 		cnt--;
 		if (cnt <= 0) break;
-	}	
+	}
 	cout << ans << endl;
 }

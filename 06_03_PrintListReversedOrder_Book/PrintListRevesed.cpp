@@ -13,9 +13,9 @@
 //自己写的应该没什么问题，和book上基本差不多，通过了三种情况测试，无法通过牛客网，函数结构不同；
 
 //可能book上的写法更便于理解
-void printListFromTailToHead_Recursively(ListNode* pHead) 
+void printListFromTailToHead_Recursively(ListNode* pHead)
 {
-	
+
 	if (pHead == nullptr)
 	{
 		//std::cout << std::endl;//此处是打印链表的起点，不是终点
@@ -28,9 +28,9 @@ void printListFromTailToHead_Recursively(ListNode* pHead)
 }
 int main(void)
 {
-	
+
 	ListNode* p1 = CreateListNode(1);
-	
+
 	//一个节点测试
 	printListFromTailToHead_Recursively(p1);
 	std::cout << std::endl << "Reversed List Ends" << std::endl;
@@ -45,7 +45,7 @@ int main(void)
 	std::cout << std::endl << "Reversed List Ends" << std::endl;
 
 	//空指针测试
-	ListNode* p2 = nullptr;	
+	ListNode* p2 = nullptr;
 	printListFromTailToHead_Recursively(p2);
 	std::cout << "Reversed List Ends" << std::endl;
 

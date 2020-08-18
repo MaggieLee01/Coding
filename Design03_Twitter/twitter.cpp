@@ -17,7 +17,7 @@ using namespace std;
 //思路不清晰，看了labuladong的题解
 //参考代码：https://leetcode-cn.com/problems/design-twitter/solution/leetcode355-mian-xiang-guo-cheng-zui-da-de-kge-shu/
 int now_ = 0;//全局变量
-class Tweet 
+class Tweet
 {
 public:
 	int id;
@@ -54,27 +54,27 @@ public:
 		head = temp;
 	}
 };
-class Twitter 
+class Twitter
 {
 	unordered_map<int, user*>userMap;//存的是指针
 public:
-	Twitter() 
+	Twitter()
 	{
 		userMap.clear();
 	}
-	void postTweet(int userId, int tweetId) 
+	void postTweet(int userId, int tweetId)
 	{
 		if (userMap.count(userId) == 0)
-			userMap[userId] =new user(userId);
+			userMap[userId] = new user(userId);
 		userMap[userId]->postTweet(tweetId);
 	}
-	void follow(int followerId, int followeeId) 
+	void follow(int followerId, int followeeId)
 	{
 		if (userMap.count(followerId) == 0)
 			userMap[followerId] = new user(followerId);
 		userMap[followerId]->follow(followeeId);
 	}
-	void unfollow(int followerId, int followeeId) 
+	void unfollow(int followerId, int followeeId)
 	{
 		if (userMap.count(followerId) == 0) return;
 		userMap[followerId]->unfollow(followeeId);
@@ -84,7 +84,7 @@ public:
 		if (userMap.count(userId) == 0) return{};
 		typedef function<bool(const Tweet*a, const Tweet*b)> Compare;//定义了函数的类型，不是返回值的类型，是function
 		Compare comp = [](const Tweet*a, const Tweet*b) { return a->time < b->time; };
-			//因为Compare的类型是function，所以应该使用匿名函数，这是一条语句，结尾加；
+		//因为Compare的类型是function，所以应该使用匿名函数，这是一条语句，结尾加；
 		priority_queue< Tweet*, vector<Tweet*>, Compare> pq(comp);
 
 		//以上的定义可以写成这样子
@@ -110,7 +110,7 @@ public:
 			pq.pop();
 			ans.push_back(top->id);
 			if (ans.size() == 10) break;
-			if(top->next)	pq.push(top->next);//先判断是否有内容
+			if (top->next)	pq.push(top->next);//先判断是否有内容
 		}
 		return ans;
 	}

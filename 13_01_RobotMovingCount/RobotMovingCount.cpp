@@ -53,7 +53,7 @@ int EnterCount(int c, int r, vector<vector<int> >&flag, int &count,int m, int n,
 		//if ((c % 10 + c / 10 + r / 10 + r % 10) <= k )
 		if (getDigitSum(c) + getDigitSum(r) <= k)
 		{
-			count++;			
+			count++;
 			EnterCount(c + 1, r, flag, count, m, n, k);
 			EnterCount(c, r + 1, flag, count, m, n, k);
 			/*EnterCount(c + 1, r, flag, m, n, k);
@@ -62,7 +62,7 @@ int EnterCount(int c, int r, vector<vector<int> >&flag, int &count,int m, int n,
 	}
 	return 0;
 }
-int movingCount(int m, int n, int k) 
+int movingCount(int m, int n, int k)
 {
 	//if (m == 0 || n == 0) return 0;
 	if (m <= 0 || n <= 0 || k < 0) return 0;

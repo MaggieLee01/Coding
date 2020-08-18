@@ -23,14 +23,14 @@ bool Isvalid(string s)
 	dictMap['['] = ']';
 	int i = 0;
 	for (i = 0; i < sLength; i++)
-	{	
+	{
 		if (s[i] == '(' || s[i] == '{' || s[i] == '[')
 			signStack.push(s[i]);
-		else if(signStack.size() && dictMap[signStack.top()] == s[i])
-				signStack.pop();
-		else break;		
+		else if (signStack.size() && dictMap[signStack.top()] == s[i])
+			signStack.pop();
+		else break;
 	}
-	return (signStack.empty() && i == sLength);	
+	return (signStack.empty() && i == sLength);
 }
 
 //看了题解，数组长度为奇数 直接排除，这一点不妥，若有其他字符；

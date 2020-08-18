@@ -6,13 +6,13 @@ bool comp(vector<int> box1, vector<int> box2)
 {
 	if (box1[0] == box2[0])
 	{
-		if(box1[1]==box2[1])	return box1[2] > box2[2];
+		if (box1[1] == box2[1])	return box1[2] > box2[2];
 		else return box1[1] < box2[1];
-	}		
+	}
 	return (box1[0] < box2[0]);
 }
 
-int maxBoxes(int** boxes, int boxesRowLen, int* boxesColLen) 
+int maxBoxes(int** boxes, int boxesRowLen, int* boxesColLen)
 {
 	int column = *boxesColLen;
 	vector<vector<int>> boxSize(boxesRowLen, vector<int>(3, 0));
@@ -55,7 +55,7 @@ int maxBoxes(int** boxes, int boxesRowLen, int* boxesColLen)
 			else if (target > poker[mid])
 				left = mid + 1;
 		}
-	
+
 		if (left == ans)
 			ans++;
 		poker[left] = target;

@@ -1,6 +1,6 @@
 /*面试题51. 数组中的逆序对
 
-在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。 
+在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。
 示例 1：输入: [7,5,6,4]；输出: 5
 */
 
@@ -45,7 +45,7 @@ int reversePairsCore(vector<int>& nums, int left, int right, vector<int>&temp)
 	if (left == right) return 0;
 	int mid = (right - left) / 2 + left;
 	int leftPairs = reversePairsCore(nums, left, mid, temp);
-	int rightPairs = reversePairsCore(nums, mid+1, right, temp);
+	int rightPairs = reversePairsCore(nums, mid + 1, right, temp);
 
 	//这个数组已经排好序，则无需合并
 	if (nums[mid] < nums[mid + 1]) return leftPairs + rightPairs;
@@ -60,7 +60,7 @@ int reversePairs(vector<int>& nums)
 
 	vector<int> copy(nums);
 	vector<int> temp(size, 0);
-	return reversePairsCore(copy, 0, size - 1, temp);	
+	return reversePairsCore(copy, 0, size - 1, temp);
 }
 
 //看题解，还有树状数组的方法，暂时先不看

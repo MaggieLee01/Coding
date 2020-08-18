@@ -10,7 +10,7 @@ using std::max;
 using std::min;
 
 //已经排好序是关键，自己思路coding
-vector<vector<int>> intervalIntersection(vector<vector<int>>& A, vector<vector<int>>& B) 
+vector<vector<int>> intervalIntersection(vector<vector<int>>& A, vector<vector<int>>& B)
 {
 	vector<vector<int>> ans;
 	int i = 0, j = 0;
@@ -21,19 +21,19 @@ vector<vector<int>> intervalIntersection(vector<vector<int>>& A, vector<vector<i
 	while (i < ALength && j < BLength)
 	{
 		if (A[i][1] < B[j][0])		//无交集
-			i++; 		
+			i++;
 		else if (A[i][0] > B[j][1])	//无交集
-			j++;		
+			j++;
 		else						//有交集
 		{
 			begin = max(A[i][0], B[j][0]);
 			end = min(A[i][1], B[j][1]);
-			if (A[i][1] >= B[j][1])				
-				j++;			
-			else				
-				i++;			
+			if (A[i][1] >= B[j][1])
+				j++;
+			else
+				i++;
 			ans.push_back({ begin,end });
-		}		
+		}
 	}
 	return ans;
 }

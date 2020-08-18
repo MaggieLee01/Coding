@@ -14,7 +14,7 @@
 //dict[i][j]代表str1以i开头，str2以j开头的两个子字符串的最长公共子序列。
 //在这种情况下，写成dp形式时，应该反向遍历，先求出末尾处的LCS
 //也可定义dict[i][j]代表str1以i结束，str2以j结束的两个子字符串的最长公共子序列，此时的dp遍历应为正序
-int ConsultDict(const char* str1, const char* str2, std::vector<std::vector<int> >& dict,int I1,int I2)
+int ConsultDict(const char* str1, const char* str2, std::vector<std::vector<int> >& dict, int I1, int I2)
 {
 	if (dict[I1][I2] == 0)
 	{
@@ -40,11 +40,11 @@ int ConsultDict(const char* str1, const char* str2, std::vector<std::vector<int>
 					int n = ConsultDict(str1, str2, dict, i + 1, j);
 					dict[i][j] = m > n ? m : n;
 				}
-					
+
 			}
 		}
 	}
-	return dict[I1][I2];	
+	return dict[I1][I2];
 }
 int LengthOfLCS(const char* str1, const char* str2)
 {
@@ -53,10 +53,10 @@ int LengthOfLCS(const char* str1, const char* str2)
 	int str1Length = strlen(str1);
 	int str2Length = strlen(str2);
 	int max = 0;
-	
+
 	std::vector<std::vector<int> > dict(str1Length + 1, std::vector<int>(str2Length + 1, 0));
 
-	max= ConsultDict(str1, str2, dict, 0, 0);
+	max = ConsultDict(str1, str2, dict, 0, 0);
 	return max;
 
 	/*ConsultDict(str1, str2, dict, 0, 0);*/

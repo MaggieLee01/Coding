@@ -22,9 +22,9 @@
 using std::min;
 using std::vector;
 //借鉴之前取模模拟环形数组的方法尝试
-vector<int> distributeCandies(int candies, int num_people) 
-{	
-	vector<int> ans(num_people, 0);	
+vector<int> distributeCandies(int candies, int num_people)
+{
+	vector<int> ans(num_people, 0);
 	int i = 0, need = 0;
 	while (candies > 0)
 	{

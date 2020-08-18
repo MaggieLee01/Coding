@@ -8,8 +8,8 @@
 
 	https://leetcode-cn.com/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof */
 
-//困难等级的题目，简单暴力的排序不行，想到了堆相关的操作，但是不了解二叉堆，不太会用标准库里面的函数，因此看了labuladong的文章，之前欠的文章
-//https://mp.weixin.qq.com/s/o7tdyLiYm668dpUWd-x7Lg 2019-07-30 图文详解二叉堆，实现优先级队列 
+	//困难等级的题目，简单暴力的排序不行，想到了堆相关的操作，但是不了解二叉堆，不太会用标准库里面的函数，因此看了labuladong的文章，之前欠的文章
+	//https://mp.weixin.qq.com/s/o7tdyLiYm668dpUWd-x7Lg 2019-07-30 图文详解二叉堆，实现优先级队列 
 
 
 #include<vector>
@@ -29,7 +29,7 @@ private:
 	priority_queue<int, vector<int>, greater<int> > min;//greater的头文件为function
 public:
 	MedianFinder() {}
-	void addNum(int num) 
+	void addNum(int num)
 	{
 		//右边元素大于或者等于左边元素，
 		min.push(num);
@@ -41,7 +41,7 @@ public:
 			max.pop();
 		}
 	}
-	double findMedian() 
+	double findMedian()
 	{
 		if (min.size() == max.size())
 			return (max.top() + min.top()) / 2.0;
@@ -51,14 +51,14 @@ public:
 };
 
 //利用堆排序库函数实现堆，剑指offer
-class MedianFinder01 
+class MedianFinder01
 {
 private:
 	vector<int> max;
 	vector<int> min;
 public:
 	MedianFinder01() {}
-	void addNum(int num) 
+	void addNum(int num)
 	{
 		if (((max.size() + min.size()) & 01) == 0)//第奇数个元素插在右边min堆，==高于 &，优先级又出错
 		{
@@ -74,11 +74,11 @@ public:
 
 			}
 			min.push_back(num);
-			push_heap(min.begin(), min.end(), greater<int>() );//注意此处需要加（）和最优队列的格式不需要加（） 不一样
+			push_heap(min.begin(), min.end(), greater<int>());//注意此处需要加（）和最优队列的格式不需要加（） 不一样
 		}
 		else
 		{
-			if ( (min.size() && min[0]) < num)
+			if ((min.size() && min[0]) < num)
 			{
 				min.push_back(num);
 				push_heap(min.begin(), min.end(), greater<int>());
@@ -93,7 +93,7 @@ public:
 		}
 	}
 
-	double findMedian() 
+	double findMedian()
 	{
 		int size = max.size() + min.size();
 		if (size == 0) return -1;

@@ -40,7 +40,7 @@ template <typename T> T CQueue<T>::deleteHead(void)
 			//T temp = stack1.top();
 			stack1.pop();
 			stack2.push(temp);
-		}		
+		}
 	}
 	//此处添加异常检测
 	/*if (stack2.size() > 0)

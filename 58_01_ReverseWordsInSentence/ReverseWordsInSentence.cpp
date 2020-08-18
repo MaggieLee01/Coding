@@ -95,7 +95,7 @@ string reverseWords04(string s)//复杂一点的写法
 	istringstream ss(s);
 	string buf;
 	vector<string> token;
-	while (ss >> buf)	
+	while (ss >> buf)
 		token.push_back(buf);
 	string ans;
 	for (int i = token.size() - 1; i >= 0; i--)

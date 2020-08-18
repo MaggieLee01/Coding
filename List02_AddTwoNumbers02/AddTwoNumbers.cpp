@@ -1,21 +1,21 @@
 /*	给你两个 非空 链表来代表两个非负整数。数字最高位位于链表开始位置。它们的每个节点只存储一位数字。将这两数相加会返回一个新的链表。
 	你可以假设除了数字 0 之外，这两个数字都不会以零开头。
-	
+
 	输入：(7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
 	输出：7 -> 8 -> 0 -> 7
 	进阶：如果输入链表不能修改该如何处理？换句话说，你不能对列表中的节点进行翻转。
 	https://leetcode-cn.com/problems/add-two-numbers-ii */
 
-//在上一题的基础上增加了倒序
-//逆序处理，似乎一般都会用到栈，压入栈就能倒序处理了
-//或者补齐链表，然后递归做加法，用了函数栈
-//递归思路很妙，但是补零感觉比较浪费空间，尤其是当一个很长的数和一个很短的数相加时。 可以在递归内判断是否对齐了。
-//https://leetcode-cn.com/problems/add-two-numbers-ii/solution/c-dui-qi-lian-biao-zhan-2chong-jie-fa-by-chuang-bi/
-//或者压入数组，从末尾开始
+	//在上一题的基础上增加了倒序
+	//逆序处理，似乎一般都会用到栈，压入栈就能倒序处理了
+	//或者补齐链表，然后递归做加法，用了函数栈
+	//递归思路很妙，但是补零感觉比较浪费空间，尤其是当一个很长的数和一个很短的数相加时。 可以在递归内判断是否对齐了。
+	//https://leetcode-cn.com/problems/add-two-numbers-ii/solution/c-dui-qi-lian-biao-zhan-2chong-jie-fa-by-chuang-bi/
+	//或者压入数组，从末尾开始
 
 #include<stack>
 using namespace std;
-struct ListNode 
+struct ListNode
 {
 	int val;
 	ListNode *next;
@@ -49,7 +49,7 @@ ListNode* addTwoNumbers01(ListNode* l1, ListNode* l2)
 			n1 = num1.top();
 			num1.pop();
 		}
-		if (num2.empty()) 
+		if (num2.empty())
 			n2 = 0;
 		else
 		{

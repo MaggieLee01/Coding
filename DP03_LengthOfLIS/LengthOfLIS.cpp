@@ -38,7 +38,7 @@ int LengthOfLIS_dp(std::vector<int> num)
 		auto res = max_element(LISLength.begin(), LISLength.end());
 		return *res;
 	}
-	return 0;	
+	return 0;
 }
 
 //********************************看答案的扑克牌思路**********************************
@@ -50,17 +50,17 @@ int LengthOfLIS_dp(std::vector<int> num)
 
 //没看二分框架时的写法，应该正确，但是不够有条理
 int LengthOfLIS_Binary01(std::vector<int> num)
-{																  
+{
 	if (num.size() > 0)
-	{   
+	{
 		//完全可以设置长度确定的数组，二分法的时候自动减半
 		//我目前的设计，数组大小自动增长，有数据时才压入，比较麻烦
-		std::vector<int> poker;		
+		std::vector<int> poker;
 		poker.push_back(num[0]);
 		for (int i = 1; i < num.size(); i++)
 		{
 			//较小数据时优先放在第一列
-			if (poker[0] >= num[i])			
+			if (poker[0] >= num[i])
 				poker[0] = num[i];
 			else
 			{
@@ -70,7 +70,7 @@ int LengthOfLIS_Binary01(std::vector<int> num)
 				int right = length - 1;
 				while (right >= left)
 				{
-					int mid =( (right - left) >> 1 ) + left;
+					int mid = ((right - left) >> 1) + left;
 					if (left == right)
 					{
 						poker.push_back(num[i]);
@@ -80,11 +80,11 @@ int LengthOfLIS_Binary01(std::vector<int> num)
 					if (poker[mid] < num[i] && num[i] < poker[mid + 1])//连写不行 哈哈
 					{
 						poker[mid + 1] = num[i]; break;
-					}						
+					}
 					else if (poker[mid] == num[i] && num[i] < poker[mid + 1])
 					{
 						poker[mid] = num[i]; break;
-					}						
+					}
 					else if (poker[mid] > num[i])
 						right = mid;
 					else
@@ -141,7 +141,7 @@ int LengthOfLIS_Binary03(std::vector<int> num)
 		if (top[0] >= num[i])
 			top[0] = num[i];
 		else	//二分法开始找放置的位置
-		{			
+		{
 			int left = 0;
 			int right = piles - 1;//数组首位序列为0
 			while (left <= right)
@@ -150,7 +150,7 @@ int LengthOfLIS_Binary03(std::vector<int> num)
 				if (mid == piles - 1) break;
 				//相同时该放在相同数字的堆 而不是下一堆；不相同时应该放在下一堆
 				if (top[mid] == num[i] && num[i] < top[mid + 1])
-				{					
+				{
 					top[mid] = num[i];
 					break;
 				}
@@ -173,7 +173,7 @@ int LengthOfLIS_Binary03(std::vector<int> num)
 			}
 		}
 	}
-	return piles;	
+	return piles;
 }
 /******************************************************************************************/
 //20200314LeetCode每日一题网页版完成，运用标准库函数 和 手写二分法 两种方法，比之前熟悉一些了
@@ -207,7 +207,7 @@ int LengthOfLIS_Binary0314_self(std::vector<int> num)
 		dict[index] = num[i];
 		if (index >= ans)ans++;
 	}
-	return ans;	
+	return ans;
 }
 int lower_bound(vector<int>& num, int begin, int end, int target) //二分法应该熟练了吧
 {
@@ -272,7 +272,7 @@ int main(void)
 	Test02("Test1", nums, 5);
 	Test03("Test1", nums, 5);
 
-	nums = {2, 6,3,5,3,2,4};
+	nums = { 2, 6,3,5,3,2,4 };
 	Testdp("Test2", nums, 3);
 	Test01("Test2", nums, 3);
 	Test02("Test2", nums, 3);

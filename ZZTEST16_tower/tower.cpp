@@ -18,16 +18,16 @@ bool isOk(vector<int> num, int k)
 int move(vector<int> h, int k)
 {
 	sort(h.begin(), h.end());
-	if (isOk(h, k)) 
+	if (isOk(h, k))
 		return 0;
-	
+
 	h[0]++;
-	int left = move(h, k)+1;
+	int left = move(h, k) + 1;
 	h[0]--;
 	h[h.size() - 1]--;
-	int right = move(h, k)+1;
+	int right = move(h, k) + 1;
 	h[h.size() - 1]++;
-	return min(left, right);	
+	return min(left, right);
 }
 int main(void)
 {
@@ -41,5 +41,5 @@ int main(void)
 	vector<int> h = { 1,2,2,4,2,3 };
 	int ans = move(h, 5);
 	cout << ans << endl;
-	return 0;	
+	return 0;
 }

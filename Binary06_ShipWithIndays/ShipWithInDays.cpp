@@ -49,7 +49,7 @@ bool CanFinish(vector<int>&weight, int D, int load)
 	return false;
 }
 
-int shipWithinDays(vector<int>& weights, int D) 
+int shipWithinDays(vector<int>& weights, int D)
 {
 	int Length = weights.size();
 	if (Length == 0) return 0;

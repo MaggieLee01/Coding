@@ -25,12 +25,12 @@ int Rob_Traversal(vector<int> nums, int n)
 	if (n >= nums.size()) return 0;
 	//分别表示 抢劫第一家 与 不抢劫第一家
 	int ans = max(nums[n] + Rob_Traversal(nums, n + 2),
-				Rob_Traversal(nums, n + 1)	);
+		Rob_Traversal(nums, n + 1));
 	return ans;
 }
 int Rob_recursively(vector<int> nums)
 {
-	return Rob_Traversal(nums,0);
+	return Rob_Traversal(nums, 0);
 }
 
 //改用备忘录形式
@@ -45,7 +45,7 @@ int ConsultDict(vector<int> nums, int n, vector<int> & Dict)
 
 	if (Dict[n] != 0) return Dict[n];
 	Dict[n] = max(nums[n] + ConsultDict(nums, n + 2, Dict),
-				ConsultDict(nums, n + 1, Dict) );
+		ConsultDict(nums, n + 1, Dict));
 	return Dict[n];
 }
 int Rob_Dict(vector<int> nums)
@@ -87,9 +87,9 @@ int Rob_dp_Dimension(vector<int> nums)
 	int Length = nums.size();
 	if (Length == 0) return 0;//为空的情况不要忘记
 	if (Length == 1) return nums[0];//此处相当于base case 的特殊情况
-	if (Length == 2) return max(nums[0],nums[1]);//由于降维，此处无法进入for循环
+	if (Length == 2) return max(nums[0], nums[1]);//由于降维，此处无法进入for循环
 
-	int first = nums[0];	
+	int first = nums[0];
 	int second = max(nums[0], nums[1]);
 	int ans = 0;
 	for (int i = 2; i < Length; i++)
@@ -102,7 +102,7 @@ int Rob_dp_Dimension(vector<int> nums)
 }
 //看答案的dp形式，倒着遍历，前两个初始化为0，不用在前面增加那么多的判断条件
 int Rob_dp_Dimension_answer(vector<int> nums)
-{	
+{
 	int Length = nums.size();
 	//LeetCode中文网 能判断 -1 < 0
 	//已测试，VS也能判断 -1 < 0

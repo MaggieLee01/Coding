@@ -16,7 +16,7 @@ using std::map;
 using std::stack;
 using std::vector;
 
-vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) 
+vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2)
 {
 	stack<int> NextGreater;//命名规则 是不是 要体现栈 map
 	unordered_map<int, int> GreaterMap;
@@ -27,9 +27,9 @@ vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2)
 			NextGreater.pop();
 		if (NextGreater.empty())
 			GreaterMap.emplace(nums2[i], -1);
-		else		
+		else
 			GreaterMap.emplace(nums2[i], nums2[NextGreater.top()]);
-		NextGreater.push(i);			
+		NextGreater.push(i);
 	}
 	/*for (auto num : nums1)//这样子无法改变数组元素的内容
 	{
@@ -55,8 +55,8 @@ vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2)
 vector<int> nextGreaterElement_answer(vector<int>& nums1, vector<int>& nums2)
 {
 	stack<int> NextGreater;
-	unordered_map<int, int> GreaterMap;	
-	for (int value : nums1)	
+	unordered_map<int, int> GreaterMap;
+	for (int value : nums1)
 		GreaterMap[value] = -1;  //map可以这样子插入元素，调试的时候map每插入一个键，都会调到主函数函数调用的下一行，不要误以为函数结束了
 	int nums2Length = nums2.size();
 	for (int i = nums2Length - 1; i >= 0; i--)
@@ -66,10 +66,10 @@ vector<int> nextGreaterElement_answer(vector<int>& nums1, vector<int>& nums2)
 		if (NextGreater.size())	//栈为空时即为初始化的-1，省略了为空的判断		
 			GreaterMap[nums2[i]] = NextGreater.top();
 		NextGreater.push(nums2[i]);
-	}	
+	}
 	int nums1Length = nums1.size();
-	for (int i = 0; i < nums1Length; i++)				
-		nums1[i] = GreaterMap[nums1[i] ];	
+	for (int i = 0; i < nums1Length; i++)
+		nums1[i] = GreaterMap[nums1[i]];
 	return nums1;
 }
 int main(void)

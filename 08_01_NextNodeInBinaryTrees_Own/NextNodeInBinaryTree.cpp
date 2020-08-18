@@ -11,7 +11,7 @@
 //根据思路，独立coding，已通过牛客网的测试，细节之处有待多看
 
 #include<iostream>
-struct BinaryTreeNode 
+struct BinaryTreeNode
 {
 	int				m_nValue;
 	BinaryTreeNode* m_pLeft;
@@ -47,7 +47,7 @@ BinaryTreeNode* GetNext(BinaryTreeNode* pNode)
 					pNext = pParent;
 				//该节点为父节点的右节点
 				//考虑到根节点 和 没有下一个节点的情况
-				else 
+				else
 				{
 					while (pParent != nullptr)
 					{
@@ -55,7 +55,7 @@ BinaryTreeNode* GetNext(BinaryTreeNode* pNode)
 						{
 							pNext = pParent;
 							break;
-						}							
+						}
 						pTemp = pParent;
 						pParent = pParent->m_pParent;
 					}

@@ -8,7 +8,7 @@ put(key, value) - 如果键不存在，请设置或插入值。当缓存达到其容量时，它应该在插入
 
 进阶：你是否可以在 O(1) 时间复杂度内执行两项操作？
 
-LFUCache cache = new LFUCache( 2  );// capacity (缓存容量) 
+LFUCache cache = new LFUCache( 2  );// capacity (缓存容量)
 cache.put(1, 1);
 cache.put(2, 2);
 cache.get(1);       // 返回 1
@@ -36,7 +36,7 @@ using namespace std;
 struct Node
 {
 	int val_, key_, cnt_, time_;
-	Node(int key, int val,int cnt,int time) :key_(key), val_(val), cnt_(cnt), time_(time) {}
+	Node(int key, int val, int cnt, int time) :key_(key), val_(val), cnt_(cnt), time_(time) {}
 
 	//因为set的关键字为地址，所以直接地址比较了，根本没用到内部元素的比较，题解上set里面是节点类型，不是类型指针
 	//bool operator < (const Node* pNode) const	//注意重载运算符的写法，
@@ -60,7 +60,7 @@ private:
 	set<Node*, setComp> S;//注意自定义排序算法的写法，结构体内重载（）
 
 public:
-	LFUCache01(int capacity) :cap_(capacity),time_(0)
+	LFUCache01(int capacity) :cap_(capacity), time_(0)
 	{
 		key_table.clear();
 		S.clear();
@@ -82,7 +82,7 @@ public:
 
 	void put(int key, int value)
 	{
-		if (cap_ == 0) return ;
+		if (cap_ == 0) return;
 		auto it = key_table.find(key);
 		if (it != key_table.end())//已有该元素
 		{
@@ -113,9 +113,9 @@ public:
 struct fNode
 {
 	int key_, val_, freq_;
-	fNode(int key,int val,int freq):key_(key),val_(val),freq_(freq){}
+	fNode(int key, int val, int freq) :key_(key), val_(val), freq_(freq) {}
 };
-class LFUCache 
+class LFUCache
 {
 private:
 	int cap_, minFreq_;
@@ -168,14 +168,14 @@ public:
 			minFreq_ = 1;
 		}
 		else
-		{			
+		{
 			auto it = key_table[key];
 			int freq = (*it).freq_;
 			freq_table[freq].erase(it);
 			if (freq_table[freq].empty())
 			{
 				freq_table.erase(freq);
-				if(freq == minFreq_) minFreq_++;
+				if (freq == minFreq_) minFreq_++;
 			}
 			//此时迭代器已经无效了
 			//(*it).freq_++;
@@ -198,11 +198,11 @@ int main(void)
 	cache->get(1);
 	cache->get(2);
 	cache->put(3, 3);
-	cache->put(4, 4);        
-	cache->get(3);       
-	cache->get(2);	
-	cache->get(1); 
-	cache->get(4);       
+	cache->put(4, 4);
+	cache->get(3);
+	cache->get(2);
+	cache->get(1);
+	cache->get(4);
 
 	return 0;
 }

@@ -26,9 +26,9 @@ bool exitNext(vector<vector<char>>& board, string word, int c, int r, int k, vec
 	if (k >= word.size()) return true;
 
 	int column = board.size();//列数
-	int row = board[0].size();	
-	
-	bool up = false, down = false, left = false, right = false;	
+	int row = board[0].size();
+
+	bool up = false, down = false, left = false, right = false;
 	flag[c][r] = 1;
 
 	if (c < column - 1 && board[c + 1][r] == word[k])
@@ -42,7 +42,7 @@ bool exitNext(vector<vector<char>>& board, string word, int c, int r, int k, vec
 
 	bool ans = up || down || right || left;
 	flag[c][r] = ans;
-	return ans;	
+	return ans;
 }
 //看了书本答案以及题解，此子函数可以判断[c][r]处的值相等后想四周扩散，可以精简后面四个方向判断的代码
 //我写的，减少了压入函数栈的次数，代码不够精简判断是否相等的次数一样
@@ -52,9 +52,9 @@ bool exitNext_answer(vector<vector<char>>& board, string word, int c, int r, int
 	if (k >= word.size()) return true;//此种方法不同于上面的细节，一定要在判断标准之前判断，防止board = {{'a'}}; word = "a";一个元素的样例
 	int column = board.size();//列数
 	int row = board[0].size();
-	if (c >= column || c < 0 || r >= row || r < 0) return false;	
-	if (flag[c][r] == 1 || board[c][r] != word[k]) return false;	
-	
+	if (c >= column || c < 0 || r >= row || r < 0) return false;
+	if (flag[c][r] == 1 || board[c][r] != word[k]) return false;
+
 	flag[c][r] = 1;
 	bool down = exitNext_answer(board, word, c + 1, r, k + 1, flag);
 	bool right = exitNext_answer(board, word, c, r + 1, k + 1, flag);
@@ -100,7 +100,7 @@ bool exist(vector<vector<char>>& board, string word) {
 }
 int main(void)
 {
-	vector<vector<char>> board = {	{'A','B','C','E'},
+	vector<vector<char>> board = {  {'A','B','C','E'},
 									{'S','F','C','S'},
 									{'A','D','E','E'} };
 	string word = "ABCCED";

@@ -66,7 +66,7 @@ int maxDepth_stack(TreeNode* root)
 		else if (topNode->right != nullptr && topNode->right != lastVisited)
 			s.push(topNode->right);
 		else
-		{  
+		{
 			lastVisited = topNode;
 			s.pop();
 		}
@@ -75,25 +75,25 @@ int maxDepth_stack(TreeNode* root)
 //思考。是不是可以利用上面那一套模板完成前中后的非递归遍历呢
 void PrintPreOrder(TreeNode* root)
 {
-	if (root == nullptr)  return ;
+	if (root == nullptr)  return;
 	TreeNode* lastVisited = root;
 	stack<TreeNode *> s;
 	s.push(root);
 	std::cout << root->val << ' ';
 	while (s.size())//经验，while循环里面套if，或者if里面套while，然后遍历。尽量不要while 嵌套while
-	{		
+	{
 		TreeNode *topNode = s.top();
 		if (topNode->left != nullptr && topNode->left != lastVisited && topNode->right != lastVisited)
 		{
 			s.push(topNode->left);
 			std::cout << topNode->left->val << ' ';
 		}
-			
+
 		else if (topNode->right != nullptr && topNode->right != lastVisited)
 		{
 			s.push(topNode->right);
 			std::cout << topNode->right->val << ' ';
-		}			
+		}
 		else
 		{
 			lastVisited = topNode;
@@ -115,7 +115,7 @@ void PrintPostOrder(TreeNode* root)
 		if (topNode->left != nullptr && topNode->left != lastVisited && topNode->right != lastVisited)
 			s.push(topNode->left);
 		else if (topNode->right != nullptr && topNode->right != lastVisited)
-			s.push(topNode->right);		
+			s.push(topNode->right);
 		else
 		{
 			lastVisited = topNode;
@@ -183,13 +183,13 @@ void PrintPostOrder_zuo(TreeNode* root)
 		if (topNode->left != nullptr)
 			s.push(topNode->left);
 		if (topNode->right != nullptr)
-			s.push(topNode->right);		
+			s.push(topNode->right);
 	}
 	while (s2.size())
 	{
 		std::cout << s2.top()->val << ' ';
 		s2.pop();
-	}	
+	}
 	std::cout << endl;
 }
 
@@ -205,7 +205,7 @@ void PrintInOrder_zuo(TreeNode* root)
 			root = root->left;
 		}
 		else
-		{ 
+		{
 			root = s.top();
 			s.pop();
 			std::cout << root->val << ' ';
@@ -237,12 +237,12 @@ int main(void)
 	p2->right = p5;
 	p3->left = p6;
 	p3->right = p7;
-	
+
 	PrintInOrder(p1);
 	PrintInOrder_zuo(p1);
 
 	PrintPostOrder(p1);
 	PrintPostOrder_zuo(p1);
-	
+
 	return 0;
 }

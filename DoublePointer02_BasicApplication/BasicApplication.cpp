@@ -12,7 +12,7 @@ struct ListNode {
 
 //给定一个链表，判断链表中是否有环。
 // https://leetcode-cn.com/problems/linked-list-cycle LeetCode 141
-bool hasCycle(ListNode *head) 
+bool hasCycle(ListNode *head)
 {
 	if (head == nullptr) return false;
 	ListNode* fast = head;
@@ -35,7 +35,7 @@ ListNode* DetectCycle(ListNode* head)
 	ListNode* fast = head;
 	ListNode* low = head;
 	while (fast != nullptr && fast->next != nullptr)
-	{	
+	{
 		fast = fast->next->next;
 		low = low->next;
 		if (fast == low)//相遇点不是环的起始点，需要再重新走一遍，找环的起点还不是太熟悉呀
@@ -74,7 +74,8 @@ ListNode* middleNode(ListNode* head)
 		pFast = pFast->next->next;
 		pLow = pLow->next;
 	}
-	return pLow->next;}
+	return pLow->next;
+}
 
 
 //寻找链表的倒数第 k 个元素
@@ -82,7 +83,7 @@ ListNode* middleNode(ListNode* head)
 //例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。
 //示例：给定一个链表 : 1->2->3->4->5, 和 k = 2.	返回链表 4->5.
 // https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof
-ListNode* getKthFromEnd(ListNode* head, int k) 
+ListNode* getKthFromEnd(ListNode* head, int k)
 {
 	if (head == nullptr) return nullptr;
 	int i = 0;
@@ -114,7 +115,7 @@ vector<int> twoSum(vector<int>& numbers, int target)
 	//int Length = numbers.size();如果多次使用length 则可以定义一个变量，此处没必要
 	/*if (Length < 2) return ans;*/
 
-	int left = 0, right = numbers.size() - 1; 
+	int left = 0, right = numbers.size() - 1;
 	while (left < right)
 	{
 		int sum = numbers[left] + numbers[right];
@@ -142,7 +143,7 @@ int main(void)
 	ListNode *p4 = new ListNode(4);
 	ListNode *p5 = new ListNode(26);
 	ListNode *p6 = new ListNode(5);
-	ListNode *p7 = new ListNode(35);	
+	ListNode *p7 = new ListNode(35);
 	ListNode *p8 = new ListNode(33);
 	ListNode *p9 = new ListNode(-7);
 	ListNode *p10 = new ListNode(-16);

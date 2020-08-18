@@ -25,7 +25,7 @@ ListNode* removeNthFromEnd(ListNode* head, int n)
 		fast = fast->next;
 	}
 	//if (low->next != nullptr)//若n=1，low指向倒数第二个，所以无需判断low->next
-		low->next = low->next->next;
+	low->next = low->next->next;
 	return head;
 }
 

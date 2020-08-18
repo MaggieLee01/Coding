@@ -32,12 +32,12 @@ int main(void)
 			if (move % 2 == 1) res = false;
 			else res = true;
 		}
-		else 
+		else
 		{
 			res = false;
 
 		}
-		
+
 		if (res == false) ans.push_back("man");
 		if (res == true) ans.push_back("woman");
 	}

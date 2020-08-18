@@ -11,7 +11,7 @@ struct TreeNode
 	int val;
 	TreeNode* left;
 	TreeNode* right;
-	TreeNode(int m): val(m),right(nullptr),left(nullptr){}
+	TreeNode(int m) : val(m), right(nullptr), left(nullptr) {}
 };
 
 //void PrintPreOrder(TreeNode* root)
@@ -92,12 +92,12 @@ vector<int> inorderTraversal(TreeNode* root)
 	vector<int> vec;
 	stack<TreeNode*> stk;
 	while (stk.size() || root != nullptr)
-	{	
+	{
 		if (root != nullptr)
 		{
 			stk.push(root);
 			root = root->left;
-		}		
+		}
 		else
 		{
 			TreeNode *top = stk.top();
@@ -160,7 +160,7 @@ vector<int> preorderTraversal_1(TreeNode* root)
 			stk.push(nullptr);
 		}
 		else
-		{	
+		{
 			//已弹出的为空指针，证明现在栈顶的节点为已被访问过
 			vec.push_back(stk.top()->val);
 			stk.pop();
@@ -212,7 +212,7 @@ bool helper(TreeNode* root, int lower, int upper)
 	if (root->val <= lower || root->val >= upper) return false;
 	return helper(root->left, lower, root->val) && helper(root->right, root->val, upper);
 }
-bool isValidBST(TreeNode* root) 
+bool isValidBST(TreeNode* root)
 {
 	return helper(root, LONG_MIN, LONG_MAX);
 }
@@ -234,7 +234,7 @@ bool isValidBST01(TreeNode* root)
 			//因为每个节点被遍历两次，第二次压入
 			stk.push(top);
 			stk.push(nullptr);
-			if (top->left != nullptr)  stk.push(top->left);	
+			if (top->left != nullptr)  stk.push(top->left);
 		}
 		else
 		{
@@ -247,18 +247,21 @@ bool isValidBST01(TreeNode* root)
 	return true;
 }
 
+
 //判断平衡性
 int helphigh(TreeNode* root)
 {
 	if (root == nullptr) return 0;
-	if (helphigh(root->left) == -1) return -1;
-	if (helphigh(root->right) == -1) return -1;
-	if (abs(helphigh(root->left) - helphigh(root->right)) <= 1)
-		return max(helphigh(root->left), helphigh(root->right)) + 1;
+	int left = helphigh(root->left);
+	if (left == -1) return -1;
+	int right = helphigh(root->right);
+	if (right == -1) return -1;
+	if (abs(left - right) <= 1)
+		return max(left, right) + 1;
 	else
 		return -1;
 }
-bool isBalanced(TreeNode* root) 
+bool isBalanced(TreeNode* root)
 {
 	return helphigh(root) != -1;
 }
@@ -269,11 +272,11 @@ bool isBalanced(TreeNode* root)
 
 
 //翻转链表
-struct ListNode 
+struct ListNode
 {
 	int val;
 	ListNode* next;
-	ListNode(int m):val(m),next(nullptr){}
+	ListNode(int m) :val(m), next(nullptr) {}
 };
 ListNode*  rev(ListNode* node)
 {
@@ -360,6 +363,6 @@ int main(void)
 	ListNode* p1 = new ListNode(1);
 	p1->next = new ListNode(2);
 	p1->next->next = new ListNode(3);
-	ListNode *p4 =  rev(p1);
+	ListNode *p4 = rev(p1);
 	return 0;
 }

@@ -1,5 +1,5 @@
 /*给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
-输入: "abcabcbb"；输出: 3 
+输入: "abcabcbb"；输出: 3
 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
 
 输入: "bbbbb"；输出: 1
@@ -43,18 +43,18 @@ int lengthOfLongestSubstring(string s)
 	int ans = 0, right = 0, left = 0;
 	int sLength = s.size();
 	for (right = 0; right < sLength; right++)
-	{				
+	{
 		//如果right处字符已经出现过，则不断左移left缩小窗口，找到重复值。
 		//if (windows.count(s[right]) != 0)  key的对应值为0 的情况下，count依然为1
 		//if (windows.count(s[right]) != 0 && windows[s[right]] == 1)//确保在窗口内出现重复字符
 		if (windows[s[right]] == 1)
-		{	
+		{
 			ans = max(ans, right - left);
 			while (s[left] != s[right])
 			{
 				windows[s[left]]--;
 				left++;
-			}	
+			}
 			windows[s[left]]--;
 			left++;
 		}

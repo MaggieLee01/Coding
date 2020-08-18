@@ -30,7 +30,7 @@ long double GetPower(double base, long int exponent)//-2147483648取绝对值后
 		ans *= base;
 	return ans;
 }
-double myPow(double x, int n) 
+double myPow(double x, int n)
 {
 	if (x == 0) return 0;
 	if (n == 0) return 1;
@@ -69,7 +69,7 @@ bool equal(double m, double n)
 {
 	if ((m - n) > -0.000000000001 && (m - n) < 0.000000000001)
 		return true;
-	else 
+	else
 		return false;
 }
 double power_answer(double base,int exponent)
@@ -116,4 +116,3 @@ int main(void)
 	ans = power_answer(a, b);
 	return 0;
 }
-	

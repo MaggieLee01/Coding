@@ -79,23 +79,23 @@ int main()
 	int h;
 	cin>>h;  */
 
-/*	while(1)
-	{
-		int t;
-		cin>>t;
-		arr.push_back(t);
-		sum+=t;
-		maxk=max(maxk,t);//最大进食速度
-		if(cin.get()=='\n')
-			break;
-	}  */
+	/*	while(1)
+		{
+			int t;
+			cin>>t;
+			arr.push_back(t);
+			sum+=t;
+			maxk=max(maxk,t);//最大进食速度
+			if(cin.get()=='\n')
+				break;
+		}  */
 
-/*	string line; 
-	getline(cin, line);
-	istringstream iss(line);
-	while(iss >> tmp)  //tmp为int变量
-	{
-		arr.push_back(tmp);
-		mmax = max(mmax, tmp);
-		sum += tmp;
-	}  */
+		/*	string line;
+			getline(cin, line);
+			istringstream iss(line);
+			while(iss >> tmp)  //tmp为int变量
+			{
+				arr.push_back(tmp);
+				mmax = max(mmax, tmp);
+				sum += tmp;
+			}  */

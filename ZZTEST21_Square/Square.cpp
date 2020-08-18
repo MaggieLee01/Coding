@@ -7,7 +7,7 @@ int main(void)
 {
 	int num = 0;
 	cin >> num;
-	vector<string>ans(num,"");
+	vector<string>ans(num, "");
 	for (int i = 0; i < num; i++)
 	{
 		int cnt = 0;
@@ -18,7 +18,7 @@ int main(void)
 		{
 			cin >> Len[j];
 			sum += Len[j];
-		}		
+		}
 		if (sum % 4 != 0)
 		{
 			ans[i] = "NO";
@@ -33,9 +33,9 @@ int main(void)
 		int size = 0;//成功的根数
 		for (int k = cnt - 1; k >= 0 && flag == 0; k--)
 		{
-			if (Len[k] == 0) 
+			if (Len[k] == 0)
 				continue;
-			if (Len[k] > average)			
+			if (Len[k] > average)
 				flag = 1;//不成功标志
 			else if (temp - Len[k] >= 0)
 			{
@@ -61,7 +61,7 @@ int main(void)
 				temp = average;
 			}
 			if (size == 3) break;
-		}		
+		}
 		if (size == 3) ans[i] = "YES";
 		else ans[i] = "NO";
 	}

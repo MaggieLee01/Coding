@@ -111,7 +111,7 @@ int coinDict(std::vector<int>coins, int amount, std::vector<int> & dict)
 {
 	if (dict[amount] == INT_MAX && amount > 0)
 	{
-  		for (int coin : coins)
+		for (int coin : coins)
 		{
 			if (amount - coin < 0) continue;
 			int n = coinDict(coins, amount - coin, dict);
@@ -132,7 +132,7 @@ int coinChange_recursively_dict(std::vector<int> coins, int amount)
 		int subProb = coinDict(coins, amount, dict);
 		minCoin = (subProb == INT_MAX ? -1 : subProb);
 	}
-	return minCoin;	
+	return minCoin;
 }
 
 
@@ -148,7 +148,7 @@ int coinChange_dp(std::vector<int> coins, int amount)
 			if (i - coin < 0) continue;
 			dict[i] = (dict[i] < (1 + dict[i - coin]) ? dict[i] : (1 + dict[i - coin]));
 		}
-	}	
+	}
 	return (dict[amount] == amount + 1) ? -1 : dict[amount];
 }
 int main(void)
@@ -159,7 +159,7 @@ int main(void)
 	int l = coinChange_dp(coins, 11);
 	std::cout << n << ' ' << m << ' ' << l << std::endl;
 
-	coins = { 2,3,5};
+	coins = { 2,3,5 };
 	n = coinChange_recursively(coins, 11);
 	m = coinChange_recursively_dict(coins, 11);
 	l = coinChange_dp(coins, 11);

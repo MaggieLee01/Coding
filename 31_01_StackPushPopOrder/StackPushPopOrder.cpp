@@ -20,14 +20,14 @@ using std::vector;
 
 // 这个题目之前脑子里没印象了，自己的思路，双指针，按照push的顺序入栈，当遇到pop的数组时弹出
 // 细节点：pushed遍历完后不能马上返回，应该判断栈中的数据是否和popped数组中的一样
-bool validateStackSequences(vector<int>& pushed, vector<int>& popped) 
+bool validateStackSequences(vector<int>& pushed, vector<int>& popped)
 {
 	stack<int> simu;
 	int i = 0, j = 0;
 	int iLength = pushed.size();
 	int jLength = popped.size();
 	if (iLength != jLength) return false;
-	while ( i <= iLength && j < jLength)
+	while (i <= iLength && j < jLength)
 	{
 		if (simu.size() && simu.top() == popped[j])
 		{
@@ -35,13 +35,13 @@ bool validateStackSequences(vector<int>& pushed, vector<int>& popped)
 			j++;
 		}
 		else if (i < iLength)
-		{			
+		{
 			simu.push(pushed[i]);
 			i++;
 		}
-		else break;				
-	}	
-	return (i == iLength && j == jLength && simu.empty() );
+		else break;
+	}
+	return (i == iLength && j == jLength && simu.empty());
 }
 
 //看了题解，有和我方法类似的，辅助模拟栈操作,写法不一样，原来这种遇见相同的pop()出来，就叫做贪心算法

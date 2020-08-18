@@ -7,10 +7,10 @@ const string &cs = ss11;
 auto & ss = cs;
 string result = const_cast<string&>(cs);
 
-struct st 
+struct st
 {
 	int a;
-	st(int n):a(n){}
+	st(int n) :a(n) {}
 };
 
 int main()
@@ -24,7 +24,7 @@ int main()
 
 
 	//const ±äÁ¿µÄÌ½Ë÷
-	const char* cp="akgsakgsad";
+	const char* cp = "akgsakgsad";
 	//string s1 = const_cast<string>(cp);
 	//char *a = static_cast<char*>(cp);	
 	string s = static_cast<string>(cp);
@@ -33,13 +33,13 @@ int main()
 	const_cast<char *> (cp);
 
 	const int a = 3;
-	cout <<"a address "<< &a << endl;
+	cout << "a address " << &a << endl;
 	int n = a;
 	cout << "n address " << &n << endl;
 
 
 	const double b = 3.3;
-	int m = static_cast<int>(b);	
+	int m = static_cast<int>(b);
 	cout << m << endl;
 
 	const st s2(1);

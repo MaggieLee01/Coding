@@ -28,7 +28,7 @@ int main(void)
 	sort(dinner.begin(), dinner.end(), cmp);
 
 	int ans = 2147483647;
-	if (T == 0)	ans = 0;	
+	if (T == 0)	ans = 0;
 	if ((lunch[0][1] + dinner[0][1]) < T) ans = -1;
 	else
 	{
@@ -39,7 +39,7 @@ int main(void)
 			if (lunch[i][1] >= T)
 				ans = min(ans, lunch[i][0]);
 			for (int j = 0; j < n; j++)
-			{				
+			{
 				if (dinner[j][1] >= T)
 					ans = min(ans, dinner[j][0]);
 				else if ((lunch[i][1] + dinner[j][1]) >= T)
@@ -48,9 +48,9 @@ int main(void)
 					break;
 			}
 		}
-	}	
+	}
 	if (ans == 2147483647) ans = -1;
-	cout << ans << endl;	
+	cout << ans << endl;
 	return 0;
 }
 

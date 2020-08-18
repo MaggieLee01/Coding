@@ -64,7 +64,7 @@ string Palindrome(string str, int i, int j)
 	int Length = str.size();
 	while (i >= 0 && j <= Length && str[i] == str[j])
 	{
-		i--; 
+		i--;
 		j++;
 	}
 	return str.substr(i + 1, j - 1 - i);
@@ -131,18 +131,18 @@ int main(void)
 		{
 			while (ans.size() && str1.size() > ans.front().size()) ans.pop();
 			ans.push(str1);
-		}			
-		else if( str2.size() > str1.size() && (ans.empty() || str2.size() >= ans.front().size() ))
+		}
+		else if (str2.size() > str1.size() && (ans.empty() || str2.size() >= ans.front().size()))
 		{
 			while (ans.size() && str2.size() > ans.front().size()) ans.pop();
 			ans.push(str2);
 		}
-		else if (str2.size() == str1.size() && str1.size()>1 && (ans.empty() || str2.size() >= ans.front().size()))
+		else if (str2.size() == str1.size() && str1.size() > 1 && (ans.empty() || str2.size() >= ans.front().size()))
 		{
 			while (ans.size() && str2.size() > ans.front().size()) ans.pop();
 			ans.push(str2);
-			ans.push(str1);			
-		}		
+			ans.push(str1);
+		}
 	}
 	if (ans.size() == 0)
 		cout << "null" << endl;

@@ -30,7 +30,7 @@ int main(void)
 	for (int i = 0; i < n; i++)
 	{
 		cin >> x >> y >> z;
-		crub[x][y][z] = 1;		
+		crub[x][y][z] = 1;
 	}
 	int totalArea = n * 6;
 	for (int i = 0; i < 21; i++)

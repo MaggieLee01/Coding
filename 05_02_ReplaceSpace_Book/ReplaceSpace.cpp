@@ -7,7 +7,7 @@ void ReplaceBlank(char str[], int length)
 {
 	if (str == nullptr || length <= 0)//²»ÒªÍü¼ÇÅÐ¶Ïlength
 		return;
-	
+
 	int i = 0;
 	int strLength = 0;
 	int spaceLength = 0;
@@ -19,7 +19,7 @@ void ReplaceBlank(char str[], int length)
 		++strLength;
 		++i;
 	}
-		
+
 	int newLength = strLength + spaceLength + spaceLength;
 	if (length <newLength)
 		return;

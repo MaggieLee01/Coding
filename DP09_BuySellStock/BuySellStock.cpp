@@ -28,7 +28,7 @@ int maxProfit_Once01(vector<int> & prices)
 	int Length = prices.size();
 	if (Length != 0)
 	{
-		for (int buy = 0; buy < Length; buy++)		
+		for (int buy = 0; buy < Length; buy++)
 			for (int sell = buy + 1; sell < Length; sell++)
 				ans = max(prices[sell] - prices[buy], ans);
 	}
@@ -46,10 +46,10 @@ int BuySellStock_Once02(vector<int> &prices)
 		//如果不断求buy的最值，buy的初始值不能为0呀，这样子作为减数相减求利润时出错呀
 		int sell = 0;
 		for (int buy = Length - 1; buy >= 0; buy--)
-		{			
+		{
 			sell = max(prices[buy], sell);
 			ans = max(sell - prices[buy], ans);
-		}				
+		}
 	}
 	return ans;
 }
@@ -103,7 +103,7 @@ int BuySellStock_Once02(vector<int> &prices)
 /****************************************************************************************************/
 //呜呜呜 看了答案，自己想的好复杂呀！！！
 //答案上，递归的时候以完成一个交易为周期
-int Times_recursively(vector<int> prices,int index)
+int Times_recursively(vector<int> prices, int index)
 {
 	int Length = prices.size();
 	if (Length == index) return 0;
@@ -114,7 +114,7 @@ int Times_recursively(vector<int> prices,int index)
 		buy = min(buy, prices[sell]);
 		profit = max(profit, prices[sell] - buy);
 		ans = max(ans, Times_recursively(prices, sell + 1) + profit);
-	}		
+	}
 	return ans;
 }
 int BuySellStock_Times01(vector<int> prices)
@@ -126,7 +126,7 @@ int BuySellStock_Times01(vector<int> prices)
 }
 
 //备忘录方法，//求取单词利润时，两次遍历一次遍历的写法都可以，但是都超时了
-int Times_Dict(vector<int> prices, int index,int *Dict)
+int Times_Dict(vector<int> prices, int index, int *Dict)
 {
 	int Length = prices.size();
 	if (Length == index) return 0;
@@ -146,7 +146,7 @@ int BuySellStock_Times02(vector<int> prices)
 	if (Length == 0) return 0;
 	int *Dict = new int[Length + 1]();
 	int ans = Times_Dict(prices, 0, Dict);
-	delete []Dict;//注意delete数组的写法
+	delete[]Dict;//注意delete数组的写法
 	return ans;
 }
 //答案的贪心算法更省时
@@ -183,7 +183,7 @@ int kTimes_ConsultDict(vector<int> prices, int index, int k, vector <vector<int>
 }
 int BuySellStocks_KTimes(vector<int> prices, int k)
 {
-	int Length =prices.size();
+	int Length = prices.size();
 	if (Length == 0) return 0;
 	vector <vector<int> > Dict(Length + 1, vector<int>(k + 1, -1));
 	int ans = kTimes_ConsultDict(prices, 0, k, Dict);
@@ -213,7 +213,7 @@ int BuySellStock_Frozen(vector<int> prices)
 	if (Length == 0) return 0;
 	int *Dict = new int[Length + 1]();//此处初始化很重要，不然咋Dict函数中直接不为0，返回乱码
 	int ans = Frozen_Dict(prices, 0, Dict);
-	delete []Dict;
+	delete[]Dict;
 	return ans;
 }
 
@@ -228,7 +228,7 @@ int main(void)
 	prices = { 7,1,5,3,6,4 };
 	ans = BuySellStock_Once02(prices);
 	cout << ans << endl;
-	
+
 	prices = { 7,1,5,3,6,4 };
 	ans = BuySellStock_Times01(prices);
 	ans2 = BuySellStock_Times02(prices);
@@ -251,6 +251,6 @@ int main(void)
 	prices = { 70, 4, 83, 56, 94, 72, 78, 43, 2, 86, 65, 100 };
 	ans = BuySellStocks_KTimes(prices, 5);
 	cout << ans << endl;
-	
+
 	return 0;
 }

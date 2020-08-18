@@ -14,7 +14,7 @@ https://leetcode-cn.com/problems/multiply-strings */
 #include<vector>
 using namespace std;
 
-string multiply(string num1, string num2) 
+string multiply(string num1, string num2)
 {
 	int m = num1.size(), n = num2.size();
 	//×î¶àm+nÎ»

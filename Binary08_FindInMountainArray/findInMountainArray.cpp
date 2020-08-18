@@ -1,16 +1,16 @@
 /*给你一个 山脉数组 mountainArr，请你返回能够使得 mountainArr.get(index) 等于 target 最小 的下标 index 值。
-如果不存在这样的下标 index，就请返回 -1。 
+如果不存在这样的下标 index，就请返回 -1。
 
 何为山脉数组？如果数组 A 是一个山脉数组的话，那它满足如下条件：
 首先，A.length >= 3
 其次，在 0 < i < A.length - 1 条件下，存在 i 使得：
 	A[0] < A[1] < ... A[i-1] < A[i]
 	A[i] > A[i+1] > ... > A[A.length - 1]
- 
+
 
 你将 不能直接访问该山脉数组，必须通过 MountainArray 接口来获取数据：
 	MountainArray.get(k) - 会返回数组中索引为k 的元素（下标从 0 开始）
-	MountainArray.length() - 会返回该数组的长度 
+	MountainArray.length() - 会返回该数组的长度
 
 注意：
 对 MountainArray.get 发起超过 100 次调用的提交将被视为错误答案。此外，任何试图规避判题系统的解决方案都将会导致比赛资格被取消。
@@ -30,18 +30,18 @@ https://leetcode-cn.com/problems/find-in-mountain-array */
 
 #include<vector>
 using namespace std;
-class MountainArray 
+class MountainArray
 {
 public:
 	MountainArray(vector<int> n)
 	{
 		nums = n;
 	}
-	int get(int index) 
+	int get(int index)
 	{
 		return nums[index];
 	}
-	int length() 
+	int length()
 	{
 		return nums.size();
 	}
@@ -52,7 +52,7 @@ private:
 //看甜姨  weiwei大佬的题解，先找到封顶，然后两边二分法
 
 //左闭右开的搜索
-int binarySearch(int target, MountainArray &mountainArr, int l, int r,bool asc)//一个正序，一个逆序
+int binarySearch(int target, MountainArray &mountainArr, int l, int r, bool asc)//一个正序，一个逆序
 {
 	int left = l;
 	int right = r;
@@ -86,7 +86,7 @@ int findInMountainArray(int target, MountainArray &mountainArr)
 	int left = 0;
 	//找到山顶的索引时，结束条件为left=right，所以right的初值应该取得到
 	//选择插入位置的时候，可能插在最后一个元素的末尾，所以right的初值为size大小
-	int right = mountainArr.length() - 1;	
+	int right = mountainArr.length() - 1;
 	while (left < right)
 	{
 		int mid = (right - left) / 2 + left;

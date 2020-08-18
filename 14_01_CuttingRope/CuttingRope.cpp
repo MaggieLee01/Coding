@@ -25,7 +25,7 @@ int GetPower(int base, int exponent)
 		ans *= base;
 	return ans;
 }
-int cuttingRope(int n) 
+int cuttingRope(int n)
 {
 	//int ans1[6] = { 0,0,1,2,4,6 };
 	if (n < 1) return -1;
@@ -128,7 +128,7 @@ int cuttingRope_dp(int num)
 			/*int ans = max(j*dp[i - j], (i - j)*j);
 			dp[i] = max(dp[i], ans);*/
 			dp[i] = max(j*dp[i - j], dp[i]);//一定有dp[i-j]>=i-j
-		}			
+		}
 	}
 	return dp[num];
 }

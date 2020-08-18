@@ -31,7 +31,7 @@ int getDIstance(vector<vector<int>>& matrix, int row, int column, int i, int j, 
 		int x = i + dx[m], y = j + dy[m];
 		if (x >= 0 && x < row && y >= 0 && y < column)
 		{
-			dis += getDIstance(matrix, row, column, x, y, ans);			
+			dis += getDIstance(matrix, row, column, x, y, ans);
 		}
 		min1 = min(min1, dis);
 		if (min1 == 1) break; //如果不为0 ，则1已经为最小值
@@ -117,11 +117,11 @@ vector<vector<int>> updateMatrix(vector<vector<int>>& matrix)
 					if (matrix[x][y] == 1)				//0全部被压入队列了，这个时候肯定是1呀
 						ans[x][y] = ans[top[0]][top[1]] + 1;
 					/*else*/    //把每轮遍历到的节点压入队列，方便进行下一轮的扩散
-						q.push({ x,y });
+					q.push({ x,y });
 					visited[x][y] = 1;
 				}
 			}
-		}		
+		}
 		cnt++;
 	}
 	return ans;

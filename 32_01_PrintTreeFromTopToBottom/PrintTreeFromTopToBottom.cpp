@@ -7,7 +7,7 @@ struct TreeNode
 	int val;
 	TreeNode* left;
 	TreeNode* right;
-	TreeNode(int m):val(m),left(nullptr),right(nullptr){}
+	TreeNode(int m) :val(m), left(nullptr), right(nullptr) {}
 };
 
 //在寻找腐烂桔子一题，已经学会了队列完成BFS的方法，同时知道了分层的方法，打印树的前两道题目就显得很简单了

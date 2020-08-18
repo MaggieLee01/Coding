@@ -5,7 +5,7 @@
 	empty() --返回栈是否为空
 	https://leetcode-cn.com/problems/implement-stack-using-queues */
 
-//也可以一个队列实现，逐个弹出队首元素压入队尾
+	//也可以一个队列实现，逐个弹出队首元素压入队尾
 #include<queue>
 using std::queue;
 class MyStack {
@@ -17,11 +17,11 @@ public:
 	MyStack() {	}
 
 	/** Push element x onto stack. */
-	void push(int x) 
+	void push(int x)
 	{
 		while (first.size())
 		{
-			second.push( first.front() );
+			second.push(first.front());
 			first.pop();
 		}
 		first.push(x);
@@ -30,11 +30,11 @@ public:
 		{
 			first.push(second.front());
 			second.pop();
-		}		
+		}
 	}
 
 	/** Removes the element on top of the stack and returns that element. */
-	int pop() 
+	int pop()
 	{
 		int temp = first.front();
 		first.pop();
@@ -42,13 +42,13 @@ public:
 	}
 
 	/** Get the top element. */
-	int top() 
+	int top()
 	{
-		 return first.front();
+		return first.front();
 	}
 
 	/** Returns whether the stack is empty. */
-	bool empty() 
+	bool empty()
 	{
 		return (first.empty() && second.empty());
 	}

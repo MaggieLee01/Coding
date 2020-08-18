@@ -18,18 +18,18 @@ bool CanBeate(vector<int>piles, int n, int m)
 {
 	int times = 0;
 	for (auto temp : piles)
-		times += ( temp / m + (temp % m == 0 ? 0 : 1) );
+		times += (temp / m + (temp % m == 0 ? 0 : 1));
 	//return times > n ? false : true;
 	return times <= n;
 	/*for (int i = 0; i < Length; i++)
 	{
 		if (times > n) break;
 		times++;
-		if (piles[i] > m) 
+		if (piles[i] > m)
 		{
 			piles[i] = piles[i] - m;
 			i--;
-		}			
+		}
 	}
 	if (times > n) return false;
 	else  return true;*/
@@ -54,11 +54,11 @@ int MinEatingSpeed(vector<int> piles, int n)
 	if (piles.size() == 0) return 0;
 	int max = 0;
 	for (auto temp : piles)
-	{		
+	{
 		if (max < temp)	max = temp;
 	}
 	int left = 1;
-	int right = max+1;//最多吃max个//很神奇，这个地方加1 不加1 都行，二分法框架的解释貌似不能解决这个地方的问题
+	int right = max + 1;//最多吃max个//很神奇，这个地方加1 不加1 都行，二分法框架的解释貌似不能解决这个地方的问题
 	while (left < right)
 	{
 		int mid = ((right - left) >> 1) + left;

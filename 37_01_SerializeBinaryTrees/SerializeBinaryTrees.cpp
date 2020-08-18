@@ -13,7 +13,7 @@ struct TreeNode
 	TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
-string serialize(TreeNode* root) 
+string serialize(TreeNode* root)
 {
 	if (root == nullptr) return "";
 	ostringstream ostr;
@@ -37,7 +37,7 @@ string serialize(TreeNode* root)
 }
 
 // Decodes your encoded data to tree.
-TreeNode* deserialize(string data) 
+TreeNode* deserialize(string data)
 {
 	if (data.size() == 0) return nullptr;
 	istringstream input(data);			//流默认以空格分隔

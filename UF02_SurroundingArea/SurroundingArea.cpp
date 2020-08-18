@@ -83,7 +83,7 @@ public:
 	}
 };
 
-void solve(vector<vector<char>>& board) 
+void solve(vector<vector<char>>& board)
 {
 	int row = board.size();
 	if (row == 0) return;
@@ -104,7 +104,7 @@ void solve(vector<vector<char>>& board)
 	{
 		if (board[0][i] == 'O')
 			u.Conn(i, dummy);
-		if (board[row-1][i] == 'O')
+		if (board[row - 1][i] == 'O')
 			u.Conn((row - 1)*column + i, dummy);
 	}
 	int dx[4] = { 0,0,1,-1 };
@@ -137,7 +137,7 @@ void solve(vector<vector<char>>& board)
 }
 
 /*给定一个由表示变量之间关系的字符串方程组成的数组，每个字符串方程 equations[i] 的长度为 4，并采用两种不同的形式之一："a==b" 或 "a!=b"。在这里，a 和 b 是小写字母（不一定不同），表示单字母变量名。
-只有当可以将整数分配给变量名，以便满足所有给定的方程时才返回 true，否则返回 false。 
+只有当可以将整数分配给变量名，以便满足所有给定的方程时才返回 true，否则返回 false。
 
 示例 1：
 输入：["a==b","b!=a"]
@@ -188,8 +188,8 @@ bool equationsPossible(vector<string>& equations)
 
 int main(void)
 {
-	vector<vector<char>> board = 
-	{	{'X','O','X','X'},
+	vector<vector<char>> board =
+	{ {'X','O','X','X'},
 		{'O','X','O','X'},
 		{'X','O','X','O'},
 		{'O','X','O','X'},

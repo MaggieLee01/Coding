@@ -84,17 +84,17 @@ int myAtoi01(string str)
 
 		else if (ans < INT_MIN / 10 || (ans == INT_MIN / 10 && (str[i] - '0') > -(INT_MIN % 10)))
 			return INT_MIN;
-		else ans = ans * 10 + flag *(str[i] - '0'); // -18 = -10 - 8
-		
+		else ans = ans * 10 + flag * (str[i] - '0'); // -18 = -10 - 8
+
 		/*这样子的话，返回值考虑乘以-1
 		{
-            int digit = str[i] - '0';
-            if (ans > (INT_MAX - digit) / 10) //本来担心为INT_MIN，转念一想，这不正好返回INT_MIN吗？
+			int digit = str[i] - '0';
+			if (ans > (INT_MAX - digit) / 10) //本来担心为INT_MIN，转念一想，这不正好返回INT_MIN吗？
 			{
-                // 本来应该是 ans * 10 + digit > INT_MAX
-                // 但是 *10 和 + digit 都有可能越界，所有都移动到右边去就可以了。
-                return negative? INT_MIN : INT_MAX;
-            }
+				// 本来应该是 ans * 10 + digit > INT_MAX
+				// 但是 *10 和 + digit 都有可能越界，所有都移动到右边去就可以了。
+				return negative? INT_MIN : INT_MAX;
+			}
 			ans = ans * 10 + digit;
 		*/
 	}
@@ -104,7 +104,7 @@ int myAtoi01(string str)
 class Automaton
 {
 	string state = "start";
-	unordered_map<string, vector<string> > table=
+	unordered_map<string, vector<string> > table =
 	{
 		{"start", {"start", "signed", "in_number", "end"}},
 		{"signed", {"end", "end", "in_number", "end"}},
@@ -146,7 +146,7 @@ int myAtoi02(string str)
 void trimStart(string &s)
 {
 	if (!s.empty())
-		s.erase(0, s.find_first_not_of(" "));	
+		s.erase(0, s.find_first_not_of(" "));
 }
 int myAtoi04(string str)
 {

@@ -11,7 +11,7 @@ k 是一个正整数，它的值小于或等于链表的长度。
 
 https://leetcode-cn.com/problems/reverse-nodes-in-k-group */
 
-struct ListNode 
+struct ListNode
 {
 	int val;
 	ListNode *next;
@@ -19,7 +19,7 @@ struct ListNode
 };
 
 //在努力不用递归，处理的有点麻烦
-ListNode* reverseKGroup(ListNode* head, int k) 
+ListNode* reverseKGroup(ListNode* head, int k)
 {
 	if (head == nullptr || head->next == nullptr) return head;
 	ListNode* newHead = nullptr;	//新的头部
@@ -58,7 +58,7 @@ ListNode* reverseKGroup(ListNode* head, int k)
 				pPre = pC;
 				pC = pN;
 			}
-			pre = pPre;	
+			pre = pPre;
 		}
 
 		if (cnt == 0) newHead = pre;

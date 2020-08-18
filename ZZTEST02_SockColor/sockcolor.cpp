@@ -16,8 +16,8 @@
 3
 0 0 0
 输出
-3 
--1 
+3
+-1
 */
 
 //第一次做这种输入输出的，题目不难，但是处理不够熟练,浪费很多时间，之前一直在用LeetCode 不用处理输入
@@ -31,15 +31,15 @@ using namespace std;
 int main(void)
 {
 	int n = 0;
-	cin >> n;	
+	cin >> n;
 	vector<int> ans;
 
 	while (n > 0)
 	{
-		int m = 0;		
+		int m = 0;
 		cin >> m;
 
-		int temp = 0;		
+		int temp = 0;
 		//vector<int> s;
 		int max1 = 0, flag = 0;
 		while (cin >> temp)//这种已知总数的情况下，可以直接for循环

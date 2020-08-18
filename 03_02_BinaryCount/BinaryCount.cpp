@@ -65,14 +65,14 @@ int duplicate(std::vector<int>num, int length)
 	int right = num.size();
 	if (right > length)
 		return -1;
-	
+
 	while (left < right)
 	{
 		int mid = (right - left) >> 1;//分清楚左移、右移
 		right = left + mid;
 		mid = right;
 		int m = count(num, left, right);
-		
+
 		if (m > mid)
 			right = mid;
 		else if (m < mid)
@@ -96,11 +96,11 @@ int count(std::vector<int>num, int start, int end)
 	return m;
 }
 //此方法只统计大小在前一段的个数
-int duplicate(std::vector<int>num, int length) 
+int duplicate(std::vector<int>num, int length)
 {
 	int left = 1;
 	int right = num.size() - 1;
-	
+
 	while (left <= right)
 	{
 		int mid = (right - left) >> 1;

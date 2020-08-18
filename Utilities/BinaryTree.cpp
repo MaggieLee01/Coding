@@ -14,7 +14,7 @@ BinaryTreeNode* CreateBinaryTreeNode(int value)
 		pRoot->m_nValue = value;
 		pRoot->m_pLeft = nullptr;
 		pRoot->m_pRight = nullptr;
-	}   
+	}
 	return pRoot;
 }
 
@@ -34,7 +34,7 @@ void PrintTreeNode(const BinaryTreeNode* pRoot)
 {
 	if (pRoot != nullptr)
 	{
-		std::cout << "The root is  " <<pRoot->m_nValue << std::endl;
+		std::cout << "The root is  " << pRoot->m_nValue << std::endl;
 		if (pRoot->m_pLeft != nullptr)
 			std::cout << "The left child is " << pRoot->m_pLeft->m_nValue << std::endl;
 		else
@@ -66,10 +66,10 @@ void PrintTreeNode(const BinaryTreeNode* pRoot)
 	{
 		std::cout << proot->m_nvalue;
 		std::cout << proot->m_pleft << " ";
-		std::cout << proot->m_pright << " ";		
-		PrintTree(proot->m_pleft);		
+		std::cout << proot->m_pright << " ";
+		PrintTree(proot->m_pleft);
 		PrintTree(proot->m_pright);
-	}	
+	}
 }*/
 
 //打印二叉树
@@ -99,8 +99,8 @@ void DestroyTree(BinaryTreeNode** pRoot)
 		BinaryTreeNode* pLeft = (*pRoot)->m_pLeft;
 		delete *pRoot;
 		*pRoot = nullptr;
-		DestroyTree( &pRight );
-		DestroyTree( &pLeft );
+		DestroyTree(&pRight);
+		DestroyTree(&pLeft);
 	}
 }
 //二叉树遍历
@@ -111,7 +111,7 @@ void TraversalTree_Preorder_recursively(BinaryTreeNode* pRoot)
 {
 	if (pRoot != nullptr)
 	{
-		std::cout << pRoot->m_nValue<<' ';
+		std::cout << pRoot->m_nValue << ' ';
 		TraversalTree_Preorder_recursively(pRoot->m_pLeft);
 		TraversalTree_Preorder_recursively(pRoot->m_pRight);
 	}
@@ -129,7 +129,7 @@ void TraversalTree_Postorder_recursively(BinaryTreeNode* pRoot)
 {
 	if (pRoot != nullptr)
 	{
-		TraversalTree_Postorder_recursively(pRoot->m_pLeft);		
+		TraversalTree_Postorder_recursively(pRoot->m_pLeft);
 		TraversalTree_Postorder_recursively(pRoot->m_pRight);
 		std::cout << pRoot->m_nValue << ' ';
 	}
@@ -151,13 +151,13 @@ void TraversalTree_Preorder(BinaryTreeNode* pRoot)
 			pRoot = pRoot->m_pLeft;
 		}
 		else
-		{			
-			pRoot = tree.top();	
+		{
+			pRoot = tree.top();
 			tree.pop();
 			//tree.push(pRoot->m_pRight);
 			pRoot = pRoot->m_pRight;
 		}
-	}	
+	}
 }
 
 //参考前序思路，自己写中序遍历；依旧是同上相同的遍历顺序，只是打印的时机不同，当左节点为空的时候才应该打印
@@ -167,7 +167,7 @@ void TraversalTree_Inorder(BinaryTreeNode* pRoot)
 	while (pRoot != nullptr || !tree.empty())
 	{
 		if (pRoot != nullptr)
-		{			
+		{
 			tree.push(pRoot);
 			pRoot = pRoot->m_pLeft;
 		}
@@ -190,7 +190,7 @@ void TraversalTree_Postorder(BinaryTreeNode* pRoot)
 		BinaryTreeNode* m_pNode;
 		bool m_bVisited;
 	};
-	std::stack<TempNode*> StackTree;	
+	std::stack<TempNode*> StackTree;
 	BinaryTreeNode* pTreeNode = pRoot;
 	while (pTreeNode != nullptr || StackTree.empty() != 1)
 	{
@@ -207,7 +207,7 @@ void TraversalTree_Postorder(BinaryTreeNode* pRoot)
 		if (StackTree.empty() != 1)
 		{
 			TempNode* ptemp = StackTree.top();
-			
+
 			if (ptemp->m_bVisited == false)
 			{
 				pTreeNode = ptemp->m_pNode->m_pRight;
@@ -231,14 +231,14 @@ void TraversalTree_BreadthFirst(BinaryTreeNode* pRoot)
 	std::queue<BinaryTreeNode*> tree;
 	tree.push(pRoot);
 	while (pRoot != nullptr && tree.empty() != 1)
-	{	
+	{
 		pRoot = tree.front();
 		std::cout << pRoot->m_nValue << ' ';
 		tree.pop();
 		if (pRoot->m_pLeft != nullptr)
 			tree.push(pRoot->m_pLeft);
 		if (pRoot->m_pRight != nullptr)
-			tree.push(pRoot->m_pRight);		
+			tree.push(pRoot->m_pRight);
 	}
 }
 
@@ -249,7 +249,7 @@ int test(void)
 	BinaryTreeNode*p = nullptr;
 	BinaryTreeNode*p1 = CreateBinaryTreeNode(1);
 	BinaryTreeNode*p2 = CreateBinaryTreeNode(2);
-	BinaryTreeNode*p3 = CreateBinaryTreeNode(3);	
+	BinaryTreeNode*p3 = CreateBinaryTreeNode(3);
 	BinaryTreeNode*p4 = CreateBinaryTreeNode(4);
 	BinaryTreeNode*p5 = CreateBinaryTreeNode(5);
 	BinaryTreeNode*p6 = CreateBinaryTreeNode(6);

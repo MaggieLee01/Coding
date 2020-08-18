@@ -35,7 +35,7 @@ int Stock_Once01(vector<int> prices)
 	//base case
 	dp[0][0] = 0;			//没买股票没花钱
 	dp[0][1] = -prices[0];	//买了股票花了钱
-	for (int i = 1; i < Length; i++)	
+	for (int i = 1; i < Length; i++)
 	{
 		dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
 		dp[i][1] = max(dp[i - 1][1], -prices[i]);
@@ -118,7 +118,7 @@ int Stock_Frozen02(vector<int> prices)
 }
 /****************************************************************************************************/
 //有具体交易次数的限制，k有具体的数值
-int Stock_kTimes01(vector<int> prices,int k)
+int Stock_kTimes01(vector<int> prices, int k)
 {
 	int Length = prices.size();
 	if (Length <= 1) return 0;//base case需要保证有值
@@ -127,7 +127,7 @@ int Stock_kTimes01(vector<int> prices,int k)
 	//int ***dp = new int[Length][n][2];不通过
 	//vector构造函数类型
 	//std::vector<int> second(4, 100);     four ints with value 100
-	vector< vector< vector<int> > > dp(Length, vector<vector<int> >(k + 1, vector<int>(2,0)));
+	vector< vector< vector<int> > > dp(Length, vector<vector<int> >(k + 1, vector<int>(2, 0)));
 	//base case
 	for (int i = 0; i < Length; i++)
 	{
@@ -139,7 +139,7 @@ int Stock_kTimes01(vector<int> prices,int k)
 		dp[0][i][0] = 0;
 		dp[0][i][1] = -prices[0];
 	}
-	
+
 	for (int i = 1; i < Length; i++)
 	{
 		for (int j = 1; j < k + 1; j++)

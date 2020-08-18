@@ -89,9 +89,9 @@ int orangesRotting(vector<vector<int>>& grid)
 	for (int i = 0; i < row; i++)
 	{
 		for (int j = 0; j < column; j++)
-		{	
+		{
 			if (grid[i][j] == 1) fresh++;
-			if (grid[i][j] == 2) OnceRotPosition.push({i,j});			
+			if (grid[i][j] == 2) OnceRotPosition.push({ i,j });
 		}
 	}
 	if (OnceRotPosition.empty())//没腐坏的苹果
@@ -105,7 +105,7 @@ int orangesRotting(vector<vector<int>>& grid)
 		vector<int> top = OnceRotPosition.front();
 		OnceRotPosition.pop();
 		int r = top[0], c = top[1];
-		if (r == -1 && c == -1  )//每分钟扩散结束标志
+		if (r == -1 && c == -1)//每分钟扩散结束标志
 		{
 			ans++;
 			if (OnceRotPosition.empty()) break;//遍历完了没有了
@@ -117,29 +117,29 @@ int orangesRotting(vector<vector<int>>& grid)
 		{
 			grid[r + 1][c] = 2;
 			OnceRotPosition.push({ r + 1, c });
-		}						
+		}
 		if (r > 0 && grid[r - 1][c] == 1)
 		{
 			grid[r - 1][c] = 2;
 			OnceRotPosition.push({ r - 1, c });
-		}						
+		}
 		if (c < column - 1 && grid[r][c + 1] == 1)
 		{
 			grid[r][c + 1] = 2;
 			OnceRotPosition.push({ r , c + 1 });
-		}				
+		}
 		if (c > 0 && grid[r][c - 1] == 1)
 		{
 			grid[r][c - 1] = 2;
 			OnceRotPosition.push({ r , c - 1 });
-		}			
+		}
 	}
 	//在遍历一次，如果有新鲜桔子则返回-1
 	for (int i = 0; i < row; i++)
 	{
 		for (int j = 0; j < column; j++)
 		{
-			if (grid[i][j] == 1) 
+			if (grid[i][j] == 1)
 				return -1;
 		}
 	}
@@ -174,16 +174,16 @@ int orangesRotting_answer(vector<vector<int>>& grid)
 	}
 	if (fresh == 0) return 0;
 	if (OnceRotPosition.empty()) return -1;
-	
+
 	vector<int> dx = { 0,0,1,-1 };
 	vector<int> dy = { 1,-1,0,0 };
-	
+
 	int ans = 0;
 	while (OnceRotPosition.size() && fresh > 0)
 	{
 		ans++;
 		int num = OnceRotPosition.size();
-		for (int i = 0; i < num; i++){
+		for (int i = 0; i < num; i++) {
 			vector<int> top = OnceRotPosition.front();
 			OnceRotPosition.pop();
 			/*for (auto m : dx){
@@ -196,7 +196,7 @@ int orangesRotting_answer(vector<vector<int>>& grid)
 					fresh--;
 					OnceRotPosition.push({ x, y });
 				}
-			}			
+			}
 		}
 	}
 	if (fresh > 0) return -1;
@@ -210,7 +210,7 @@ int main(void)
 	grid = { {2,1,1},{0,1,1},{1,0,1} };
 	ans = orangesRotting_answer(grid);
 
-	grid = { {0,2}};
+	grid = { {0,2} };
 	ans = orangesRotting_answer(grid);
 	return 0;
 }

@@ -23,9 +23,9 @@ int trap(vector<int>& height)
 	if (Length < 3) return 0;
 	vector<int>left(Length, 0);
 	vector<int>right(Length, 0);
-	for (int i = 0; i < Length - 1; i++)	
+	for (int i = 0; i < Length - 1; i++)
 		left[i + 1] = max(left[i], height[i]);
-	
+
 	for (int i = Length - 1; i > 0; i--)
 		right[i - 1] = max(right[i], height[i]);
 
@@ -35,8 +35,8 @@ int trap(vector<int>& height)
 		int store = min(left[i], right[i]) - height[i];
 		if (store > 0)
 			sum = sum + store;
-	}		
-	return sum;	
+	}
+	return sum;
 }
 //用双指针的方法优化，时间O(n)，一次遍历，O(1)的空间
 int trap_DoublePointer(vector<int>& height)
@@ -78,16 +78,16 @@ int trap_Stack(vector<int>& height)
 	for (int i = height.size() - 1; i >= 0; i--)//从0开始遍历一样
 	{
 		/*while (s.size() && height[s.top()] < height[i])
-		{			 
+		{
 			int temp = s.top();
 			s.pop();
 			if (s.empty()) break;
 			ans += min(height[temp], height[s.top()]);
 		}*/
-		/*if (!s.empty()) 
+		/*if (!s.empty())
 			ans += height[s.top()] - height[i];*/
 
-		//看了题解，修改，没有把宽度考虑进去，自己写的时候总想着一次性把该列求出来，对于凹凸型，宽的地方和下一个弹出值有关系呀
+			//看了题解，修改，没有把宽度考虑进去，自己写的时候总想着一次性把该列求出来，对于凹凸型，宽的地方和下一个弹出值有关系呀
 		while (s.size() && height[s.top()] < height[i])
 		{
 			int temp = s.top();

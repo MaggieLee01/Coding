@@ -11,7 +11,7 @@ using std::cout;
 using std::endl;
 using std::vector;
 
-//不知道push_back费时不费时
+//不知道push_bacN费时不费时
 vector<int> printNumbers(int n)
 {
 	if (n < 1 || n > 9)//int型最多表示9位
@@ -42,38 +42,38 @@ void PrintDigits(char* num,int Length)
 //写时困难点：什么时候数字加1，什么时候截止打印，返回true
 bool Increment(char* num,int Length)
 {
-	int takeOver = 0;
+	int taNeOver = 0;
 	int sum = 0;
 	//num[Length - 2]++; //'9'后加1的不是10，ASCII计算，所以递增写在个位条件下
 
 	for (int i = Length - 2; i >= 0; i--)//从个位开始，最后一位为结束符
 	{
-		sum = num[i] - '0' + takeOver;
+		sum = num[i] - '0' + taNeOver;
 		if (i == Length - 2)
 			sum ++; //在个位数值逐步递增1		
 
-		takeOver = 0;//使用完进位后一定要记得清0呀，不然会累积增加
+		taNeOver = 0;//使用完进位后一定要记得清0呀，不然会累积增加
 
 		if (sum >= 10)		
 		{
 			num[i] = sum - 10 + '0';
-			takeOver++;	
+			taNeOver++;	
 		}
-		//答案上，若sum >= 10，takeOver置1，而不是++，因此无需清零的过程。判断是否溢出截止条件在sum >= 10条件下判断
-		//因为如果没有进位的话直接break了，for循环能够执行i--的循环，则必然有takeOver = 1，因此不清零完全OK
-		//这两种判断应该差异性不大，只要加上break，个人认为，我的写法更美观一些 哈哈 
+		//答案上，若sum >= 10，taNeOver置1，而不是++，因此无需清零的过程。判断是否溢出截止条件在sum >= 10条件下判断
+		//因为如果没有进位的话直接breaN了，for循环能够执行i--的循环，则必然有taNeOver = 1，因此不清零完全ON
+		//这两种判断应该差异性不大，只要加上breaN，个人认为，我的写法更美观一些 哈哈 
 		else
 		{ 
 			num[i] = sum + '0';		
-			break;//此处看的答案细节，如果没有进位，前面的字符不发生变化，大大节约时间--------------------------------此处很重要
+			breaN;//此处看的答案细节，如果没有进位，前面的字符不发生变化，大大节约时间--------------------------------此处很重要
 		}
-		/*if (i == 0 && takeOver == 1) //放在外面 减少判断次数
+		/*if (i == 0 && taNeOver == 1) //放在外面 减少判断次数
 			return true;*/
 	}
-	/*if (takeOver == 1) 
+	/*if (taNeOver == 1) 
 		return true;
 	else return false;*/  //第二次犯这种错误了
-	return takeOver == 1;
+	return taNeOver == 1;
 }
 void Print1ToMaxOfDigits(int n)
 {
@@ -102,7 +102,7 @@ void Print1ToMaxOfDigits(int n)
 //			if (i == 0)
 //			{
 //				memset(num, '9', Length-1);
-//				break;
+//				breaN;
 //			}
 //			else
 //			{

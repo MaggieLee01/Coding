@@ -32,16 +32,16 @@ int EditDistance_recursively(const char* str1, const char* str2)
 
 	/*for (int i = 0; i < str1Length; i++)
 	{*/
-		//if (str1[i] == str2[i])
-		if (*str1 == *str2)
-			ans = EditDistance_recursively(str1 + 1, str2 + 1);
-		else
-			//假定编辑str1变成str2，以下分别表示 插入、删除、替换。
-			ans = min( min(EditDistance_recursively(str1, str2 + 1),
-				EditDistance_recursively(str1 + 1, str2) ),
-				EditDistance_recursively(str1 + 1, str2 + 1) ) + 1;
+	//if (str1[i] == str2[i])
+	if (*str1 == *str2)
+		ans = EditDistance_recursively(str1 + 1, str2 + 1);
+	else
+		//假定编辑str1变成str2，以下分别表示 插入、删除、替换。
+		ans = min(min(EditDistance_recursively(str1, str2 + 1),
+			EditDistance_recursively(str1 + 1, str2)),
+			EditDistance_recursively(str1 + 1, str2 + 1)) + 1;
 	/*}*/
-	return ans;	 
+	return ans;
 }
 
 //备忘录的递归
@@ -61,7 +61,7 @@ int ConsultDict(const char* str1, const char* str2, vector<vector<int> >&Dict, i
 	if (str2[n] == '\0') return strlen(str1) - m;
 
 	if (Dict[m][n] != 0) return Dict[m][n];
-	
+
 
 	//此处发现了一个很严重的错误思路
 	//for的循环条件只能是一个， 应该用 && 逻辑符号连接 i j 的判断，不能用逗号表达式呀
@@ -73,21 +73,21 @@ int ConsultDict(const char* str1, const char* str2, vector<vector<int> >&Dict, i
 	//for (int i = m, j = n; i < str1Length && j < str2Length; i++, j++)
 
 	/*int str1Length = strlen(str1);
-	int str2Length = strlen(str2);	
+	int str2Length = strlen(str2);
 	for (int i = m,j=n ; i < str1Length &&  j < str2Length; i++ , j++)
 	{*/
-		/*for (int j = n; j < str2Length; )
-		{*/
-			/*if (str1[i] == str2[j])
-				Dict[i][j] = ConsultDict(str1, str2, Dict, i + 1, j + 1);
-			else
-				Dict[i][j] = min(min(ConsultDict(str1, str2, Dict, i + 1, j + 1),
-					ConsultDict(str1, str2, Dict, i, j + 1)),
-					ConsultDict(str1, str2, Dict, i + 1, j)) + 1;*/
-		/*}*/		
-	/*}*/
+	/*for (int j = n; j < str2Length; )
+	{*/
+	/*if (str1[i] == str2[j])
+		Dict[i][j] = ConsultDict(str1, str2, Dict, i + 1, j + 1);
+	else
+		Dict[i][j] = min(min(ConsultDict(str1, str2, Dict, i + 1, j + 1),
+			ConsultDict(str1, str2, Dict, i, j + 1)),
+			ConsultDict(str1, str2, Dict, i + 1, j)) + 1;*/
+			/*}*/
+		/*}*/
 
-	//写到最后发现，递归形式不需要for循环，那么备忘录形式应该也不需要for循环了，备忘录形式仅仅是递归形式减少计算次数
+		//写到最后发现，递归形式不需要for循环，那么备忘录形式应该也不需要for循环了，备忘录形式仅仅是递归形式减少计算次数
 	if (str1[m] == str2[n])
 		Dict[m][n] = ConsultDict(str1, str2, Dict, m + 1, n + 1);
 	else
@@ -119,19 +119,19 @@ int EditDistance_DP(const char* str1, const char* str2)
 	int str1Length = strlen(str1);
 	int str2Length = strlen(str2);
 	vector< vector<int> > Dict(str1Length + 1, vector<int>(str2Length + 1, 0));
-	
+
 	int i = 0, j = 0;
 	//此处相当于base case，不能忘记呀，不然的话，结尾处参与比较的都是0 
 	for (i = 0; i < str1Length; i++)
 		Dict[i][str2Length] = str1Length - i;
-	
+
 	for (j = 0; j < str2Length; j++)
 		Dict[str1Length][j] = str2Length - j;
-	
+
 	//此处为for循环的错误认识
 	//for (i = str1Length - 1, j = str2Length - 1; i >= 0, j >= 0; j--, i--)
 	//for (i = str1Length - 1, j = str2Length - 1; i >= 0 && j >= 0; j--, i--)
-	for (i = str1Length - 1; i >= 0 ; i--)
+	for (i = str1Length - 1; i >= 0; i--)
 	{
 		for (j = str2Length - 1; j >= 0; j--)
 		{
@@ -139,7 +139,7 @@ int EditDistance_DP(const char* str1, const char* str2)
 				Dict[i][j] = Dict[i + 1][j + 1];
 			else
 				Dict[i][j] = min(min(Dict[i + 1][j], Dict[i + 1][j + 1]), Dict[i + 1][j + 1]) + 1;
-		}		
+		}
 	}
 	//dp需要起始条件，下面的判断是对于i j同时循环的情况，i j双重遍历时不需要下面的情况
 	/*if (i == 0) Dict[0][0] = Dict[0][j] + j;
@@ -162,7 +162,7 @@ int EditDistance_Dimension(const char* str1, const char* str2)
 	if (str2 == nullptr || *str2 == '\0') return strlen(str1);
 	int str1Length = strlen(str1);
 	int str2Length = strlen(str2);
-	
+
 	int up = 0;
 	int down = 0;
 
@@ -176,7 +176,7 @@ int EditDistance_Dimension(const char* str1, const char* str2)
 		//相当于首字符上面的一行
 		up = Dict[0];
 		Dict[0]++;
-		
+
 		for (int j = 0; j < str2Length; j++)
 		{
 			//dict[j+1]要更新，先把以前的值保存下来
@@ -184,9 +184,9 @@ int EditDistance_Dimension(const char* str1, const char* str2)
 			//相当于第 i 处的距离存储在第i+1行
 			if (str1[i] == str2[j])
 				Dict[j + 1] = up;
-			else			
+			else
 				Dict[j + 1] = min(min(Dict[j + 1], up), Dict[j]) + 1;
-			
+
 			up = down;
 		}
 	}
@@ -213,9 +213,9 @@ int minDistance(string word1, string word2)
 		{
 			//if (word1[i] == word2[j]) dp[i + 1][j + 1] = min(min(dp[i + 1][j], dp[i][j + 1]), dp[i][j]);
 			//相等时的赋值错啦，不然无法解决zoo zo这种问题呀，相等时不改动，不相等时才思考如何变化
-			if (word1[i] == word2[j]) dp[i + 1][j + 1] =  dp[i][j];
+			if (word1[i] == word2[j]) dp[i + 1][j + 1] = dp[i][j];
 			else dp[i + 1][j + 1] = min(min(dp[i + 1][j], dp[i][j + 1]), dp[i][j]) + 1;
-		}		
+		}
 	}
 	/*for (; i < str1Len; i++)
 		dp[i + 1][j] = dp[i][j] + 1;
@@ -254,5 +254,5 @@ int main(void)
 	std::cout << EditDistance_DP(str7, str8) << std::endl;
 	std::cout << EditDistance_Dimension(str7, str8) << std::endl;
 
-   	return 0;
+	return 0;
 }
