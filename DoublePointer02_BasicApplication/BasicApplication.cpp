@@ -4,9 +4,10 @@
 
 #include<vector>
 
-struct ListNode {
-	int val;//int m_nValue最佳 为了配合LeetCode系统
-	ListNode* next;// m_pNext
+struct ListNode 
+{
+	int val;			//int m_nValue最佳 为了配合LeetCode系统
+	ListNode* next;		// m_pNext
 	ListNode(int val) : val(val), next(nullptr) {}
 };
 
@@ -65,16 +66,25 @@ ListNode* DetectCycle(ListNode* head)
 //https://leetcode-cn.com/problems/middle-of-the-linked-list/
 ListNode* middleNode(ListNode* head)
 {
-	ListNode pDummy = ListNode(1);
-	pDummy.next = head;
-	ListNode *pFast = &pDummy;
-	ListNode *pLow = &pDummy;
-	while (pFast->next != nullptr && pFast->next->next != nullptr)//此处的判断 和 返回值 多在草稿纸上写一写
+	//ListNode pDummy = ListNode(1);
+	//pDummy.next = head;
+	//ListNode *pFast = &pDummy;
+	//ListNode *pLow = &pDummy;
+	////while (pFast->next != nullptr && pFast->next->next != nullptr)//此处的判断 和 返回值 多在草稿纸上写一写
+	//{
+	//	pFast = pFast->next->next;
+	//	pLow = pLow->next;
+	//}
+	////return pLow->next;
+	
+	ListNode* lo = head;
+	ListNode* hi = head;
+	while (hi != nullptr && hi->next != nullptr)
 	{
-		pFast = pFast->next->next;
-		pLow = pLow->next;
+		lo = lo->next;
+		hi = hi->next->next;
 	}
-	return pLow->next;
+	return lo;
 }
 
 
@@ -193,6 +203,4 @@ int main(void)
 	p25->next = p26;
 	p26->next = p27;
 	hasCycle(head);
-
-
 }

@@ -48,6 +48,8 @@ int Stock_Once02(vector<int> prices)
 	int Length = prices.size();
 	//第0天的状态初始化
 	//int i_0 = 0, i_1 = -prices[0];此时需要保证有元素，可以直接用-1天的状态初始化，循环从0开始
+	//i_0 表示 当天没股票，可能是昨天就没有，也可能是昨天有今天卖出
+	//i_1 表示 当天有股票，可能是昨天就有，也可能是今天刚迈入的，只能一次交易，所以为-prices[i]
 	int i_0 = 0, i_1 = INT_MIN;
 	for (int i = 0; i < Length; i++)
 	{

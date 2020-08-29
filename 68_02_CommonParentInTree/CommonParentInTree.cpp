@@ -29,8 +29,10 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q)
 }
 
 //类似的写法，背这个吧，简单一些
+//https://leetcode-cn.com/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/solution/mian-shi-ti-68-ii-er-cha-shu-de-zui-jin-gong-gon-7/
 TreeNode* lowestCommonAncestor01(TreeNode* root, TreeNode* p, TreeNode* q)
 {
+	//这个截止条件很重要，判断root 是不是 q 或者 p的祖先
 	if (root == nullptr || root == q || root == p) return root;
 	TreeNode* left = lowestCommonAncestor01(root->left, p, q);
 	TreeNode* right = lowestCommonAncestor01(root->right, p, q);

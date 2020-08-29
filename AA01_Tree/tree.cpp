@@ -195,14 +195,12 @@ vector<int> postorderTraversal_1(TreeNode* root)
 	return vec;
 }
 
-
 //求树的最大高度
 int maxDepth(TreeNode* root)
 {
 	if (root == nullptr) return 0;
 	return max(maxDepth(root->left), maxDepth(root->right)) + 1;
 }
-
 
 //验证二叉搜索树，递归前序遍历的方法，记录max，min
 //https://leetcode-cn.com/problems/validate-binary-search-tree/
@@ -265,10 +263,6 @@ bool isBalanced(TreeNode* root)
 {
 	return helphigh(root) != -1;
 }
-
-
-
-
 
 
 //翻转链表

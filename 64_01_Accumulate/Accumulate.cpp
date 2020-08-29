@@ -84,15 +84,25 @@ template<> struct sum04<1>
 	enum Value { N = 1 };
 };
 
+//看题解，短路效应太厉害了
+int res = 0;
+int sumNums(int n) 
+{
+	bool x = (n > 1) && sumNums(n - 1) > 0;
+	res += n;
+	return res;
+}
 
 
 int main(void)
 {
-	int ans = 0;
+	/*int ans = 0;
 	ans = sum01(6);
 	ans = sum02(6);
 	ans = sum03(6);
-	ans = sum04<6>::N;
+	ans = sum04<6>::N;*/
+
+	sumNums(5);
 
 	return 0;
 }
